@@ -1,0 +1,1919 @@
+{
+  "generatedAt": "2026-11-16T07:05:29.063Z",
+  "n": 160,
+  "calls": 212,
+  "elapsedSec": 604,
+  "counts": {
+    "ali": 1799,
+    "mic": 5008,
+    "zhNames": 2449
+  },
+  "rates": {
+    "ali": 0.0375,
+    "mic": 0.0375,
+    "overall": 0.0375,
+    "ci95": [
+      0.008061743640290105,
+      0.06693825635970989
+    ],
+    "estimatedCrossOverlapCount": 255
+  },
+  "samples": [
+    {
+      "source": "ali",
+      "englishName": "Cangzhou Dession Packaging Machinery Co., Ltd.",
+      "city": "Cangzhou",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Tangshan Shimai Imp & Exp Trading Co., Ltd.",
+      "city": "Tangshan",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Shahe Huajinde Glass Co., Limited",
+      "city": "Xingtai",
+      "tanji": {
+        "id": "577e032005321698",
+        "name": "沙河市华锦德玻璃制品有限公司",
+        "uscc": "91130582329659388G",
+        "score": 437.3601,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Guangzong County Sanhang Bicycle Factory",
+      "city": "Xingtai",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Tangshan Vantools Industries Co., Ltd.",
+      "city": "Tangshan",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Xingtai Tuomei Machinery Factory",
+      "city": "Xingtai",
+      "tanji": {
+        "id": "3c7d0759a22bf29e",
+        "name": "邢台拓美机械厂",
+        "uscc": "91130526MA0DT3J9X3",
+        "score": 336.79913,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Wuqiang County Huili Fiberglass Co., Ltd.",
+      "city": "Hengshui",
+      "tanji": {
+        "id": "37622fd0e1c53543",
+        "name": "武强县汇利玻纤有限公司",
+        "uscc": "9113112306047278XP",
+        "score": 316.50076,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Xingtai Tianchen Children's Products Co., Ltd.",
+      "city": "Xingtai",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Yutian County Steel Wing Metal Products Co., Ltd.",
+      "city": "Tangshan",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Langfang Minghuan International Trading Co., Ltd.",
+      "city": "Langfang",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Gaobeidian Longyuan Tourist Goods Co., Ltd.",
+      "city": "Baoding",
+      "tanji": {
+        "id": "37622fdee5053c06",
+        "name": "高碑店龙源旅游制品有限公司",
+        "uscc": "91130600752420921X",
+        "score": 324.118,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Proros (Baoding) Trading Co., Ltd.",
+      "city": "Baoding",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Zhangjiakou Comay E-Commerce Co., Ltd.",
+      "city": "Zhangjiakou",
+      "tanji": {
+        "id": "3f53df55d66b0ed0",
+        "name": "张家口科迈电子商务有限公司",
+        "uscc": "91130722MA7DAYKJ1E",
+        "score": 202.7411,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Hebei Hui MAO Technology Co., LTD",
+      "city": null,
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Xinji Weiwei Textile Factory",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": "577e8292293212d8",
+        "name": "辛集市马庄乡伟玮纺织厂",
+        "uscc": "9113018158968191XR",
+        "score": 327.5364,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Jia Hao Technology Co., Ltd.",
+      "city": "Hengshui",
+      "tanji": {
+        "id": "57905c3864b2483c",
+        "name": "深圳市嘉豪馨溢科技有限公司",
+        "uscc": "91440300596778779U",
+        "score": 190.80904,
+        "total": 30
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Shijiazhuang Vivi Technology Co., Ltd.",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Xingtai Kellen Machinery Equipment Co., Ltd.",
+      "city": "Xingtai",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Qinhuangdao Yaoxin Safety Glass Company Limited",
+      "city": "Qinhuangdao",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Handan Dongchao Hardware Products Co., Ltd.",
+      "city": "Handan",
+      "tanji": {
+        "id": "3763277bed6698a2",
+        "name": "邯郸市东超五金制品有限公司",
+        "uscc": "91130402673237088D",
+        "score": 350.9141,
+        "total": 2
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Shijiazhuang Dongqi Technology Co., Ltd.",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": "3762302208bf3f21",
+        "name": "石家庄东起计算机科技有限公司",
+        "uscc": "91130104060457715X",
+        "score": 210.15326,
+        "total": 3
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Handan Maizhong Trade Co., Ltd.",
+      "city": "Handan",
+      "tanji": {
+        "id": "38930695086abc27",
+        "name": "邯郸市麦众贸易有限公司",
+        "uscc": "91130403MA09WY1N7L",
+        "score": 298.11252,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Hebei Gebang International Trade Co., Ltd.",
+      "city": null,
+      "tanji": {
+        "id": "3762302d36bf3c05",
+        "name": "河北格邦国际贸易有限公司",
+        "uscc": "91131181MA08C73917",
+        "score": 325.8797,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Langfang Leyue Technology Co., Ltd.",
+      "city": "Langfang",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Tangshan Jiayuan Metalwork Co., Ltd.",
+      "city": "Tangshan",
+      "tanji": {
+        "id": "4377665475ab2ae2",
+        "name": "唐山市嘉垣科技有限公司",
+        "uscc": "91130293MADB9M8K4J",
+        "score": 304.62726,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Xingtai Mingjiang Technology Co., Ltd.",
+      "city": "Xingtai",
+      "tanji": {
+        "id": "4003838a01eaaa52",
+        "name": "邢台市铭江科技有限公司",
+        "uscc": "91130502MA7N93NB4L",
+        "score": 233.8359,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Shijiazhuang Taichuang Coating Factory",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Shijiazhuang Congyuan Import And Export Trade Co., Ltd.",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "error": true
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Shijiazhuang Biofice Science & Technology Co., Ltd.",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "error": true
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Baoding Panda Win Trading Co.,ltd.",
+      "city": "Baoding",
+      "tanji": {
+        "id": "3f00902eb5ebf517",
+        "name": "保定潘德贸易有限公司",
+        "uscc": "91130605MA7ALPFG8M",
+        "score": 253.5894,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Shijiazhuang Coby Trading Co., Ltd.",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Hebei Huaming Laye Limited Company",
+      "city": null,
+      "tanji": {
+        "id": "3763276c24e69e31",
+        "name": "河北华明蜡业股份有限公司",
+        "uscc": "91130184695855434W",
+        "score": 388.45953,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Hebei Singtai Textile Co., Ltd.",
+      "city": null,
+      "tanji": {
+        "id": "3763276fb82692ec",
+        "name": "河北新泰纺织品有限公司",
+        "uscc": "91130102MA083LC20E",
+        "score": 361.0987,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Handan City Lei Qi Trade Co., Ltd.",
+      "city": "Handan",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Shijiazhuang Maikesi Brace Technology Co., Ltd.",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": "3762300312bf3518",
+        "name": "石家庄麦克斯护具科技有限公司",
+        "uscc": "91130102MA085L6828",
+        "score": 441.69608,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Renqiu Fusong Auto Parts Sales Firm",
+      "city": "Cangzhou",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Langfang Good Share Imp.&Exp Co., Ltd.",
+      "city": "Langfang",
+      "tanji": {
+        "id": "3b871062cd6b908d",
+        "name": "廊坊市佐格进出口贸易有限公司",
+        "uscc": "91131002MA0E8T1K2G",
+        "score": 472.56216,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Xingtai Weiwo Machinery Parts Co., Ltd.",
+      "city": "Xingtai",
+      "tanji": {
+        "id": "577e5752cfb218f8",
+        "name": "邢台维沃机械配件有限公司",
+        "uscc": "91130526MA07WWQ86H",
+        "score": 324.2221,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Hebei Dongxiu Railway Equipment Co., Ltd.",
+      "city": null,
+      "tanji": {
+        "id": "57ba187b5933e3ff",
+        "name": "河北东秀铁路器材有限公司",
+        "uscc": "911304083362290608",
+        "score": 311.52203,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Hengshui Mulin Steel Structure Co., Ltd.",
+      "city": "Hengshui",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Hebei Newangie Technology Co.,ltd",
+      "city": null,
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Hebei Diyu Auto Accessories Manufacture Co., Ltd.",
+      "city": "Cangzhou",
+      "tanji": {
+        "id": "37622fffa1bf3282",
+        "name": "河北迪羽汽车用品制造有限公司",
+        "uscc": "91130632MA07KHPK1D",
+        "score": 408.54434,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Hebei Xingdu Cable Co., Ltd.",
+      "city": null,
+      "tanji": {
+        "id": "37622fee6d45361f",
+        "name": "河北兴都电缆有限公司",
+        "uscc": "91130528766624589G",
+        "score": 256.59448,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Shijiazhuang Yandong Mineral Products Co., Ltd.",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": "3e35253ec22b68e7",
+        "name": "石家庄岩冬矿产品有限公司",
+        "uscc": "91130126MA0G91L665",
+        "score": 352.23596,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Tangshan City Su Yi New Materials Technology Co., Ltd.",
+      "city": "Tangshan",
+      "tanji": {
+        "error": true
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Handan Yaente Fastener Sales Co., Ltd.",
+      "city": "Handan",
+      "tanji": {
+        "id": "3b7480c348ab9a92",
+        "name": "邯郸市雅恩特紧固件销售有限公司",
+        "uscc": "91130408MA0E6LBXXB",
+        "score": 429.4696,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Handan Longyingxing Metal Sales Co., Ltd.",
+      "city": "Handan",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Anping Weikai Filtration Technology Co., Ltd.",
+      "city": "Hengshui",
+      "tanji": {
+        "id": "37632778b72694ef",
+        "name": "安平县威凯过滤技术有限公司",
+        "uscc": "911311253080089303",
+        "score": 323.00458,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Anping Mingrui Intelligent Technology Co., Ltd.",
+      "city": "Hengshui",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Tangshan Runying International Trade Co., Ltd.",
+      "city": "Tangshan",
+      "tanji": {
+        "id": "38c94786c3aac3c4",
+        "name": "唐山市润颖国际贸易有限公司",
+        "uscc": "91130221MA0A3RY88J",
+        "score": 323.17395,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Tangshan Mingwan International Trade Co., Ltd.",
+      "city": "Tangshan",
+      "tanji": {
+        "id": "45bffb3c5a860126",
+        "name": "唐山名万国际贸易有限公司",
+        "uscc": "91130203MAEML2AQ93",
+        "score": 304.56116,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Shijiazhuang Jinze Plastic Tarpaulins Manufacturing Co., Ltd.",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "error": true
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Hebei Xilei Technology Co., Ltd.",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": "3fed1794b6eb306f",
+        "name": "河北熙雷信息科技服务有限公司",
+        "uscc": "91130982MA7K92KU5Q",
+        "score": 220.52272,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Langfang Liu Tai Furniture Co., Ltd.",
+      "city": "Langfang",
+      "tanji": {
+        "id": "37622fe510053ad5",
+        "name": "廊坊市六泰家具有限公司",
+        "uscc": "9113100209483905X7",
+        "score": 285.47766,
+        "total": 1
+      },
+      "hitRecruitment": true
+    },
+    {
+      "source": "ali",
+      "englishName": "Langfang Gemmy Sealing Materials Co., Ltd.",
+      "city": "Langfang",
+      "tanji": {
+        "id": "3fbb52326febb683",
+        "name": "廊坊捷密密封材料有限公司",
+        "uscc": "91131025MA7JC80B4M",
+        "score": 397.68866,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Hebei Baotan New Material Technology Co., Ltd.",
+      "city": null,
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Xingtai Qingshan Sealing Co., Ltd.",
+      "city": "Xingtai",
+      "tanji": {
+        "id": "376230149bff3be7",
+        "name": "邢台市青山密封有限公司",
+        "uscc": "91130526792652209G",
+        "score": 288.4239,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Shijiazhuang Runfang Technology Co., Ltd.",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": "3fddde21fa6b313a",
+        "name": "石家庄润方网络科技服务有限公司",
+        "uscc": "91130132MA7JGBTE3T",
+        "score": 228.13431,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Hebei Huishi Technology Co., Ltd",
+      "city": null,
+      "tanji": {
+        "id": "37622fdac9053eb8",
+        "name": "河北汇实电子科技有限公司",
+        "uscc": "91130606058155582G",
+        "score": 214.66713,
+        "total": 9
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Hengshui Sewego New Material Technology Co., Ltd.",
+      "city": "Hengshui",
+      "tanji": {
+        "id": "410ecee6feeb9aa7",
+        "name": "衡水赛万嘉新材料科技有限公司",
+        "uscc": "91131102MAC1P4QA43",
+        "score": 358.166,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Shijiazhuang Runtu Import & Export Co., Ltd.",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": "3c654b4589abf1fa",
+        "name": "石家庄润荼进出口有限公司",
+        "uscc": "91130105MA0EUB1A1Y",
+        "score": 348.5842,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Handan Yuchang Car Accessories Co., Ltd",
+      "city": "Handan",
+      "tanji": {
+        "id": "394b6d9d916b5072",
+        "name": "邯郸市裕昌汽车配件有限公司",
+        "uscc": "91130408MA0CLGKR4H",
+        "score": 343.8348,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Hebei Weizhi Sculpture Co., Ltd.",
+      "city": null,
+      "tanji": {
+        "id": "3c64871ece2bf722",
+        "name": "河北维致雕塑有限公司",
+        "uscc": "91130634MA0EUD5D7K",
+        "score": 313.09015,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Hebei Zhuo Zhongxi Glass Products Co., Ltd.",
+      "city": null,
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Hebei Pufeite Intelligent Equipment Co., Ltd.",
+      "city": null,
+      "tanji": {
+        "id": "3dfe025b732abafa",
+        "name": "河北普飞特智能装备有限公司",
+        "uscc": "91130192MA0G3KR719",
+        "score": 361.0185,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Dacheng Vinnie Technology Co., Ltd.",
+      "city": "Langfang",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Hebei AllWin Industrial Group Co.LTD",
+      "city": null,
+      "tanji": {
+        "id": "37623020f83f3a23",
+        "name": "河北奥维森实业集团股份有限公司",
+        "uscc": "911301046857390936",
+        "score": 205.9758,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Tangshan Qingbao Trading Co., Ltd",
+      "city": "Tangshan",
+      "tanji": {
+        "id": "5794a6000c324442",
+        "name": "唐山庆宝商贸有限公司",
+        "uscc": "91130293MA08NL20XF",
+        "score": 272.83945,
+        "total": 1
+      },
+      "hitRecruitment": true
+    },
+    {
+      "source": "ali",
+      "englishName": "Tangshan Junnan Trade Co., Ltd.",
+      "city": "Tangshan",
+      "tanji": {
+        "id": "37623009c27f391e",
+        "name": "唐山骏楠贸易有限公司",
+        "uscc": "91130293320125187P",
+        "score": 296.8232,
+        "total": 1
+      },
+      "hitRecruitment": true
+    },
+    {
+      "source": "ali",
+      "englishName": "Shijiazhuang S D Company Ltd.",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": "37622ff1aec531f4",
+        "name": "石家庄赛德贸易有限公司",
+        "uscc": "91130105762081249W",
+        "score": 313.29156,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Hebei Jurui Rubber & Plastic Technology Co., Ltd.",
+      "city": null,
+      "tanji": {
+        "id": "37622fd14ac53a18",
+        "name": "河北巨瑞橡塑科技有限公司",
+        "uscc": "91131127MA07P4LL69",
+        "score": 351.17963,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Qinhuangdao Meierke Technology Co., Ltd.",
+      "city": "Qinhuangdao",
+      "tanji": {
+        "id": "37622fc390453d43",
+        "name": "秦皇岛美尔柯科技有限公司",
+        "uscc": "91130301MA08BLGE84",
+        "score": 345.884,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Xingtai Beilong Internal Combustion Accessories Co., Ltd.",
+      "city": "Xingtai",
+      "tanji": {
+        "error": true
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Linxi County Hande Mechanical Parts Manufacturing Co., Ltd.",
+      "city": "Xingtai",
+      "tanji": {
+        "error": true
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Handan Juebo Trading Co., Ltd.",
+      "city": "Handan",
+      "tanji": {
+        "id": "3f26dd3a662bfa5c",
+        "name": "邯郸市决波贸易有限公司",
+        "uscc": "91130407MA7BQ2RY76",
+        "score": 327.15228,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Shijiazhuang Huaru Trading Co., Ltd.",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": "3b4b7fc9f8eb5df7",
+        "name": "石家庄华如商贸有限公司",
+        "uscc": "91130102MA0E3B4R2D",
+        "score": 274.40707,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Gaobeidian Xinrong Bag Factory",
+      "city": "Baoding",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Shenze County Kaiyuan Metal Products Co., Ltd.",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": "37622fc31cc53580",
+        "name": "深泽县凯源金属制品有限公司",
+        "uscc": "91130128319810515K",
+        "score": 320.45587,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Hebei Kuangze Import&export Trade Co., Ltd.",
+      "city": null,
+      "tanji": {
+        "id": "376230275abf391c",
+        "name": "河北旷泽进出口贸易有限公司",
+        "uscc": "91130105MA07TUM38Q",
+        "score": 419.48193,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "ali",
+      "englishName": "Tangshan Shenlian International Trade Co., Ltd.",
+      "city": "Tangshan",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Anping County Dinghe Wire Mesh Co., LTD",
+      "city": "Hengshui",
+      "tanji": {
+        "id": "3762301b563f32a0",
+        "name": "安平县鼎和金属丝网制品有限公司",
+        "uscc": "91131125MA07MFRC4A",
+        "score": 401.9825,
+        "total": 2
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Xingtai Haikuo Machinery Manufacturing Co., Ltd.",
+      "city": "Xingtai",
+      "tanji": {
+        "id": "37622fd87d8538d3",
+        "name": "邢台市海阔机械制造有限公司",
+        "uscc": "911305267761577502",
+        "score": 321.7519,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Baoding Bencheng Import & Export Co., Ltd",
+      "city": "Baoding",
+      "tanji": {
+        "id": "3762300ed7ff31b0",
+        "name": "北京市奔程进出口贸易有限公司",
+        "uscc": "9113060658362982XH",
+        "score": 261.41364,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Xingtai Hongyang Seal Co., Ltd. (Renxian Hongyang Locomotive Parts Factory)",
+      "city": "Xingtai",
+      "tanji": {
+        "error": true
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Xingtai Shuangjian Pitch and Grinding Wheel Co., Ltd.",
+      "city": "Xingtai",
+      "tanji": {
+        "error": true
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Hebei Xukang Meter Manufacturing Co., Ltd.",
+      "city": "Xingtai",
+      "tanji": {
+        "id": "37623011867f3d24",
+        "name": "河北旭康仪表制造有限公司",
+        "uscc": "91130533MA08AQC9X4",
+        "score": 399.91428,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Shijiazhuang Aijinger Trading Co., Ltd.",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": "3b1f8cb53d2bfed9",
+        "name": "石家庄耐晶尔贸易有限公司",
+        "uscc": "91130102MA0DYKF986",
+        "score": 291.95255,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Cangzhou Zhuorun Auto Parts Co., Ltd.",
+      "city": "Cangzhou",
+      "tanji": {
+        "id": "39ed703ccaeb46e9",
+        "name": "沧州卓润汽车零部件有限公司",
+        "uscc": "91130984MA0D2K2T4T",
+        "score": 333.42242,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Hengshui Taocheng Chuntian Farm Tools Factory",
+      "city": "Hengshui",
+      "tanji": {
+        "id": "37622fed89c5370b",
+        "name": "衡水市桃城区春田农具厂",
+        "uscc": "92131102MA0AU3B670",
+        "score": 522.8808,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Tangshan Baize International Shipping Agency Co., Ltd.",
+      "city": "Tangshan",
+      "tanji": {
+        "error": true
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Hebei Maoheng Machinery Co., Ltd.",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": "37623021a4ff3e2c",
+        "name": "河北茂恒机械有限公司",
+        "uscc": "91130182MA07XP4X7T",
+        "score": 289.2119,
+        "total": 2
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Handan Jiangu New Material Technology Co., Ltd.",
+      "city": "Handan",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Zhangjiakou Xuanhua Ju Hong Abrasion Resistant Material Distribution Co., Ltd",
+      "city": "Zhangjiakou",
+      "tanji": {
+        "error": true
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "QINHUANGDAO GREEN STAR MIRROR CO., LTD.",
+      "city": "Qinhuangdao",
+      "tanji": {
+        "id": "376230092fff30bd",
+        "name": "秦皇岛绿星镜业有限公司",
+        "uscc": "91130302685734073D",
+        "score": 390.58673,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Langfang Luohe Green Technology Co., Ltd.",
+      "city": "Langfang",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Langfang Weierda Filter Equipment Co. Ltd",
+      "city": "Langfang",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Tangshan Shuhua Husbandry Machinery Manufacturing Co., Ltd.",
+      "city": "Tangshan",
+      "tanji": {
+        "error": true
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Xingtai Kurbao Toys Co., Ltd.",
+      "city": "Xingtai",
+      "tanji": {
+        "id": "37622fdba6853895",
+        "name": "邢台酷儿宝儿童玩具有限公司",
+        "uscc": "91130532MA07MEU53G",
+        "score": 319.39117,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Suntex Import & Export Trading Co., Ltd.",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": "37622fb9f305371b",
+        "name": "石家庄市尚德进出口贸易有限公司",
+        "uscc": "911301057356112241",
+        "score": 210.3581,
+        "total": 2
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Xingtai Farming First Agricultural Machinery Co.,Ltd.",
+      "city": "Xingtai",
+      "tanji": {
+        "error": true
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Handan Dingzheng Heavy Machinery Co., Ltd",
+      "city": "Handan",
+      "tanji": {
+        "id": "3762300c85ff3445",
+        "name": "邯郸市鼎正重型机械有限公司",
+        "uscc": "911304246992310208",
+        "score": 383.66995,
+        "total": 1
+      },
+      "hitRecruitment": true
+    },
+    {
+      "source": "mic",
+      "englishName": "Hebei Zhengyang Hardware Technology Co., Ltd.",
+      "city": "Xingtai",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Shijiazhuang Textile Machinery Co., Ltd.",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": "3762300a6bff3551",
+        "name": "石家庄纺织机械有限责任公司",
+        "uscc": "911301001044132480",
+        "score": 211.05339,
+        "total": 20
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Hebei Titans Hongsen Medical Technology Co., Ltd.",
+      "city": "Xingtai",
+      "tanji": {
+        "id": "3762302ce7ff3f15",
+        "name": "河北泰能鸿森医疗科技有限公司",
+        "uscc": "91130581054013624U",
+        "score": 343.27106,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Hengshui Hongmaoda Mould Co., Ltd",
+      "city": "Hengshui",
+      "tanji": {
+        "id": "577e6d2e133219d3",
+        "name": "衡水鸿茂达模具有限公司",
+        "uscc": "91131101MA083RM39G",
+        "score": 388.64816,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Xingtai Ponstone Co., Ltd.",
+      "city": "Xingtai",
+      "tanji": {
+        "id": "3762302737ff3776",
+        "name": "邢台县蓬盛工贸有限公司",
+        "uscc": "91130521689294773A",
+        "score": 248.84348,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Shijiazhuang Woodoo Trade Co., Ltd",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": "3762300d47bf3bdb",
+        "name": "石家庄伍度贸易有限公司",
+        "uscc": "91130101063353399K",
+        "score": 325.4949,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Shijiazhuang Ruite Pump Co., Ltd",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": "3762301e18ff3fb6",
+        "name": "石家庄瑞特泵业有限公司",
+        "uscc": "91130182661074445Q",
+        "score": 324.7829,
+        "total": 2
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Shijiazhuang Kuofu Complete Equipment Co., Ltd",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": "37632776fc669965",
+        "name": "石家庄扩富成套设备有限公司",
+        "uscc": "911301000581955845",
+        "score": 402.99817,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Cangzhou Kediwei International Trade Co., Ltd.",
+      "city": "Cangzhou",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Shijiazhuang Ningzhi Color Steel Sheet Co., Ltd",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Hebei Leijia Building Materials Sales Co., Ltd.",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": "3937fd71856b5fb3",
+        "name": "河北雷嘉建材销售有限公司",
+        "uscc": "91130105MA0CKY8K4F",
+        "score": 336.33673,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Hebei Blue Whale Import and Export Trading Co., Ltd.",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "error": true
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Hebei Zhongxinhe Assembled Housing Manufacturing Co., Ltd.",
+      "city": "Hengshui",
+      "tanji": {
+        "error": true
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Baoding Baonan Machinery and Equipment Manufacturing Co., Ltd",
+      "city": "Baoding",
+      "tanji": {
+        "error": true
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Shijiazhuang Mining Area Fengwang Machinery Co., Ltd",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "error": true
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Cangzhou Chengsheng Pipeline Equipment Co., Ltd.",
+      "city": "Cangzhou",
+      "tanji": {
+        "id": "3763276d11e69095",
+        "name": "沧州诚晟管道设备有限公司",
+        "uscc": "91130902MA07XPYWXY",
+        "score": 353.31128,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Baoding Kaixi Import and Export Trade Co., Ltd.",
+      "city": "Baoding",
+      "tanji": {
+        "id": "577d83a177b21758",
+        "name": "保定市凯西进出口贸易有限公司",
+        "uscc": "91130605MA07UTLY89",
+        "score": 397.59912,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Xingtai Yakexi Bicycle Co., Ltd.",
+      "city": "Xingtai",
+      "tanji": {
+        "id": "577d7e0283321a5d",
+        "name": "邢台亚克西车业有限公司",
+        "uscc": "911305327825677993",
+        "score": 298.7166,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Cangzhou Xingwei International Trade Co., Ltd.",
+      "city": "Cangzhou",
+      "tanji": {
+        "id": "3762300192ff322f",
+        "name": "沧州兴伟国际贸易有限公司",
+        "uscc": "91130903319805994X",
+        "score": 313.81436,
+        "total": 1
+      },
+      "hitRecruitment": true
+    },
+    {
+      "source": "mic",
+      "englishName": "Shijiazhuang Dairou Industrial Co., Ltd.",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": "3762300c8f3f3759",
+        "name": "石家庄黛柔商贸有限公司",
+        "uscc": "91130102MA07R4M60R",
+        "score": 315.25787,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Shijiazhuang Ruituo Trading Co., Ltd.",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": "37622fc4f8853f04",
+        "name": "石家庄市锐拓商贸有限公司",
+        "uscc": "91130100MADU23DU5F",
+        "score": 254.02182,
+        "total": 3
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Langfang Fangdun Fireproof Sealing Material Co., Ltd.",
+      "city": "Langfang",
+      "tanji": {
+        "error": true
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Langfang Yifang Plastic Co., Ltd.",
+      "city": "Langfang",
+      "tanji": {
+        "id": "3892eaa3e3aab627",
+        "name": "廊坊一方塑业有限公司",
+        "uscc": "91131025MA09WW9715",
+        "score": 278.0731,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Shijiazhuang Shenghuayuan Label Weaving Co. Ltd",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Shijiazhuang Riran Trading Company",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Shijiazhuang Renshuo Technology Co., Ltd.",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": "3df62e4137aa5ade",
+        "name": "石家庄仁硕科技有限公司",
+        "uscc": "91130104MA0G32QB97",
+        "score": 265.7406,
+        "total": 2
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Shijiazhuang Fullstar METAL PRODUCT Co., Ltd.",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": "376230127c7f3d71",
+        "name": "石家庄满星金属制品有限公司",
+        "uscc": "91130130398824287T",
+        "score": 404.81064,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Xingtai Zhaowaiyi Import and Export Trading Co., Ltd",
+      "city": "Xingtai",
+      "tanji": {
+        "error": true
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Shijiazhuang Zequn Auto Accessory Co., Ltd.",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Shijiazhuang Jingang Internal Combustion Engine Parts Group Ltd",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "error": true
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Shijiazhuang Shenghongda Thermal Engineering Technology Co., Ltd",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "error": true
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Shijiazhuang Invention Technology Co., Ltd.",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": "37622fcba5453fd8",
+        "name": "石家庄因诺维泵业有限公司",
+        "uscc": "91130102557667507R",
+        "score": 183.46701,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Baoding Youshi Wenyi Technology Co",
+      "city": "Baoding",
+      "tanji": {
+        "id": "419ebd8742eb242a",
+        "name": "保定优仕文仪科技有限公司",
+        "uscc": "91130631MAC9Q3P65Y",
+        "score": 316.75388,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Hengshui Hongxiang Engineering Materials Co., Ltd.",
+      "city": "Hengshui",
+      "tanji": {
+        "id": "577e3937b672186c",
+        "name": "衡水弘祥工程材料有限公司",
+        "uscc": "91131101595415052J",
+        "score": 289.20355,
+        "total": 2
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Langfang Yolo Technology Co., Ltd.",
+      "city": "Langfang",
+      "tanji": {
+        "id": "4028b994722a4cb2",
+        "name": "廊坊市优络科技有限公司",
+        "uscc": "91131003MABNDQNW83",
+        "score": 255.46512,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Xingtai Okai Auto Parts Co., Ltd",
+      "city": "Xingtai",
+      "tanji": {
+        "id": "37632778252690c7",
+        "name": "邢台欧凯汽车配件有限公司",
+        "uscc": "91130500692082130Q",
+        "score": 322.20844,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Cangzhou Lida Culture and Sport Co., Ltd",
+      "city": "Cangzhou",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "HANDAN YONGYANG IMP.&EXP.CO., LTD.",
+      "city": "Handan",
+      "tanji": {
+        "id": "3d53c0c4f6aa93e5",
+        "name": "邯郸永洋进出口有限公司",
+        "uscc": "91130408MA0FLGMK28",
+        "score": 381.6199,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Hengshui Sanrenxing Trading Co., Ltd.",
+      "city": "Hengshui",
+      "tanji": {
+        "id": "57b96a0f6df3e4c0",
+        "name": "衡水三人行贸易有限公司",
+        "uscc": "91131102MA08U5B60N",
+        "score": 291.30682,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Baoding Qianzun Import and Export Co., Ltd.",
+      "city": "Baoding",
+      "tanji": {
+        "id": "3c7d14c0b66bf91d",
+        "name": "保定乾尊进出口有限公司莲池区分公司",
+        "uscc": "91130606MA0DU2286N",
+        "score": 364.13785,
+        "total": 1
+      },
+      "hitRecruitment": true
+    },
+    {
+      "source": "mic",
+      "englishName": "Cangzhou Bestface Cosmetic Tools Co., Ltd",
+      "city": "Cangzhou",
+      "tanji": {
+        "id": "3e01cb406aeb8a3f",
+        "name": "沧州顶颜化妆用具有限公司",
+        "uscc": "91130903MA0G3X7A44",
+        "score": 429.9975,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Langfang Better Metal Product Co., Ltd.",
+      "city": "Langfang",
+      "tanji": {
+        "id": "3762302c463f3356",
+        "name": "廊坊市佰特尔金属制品有限公司",
+        "uscc": "9113100355767968XP",
+        "score": 337.5477,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Shijiazhuang Huitong Automobile Trading Co., Ltd",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": "3acd8f41e4eb0d56",
+        "name": "石家庄辉通汽车贸易有限公司",
+        "uscc": "91130130MA0DNHU01G",
+        "score": 254.93352,
+        "total": 2
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Shijiazhuang Xiqing Trading Co. Ltd",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": "37622ffc157f31a8",
+        "name": "石家庄西青商贸有限公司",
+        "uscc": "91130185MA07R3QM4N",
+        "score": 234.93701,
+        "total": 4
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Zhaoheng Storage Equipment (Hebei) Co., Ltd.",
+      "city": "Langfang",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Xingtai Linuo Technology Co., Ltd",
+      "city": "Xingtai",
+      "tanji": {
+        "id": "3e09859adaea58c2",
+        "name": "邢台利诺科技有限公司",
+        "uscc": "91130502MA0G4JY018",
+        "score": 238.07767,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Langfang Xiaowei Pipeline Equipment Co., Ltd",
+      "city": "Langfang",
+      "tanji": {
+        "id": "37623023acbf3e37",
+        "name": "廊坊市孝唯管道设备有限公司",
+        "uscc": "91131002308484283M",
+        "score": 359.06818,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Shijiazhuang Senlai Import and Export Trade Co., Ltd.",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "error": true
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Baoding Glory International Biz Co., Limited",
+      "city": "Baoding",
+      "tanji": {
+        "id": "37622fe31c853708",
+        "name": "保定格劳瑞进出口贸易有限公司",
+        "uscc": "91130611MA07UJL61N",
+        "score": 361.55353,
+        "total": 1
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Hebei E-valves Petroleum Equipment Co., Ltd.",
+      "city": "Cangzhou",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Hengshi (Langfang) Precision Machinery Manufacturing Co., Ltd.",
+      "city": "Langfang",
+      "tanji": {
+        "error": true
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Shijiazhuang Yijie Rongshang I. & E. Trade Co., Ltd",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "error": true
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Shijiazhuang Zhongrun Machinery Manufacturing Co., Ltd.",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "error": true
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Shijiazhuang Dongqi Technology Co., Ltd",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": "3762302208bf3f21",
+        "name": "石家庄东起计算机科技有限公司",
+        "uscc": "91130104060457715X",
+        "score": 210.14342,
+        "total": 3
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Hebei Bigking Cookware Co., Ltd.",
+      "city": "Shijiazhuang",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Cangzhou Youchuang Energysaving Technology Co., Ltd",
+      "city": "Cangzhou",
+      "tanji": {
+        "error": true
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Handan Jianing E-Commerce Co., Ltd.",
+      "city": "Handan",
+      "tanji": {
+        "id": null,
+        "name": null,
+        "total": 0
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Tangshan Dingre Solar Energy Co.,Ltd.",
+      "city": "Tangshan",
+      "tanji": {
+        "id": "577d6b5509321304",
+        "name": "唐山鼎热太阳能科技有限公司",
+        "uscc": "911302247808003075",
+        "score": 421.50043,
+        "total": 3
+      },
+      "hitRecruitment": false
+    },
+    {
+      "source": "mic",
+      "englishName": "Langfang Yunshi Environmental Protection Technology Co., Ltd.",
+      "city": "Langfang",
+      "tanji": {
+        "error": true
+      },
+      "hitRecruitment": false
+    }
+  ]
+}

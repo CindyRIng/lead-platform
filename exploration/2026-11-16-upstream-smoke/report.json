@@ -1,0 +1,3533 @@
+{
+  "startedAt": "2026-11-16T05:58:44.339Z",
+  "steps": [
+    {
+      "id": 1,
+      "source": "boss",
+      "method": "GET",
+      "path": "/v1/status",
+      "httpStatus": 200,
+      "ms": 310,
+      "ok": true,
+      "error": null,
+      "saveAs": "boss-status"
+    },
+    {
+      "id": 2,
+      "source": "zhilian",
+      "method": "GET",
+      "path": "/v1/status",
+      "httpStatus": 200,
+      "ms": 4480,
+      "ok": true,
+      "error": null,
+      "saveAs": "zhilian-status"
+    },
+    {
+      "id": 3,
+      "source": "ali",
+      "method": "GET",
+      "path": "/v1/status",
+      "httpStatus": 200,
+      "ms": 3,
+      "ok": true,
+      "error": null,
+      "saveAs": "ali-status"
+    },
+    {
+      "id": 4,
+      "source": "mic",
+      "method": "GET",
+      "path": "/api/version",
+      "httpStatus": 200,
+      "ms": 2,
+      "ok": true,
+      "error": null,
+      "saveAs": "mic-version"
+    },
+    {
+      "id": 5,
+      "source": "tanji",
+      "method": "GET",
+      "path": "/v1/status",
+      "httpStatus": 200,
+      "ms": 513,
+      "ok": true,
+      "error": null,
+      "saveAs": "tanji-status"
+    },
+    {
+      "id": 6,
+      "source": "fuma",
+      "method": "GET",
+      "path": "/v1/status",
+      "httpStatus": 200,
+      "ms": 3,
+      "ok": true,
+      "error": null,
+      "saveAs": "fuma-status"
+    },
+    {
+      "id": 7,
+      "source": "boss",
+      "method": "POST",
+      "path": "/v1/search/jobs",
+      "httpStatus": 200,
+      "ms": 194,
+      "ok": true,
+      "error": null,
+      "saveAs": "boss-search"
+    },
+    {
+      "id": 8,
+      "source": "boss",
+      "method": "GET",
+      "path": "/v1/companies?queryId=q_20261116_f37hxu",
+      "httpStatus": 200,
+      "ms": 5108,
+      "ok": true,
+      "error": null,
+      "saveAs": "boss-companies"
+    },
+    {
+      "id": 9,
+      "source": "boss",
+      "method": "GET",
+      "path": "/v1/companies/34239dc3981e87791nZ42tW9E1M~",
+      "httpStatus": 200,
+      "ms": 3,
+      "ok": true,
+      "error": null,
+      "saveAs": "boss-detail"
+    },
+    {
+      "id": 10,
+      "source": "boss",
+      "method": "GET",
+      "path": "/v1/companies/34239dc3981e87791nZ42tW9E1M~/jobs",
+      "httpStatus": 200,
+      "ms": 2,
+      "ok": true,
+      "error": null,
+      "saveAs": "boss-jobs"
+    },
+    {
+      "id": 11,
+      "source": "tanji",
+      "method": "POST",
+      "path": "/v1/search/name",
+      "httpStatus": 200,
+      "ms": 2,
+      "ok": true,
+      "error": null,
+      "saveAs": "tanji-search-boss"
+    },
+    {
+      "id": 12,
+      "source": "tanji",
+      "method": "GET",
+      "path": "/v1/companies/37622fca11453f94",
+      "httpStatus": 200,
+      "ms": 2,
+      "ok": true,
+      "error": null,
+      "saveAs": "tanji-detail-boss"
+    },
+    {
+      "id": 13,
+      "source": "tanji",
+      "method": "GET",
+      "path": "/v1/companies/37622fca11453f94/contacts",
+      "httpStatus": 200,
+      "ms": 79,
+      "ok": true,
+      "error": null,
+      "saveAs": null
+    },
+    {
+      "id": 14,
+      "source": "fuma",
+      "method": "POST",
+      "path": "/v1/customs/query",
+      "httpStatus": 200,
+      "ms": 3,
+      "ok": true,
+      "error": null,
+      "saveAs": "fuma-customs-boss-1-河北诚亿工程材料有限公司"
+    },
+    {
+      "id": 15,
+      "source": "fuma",
+      "method": "POST",
+      "path": "/v1/customs/query",
+      "httpStatus": 200,
+      "ms": 2,
+      "ok": true,
+      "error": null,
+      "saveAs": "fuma-customs-boss-2-河北诚亿工程材料有限公司"
+    },
+    {
+      "id": 16,
+      "source": "zhilian",
+      "method": "POST",
+      "path": "/v1/search/jobs",
+      "httpStatus": 200,
+      "ms": 4,
+      "ok": true,
+      "error": null,
+      "saveAs": "zhilian-search"
+    },
+    {
+      "id": 17,
+      "source": "zhilian",
+      "method": "GET",
+      "path": "/v1/companies?queryId=q_20261116_1ety3s",
+      "httpStatus": 200,
+      "ms": 4,
+      "ok": true,
+      "error": null,
+      "saveAs": "zhilian-companies"
+    },
+    {
+      "id": 18,
+      "source": "zhilian",
+      "method": "GET",
+      "path": "/v1/companies/CZ818314420",
+      "httpStatus": 200,
+      "ms": 2,
+      "ok": true,
+      "error": null,
+      "saveAs": "zhilian-detail"
+    },
+    {
+      "id": 19,
+      "source": "zhilian",
+      "method": "GET",
+      "path": "/v1/companies/CZ818314420/jobs",
+      "httpStatus": 200,
+      "ms": 2,
+      "ok": true,
+      "error": null,
+      "saveAs": "zhilian-jobs"
+    },
+    {
+      "id": 20,
+      "source": "tanji",
+      "method": "POST",
+      "path": "/v1/search/name",
+      "httpStatus": 200,
+      "ms": 3,
+      "ok": true,
+      "error": null,
+      "saveAs": "tanji-search-zhilian"
+    },
+    {
+      "id": 21,
+      "source": "tanji",
+      "method": "GET",
+      "path": "/v1/companies/37622fd66a053bc4",
+      "httpStatus": 200,
+      "ms": 2,
+      "ok": true,
+      "error": null,
+      "saveAs": "tanji-detail-zhilian"
+    },
+    {
+      "id": 22,
+      "source": "tanji",
+      "method": "GET",
+      "path": "/v1/companies/37622fd66a053bc4/contacts",
+      "httpStatus": 200,
+      "ms": 280,
+      "ok": true,
+      "error": null,
+      "saveAs": null
+    },
+    {
+      "id": 23,
+      "source": "fuma",
+      "method": "POST",
+      "path": "/v1/customs/query",
+      "httpStatus": 200,
+      "ms": 11,
+      "ok": true,
+      "error": null,
+      "saveAs": "fuma-customs-zhilian-1-河北安诺自动化科技有限公司"
+    },
+    {
+      "id": 24,
+      "source": "fuma",
+      "method": "POST",
+      "path": "/v1/customs/query",
+      "httpStatus": 200,
+      "ms": 3,
+      "ok": true,
+      "error": null,
+      "saveAs": "fuma-customs-zhilian-2-河北安诺自动化科技有限公司"
+    },
+    {
+      "id": 25,
+      "source": "ali",
+      "method": "POST",
+      "path": "/v1/search/suppliers",
+      "httpStatus": 200,
+      "ms": 8,
+      "ok": true,
+      "error": null,
+      "saveAs": "ali-search"
+    },
+    {
+      "id": 26,
+      "source": "ali",
+      "method": "GET",
+      "path": "/v1/suppliers/200267220",
+      "httpStatus": 200,
+      "ms": 2,
+      "ok": true,
+      "error": null,
+      "saveAs": "ali-detail-200267220"
+    },
+    {
+      "id": 27,
+      "source": "ali",
+      "method": "GET",
+      "path": "/v1/suppliers/200338043",
+      "httpStatus": 200,
+      "ms": 2,
+      "ok": true,
+      "error": null,
+      "saveAs": "ali-detail-200338043"
+    },
+    {
+      "id": 28,
+      "source": "tanji",
+      "method": "POST",
+      "path": "/v1/search/name",
+      "httpStatus": 200,
+      "ms": 3,
+      "ok": true,
+      "error": null,
+      "saveAs": "tanji-search-ali"
+    },
+    {
+      "id": 29,
+      "source": "tanji",
+      "method": "GET",
+      "path": "/v1/companies/37e1f57a7cabe8ba",
+      "httpStatus": 200,
+      "ms": 2,
+      "ok": true,
+      "error": null,
+      "saveAs": "tanji-detail-ali"
+    },
+    {
+      "id": 30,
+      "source": "tanji",
+      "method": "GET",
+      "path": "/v1/companies/37e1f57a7cabe8ba/contacts",
+      "httpStatus": 200,
+      "ms": 3,
+      "ok": true,
+      "error": null,
+      "saveAs": null
+    },
+    {
+      "id": 31,
+      "source": "fuma",
+      "method": "POST",
+      "path": "/v1/customs/query",
+      "httpStatus": 200,
+      "ms": 4,
+      "ok": true,
+      "error": null,
+      "saveAs": "fuma-customs-ali-1-Hebei_Jinshi_Industr"
+    },
+    {
+      "id": 32,
+      "source": "fuma",
+      "method": "POST",
+      "path": "/v1/customs/query",
+      "httpStatus": 200,
+      "ms": 4,
+      "ok": true,
+      "error": null,
+      "saveAs": "fuma-customs-ali-2-Hebei_Jinshi_Industr"
+    },
+    {
+      "id": 33,
+      "source": "fuma",
+      "method": "POST",
+      "path": "/v1/customs/query",
+      "httpStatus": 200,
+      "ms": 3,
+      "ok": true,
+      "error": null,
+      "saveAs": "fuma-customs-ali-1-河北金实金属制品有限公司"
+    },
+    {
+      "id": 34,
+      "source": "fuma",
+      "method": "POST",
+      "path": "/v1/customs/query",
+      "httpStatus": 200,
+      "ms": 2,
+      "ok": true,
+      "error": null,
+      "saveAs": "fuma-customs-ali-2-河北金实金属制品有限公司"
+    },
+    {
+      "id": 35,
+      "source": "tanji",
+      "method": "POST",
+      "path": "/v1/search/name",
+      "httpStatus": 200,
+      "ms": 2,
+      "ok": true,
+      "error": null,
+      "saveAs": "tanji-search-ali"
+    },
+    {
+      "id": 36,
+      "source": "tanji",
+      "method": "GET",
+      "path": "/v1/companies/37622ff84cff303e",
+      "httpStatus": 200,
+      "ms": 2,
+      "ok": true,
+      "error": null,
+      "saveAs": "tanji-detail-ali"
+    },
+    {
+      "id": 37,
+      "source": "tanji",
+      "method": "GET",
+      "path": "/v1/companies/37622ff84cff303e/contacts",
+      "httpStatus": 200,
+      "ms": 7,
+      "ok": true,
+      "error": null,
+      "saveAs": null
+    },
+    {
+      "id": 38,
+      "source": "fuma",
+      "method": "POST",
+      "path": "/v1/customs/query",
+      "httpStatus": 200,
+      "ms": 4,
+      "ok": true,
+      "error": null,
+      "saveAs": "fuma-customs-ali-1-Hebei_Shengtian_Pipe"
+    },
+    {
+      "id": 39,
+      "source": "fuma",
+      "method": "POST",
+      "path": "/v1/customs/query",
+      "httpStatus": 200,
+      "ms": 3,
+      "ok": true,
+      "error": null,
+      "saveAs": "fuma-customs-ali-2-Hebei_Shengtian_Pipe"
+    },
+    {
+      "id": 40,
+      "source": "fuma",
+      "method": "POST",
+      "path": "/v1/customs/query",
+      "httpStatus": 200,
+      "ms": 3,
+      "ok": true,
+      "error": null,
+      "saveAs": "fuma-customs-ali-1-河北圣天管件集团有限公司"
+    },
+    {
+      "id": 41,
+      "source": "fuma",
+      "method": "POST",
+      "path": "/v1/customs/query",
+      "httpStatus": 200,
+      "ms": 2,
+      "ok": true,
+      "error": null,
+      "saveAs": "fuma-customs-ali-2-河北圣天管件集团有限公司"
+    },
+    {
+      "id": 42,
+      "source": "mic",
+      "method": "GET",
+      "path": "/api/search/factories?province=Hebei&page=1&page_size=20",
+      "httpStatus": 200,
+      "ms": 3,
+      "ok": true,
+      "error": null,
+      "saveAs": "mic-search"
+    },
+    {
+      "id": 43,
+      "source": "mic",
+      "method": "GET",
+      "path": "/api/companies/htwirecable?include=audit,response",
+      "httpStatus": 200,
+      "ms": 2,
+      "ok": true,
+      "error": null,
+      "saveAs": "mic-detail"
+    },
+    {
+      "id": 44,
+      "source": "tanji",
+      "method": "POST",
+      "path": "/v1/search/name",
+      "httpStatus": 200,
+      "ms": 3,
+      "ok": true,
+      "error": null,
+      "saveAs": "tanji-search-mic"
+    },
+    {
+      "id": 45,
+      "source": "tanji",
+      "method": "GET",
+      "path": "/v1/companies/3762300d937f3769",
+      "httpStatus": 200,
+      "ms": 2,
+      "ok": true,
+      "error": null,
+      "saveAs": "tanji-detail-mic"
+    },
+    {
+      "id": 46,
+      "source": "tanji",
+      "method": "GET",
+      "path": "/v1/companies/3762300d937f3769/contacts",
+      "httpStatus": 200,
+      "ms": 3,
+      "ok": true,
+      "error": null,
+      "saveAs": null
+    },
+    {
+      "id": 47,
+      "source": "fuma",
+      "method": "POST",
+      "path": "/v1/customs/query",
+      "httpStatus": 200,
+      "ms": 4,
+      "ok": true,
+      "error": null,
+      "saveAs": "fuma-customs-mic-1-Hebei_Huatong_Wires_"
+    },
+    {
+      "id": 48,
+      "source": "fuma",
+      "method": "POST",
+      "path": "/v1/customs/query",
+      "httpStatus": 200,
+      "ms": 4,
+      "ok": true,
+      "error": null,
+      "saveAs": "fuma-customs-mic-2-Hebei_Huatong_Wires_"
+    },
+    {
+      "id": 49,
+      "source": "fuma",
+      "method": "POST",
+      "path": "/v1/customs/query",
+      "httpStatus": 200,
+      "ms": 4,
+      "ok": true,
+      "error": null,
+      "saveAs": "fuma-customs-mic-1-河北华通线缆集团股份有限公司"
+    },
+    {
+      "id": 50,
+      "source": "fuma",
+      "method": "POST",
+      "path": "/v1/customs/query",
+      "httpStatus": 200,
+      "ms": 2,
+      "ok": true,
+      "error": null,
+      "saveAs": "fuma-customs-mic-2-河北华通线缆集团股份有限公司"
+    }
+  ],
+  "findings": [],
+  "candidates": [
+    {
+      "source": "boss",
+      "sourceLabel": "Boss直聘",
+      "platformCompanyId": "34239dc3981e87791nZ42tW9E1M~",
+      "displayName": "河北诚亿工程材料有限公司",
+      "chineseName": "河北诚亿工程材料有限公司",
+      "englishName": null,
+      "uscc": "9113040833629353X6",
+      "city": "河北省",
+      "address": "河北省邯郸市永年区临洺关镇东洺阳村村南永铁工业区05号",
+      "industry": "进出口贸易",
+      "scale": "100-499人",
+      "jobs": [
+        {
+          "jobId": "930af401b27b6e590nB70ty7E1VY",
+          "title": "外语文员助理，有人带,双休，五险，下午茶",
+          "salaryText": "7-12K",
+          "cityName": "石家庄",
+          "district": "新华区",
+          "degree": "大专",
+          "experience": "经验不限",
+          "recruiterName": "刘*",
+          "recruiterTitle": "人事",
+          "jobUrl": "https://www.zhipin.com/job_detail/930af401b27b6e590nB70ty7E1VY.html"
+        },
+        {
+          "jobId": "c6b22108fd20917603N_2dy4E1FS",
+          "title": "外贸市场文员，双休五险，月综合薪资5-7K",
+          "salaryText": "7-10K",
+          "cityName": "石家庄",
+          "district": "新华区",
+          "degree": "本科",
+          "experience": "经验不限",
+          "recruiterName": "李*",
+          "recruiterTitle": "人事HRBP",
+          "jobUrl": "https://www.zhipin.com/job_detail/c6b22108fd20917603N_2dy4E1FS.html"
+        },
+        {
+          "jobId": "da190a8c17200eb10nN_2NW9EVFX",
+          "title": "外贸业务员（双休五险・询盘分配・可培养）",
+          "salaryText": "8-13K",
+          "cityName": "石家庄",
+          "district": "新华区",
+          "degree": "大专",
+          "experience": "1-3年",
+          "recruiterName": "刘*",
+          "recruiterTitle": "人事",
+          "jobUrl": "https://www.zhipin.com/job_detail/da190a8c17200eb10nN_2NW9EVFX.html"
+        },
+        {
+          "jobId": "6542dd5a96dacf6a0nN-2N61FVdZ",
+          "title": "招聘外贸小白，老人带，双休，五险",
+          "salaryText": "8-11K",
+          "cityName": "石家庄",
+          "district": "新华区",
+          "degree": "大专",
+          "experience": "经验不限",
+          "recruiterName": "刘*",
+          "recruiterTitle": "人事",
+          "jobUrl": "https://www.zhipin.com/job_detail/6542dd5a96dacf6a0nN-2N61FVdZ.html"
+        },
+        {
+          "jobId": "a559222a8b23ad8c0nVz29S8F1dY",
+          "title": "B2B外贸业务员 老带新 高底薪 双休 五险",
+          "salaryText": "10-15K",
+          "cityName": "石家庄",
+          "district": "新华区",
+          "degree": "本科",
+          "experience": "1年以内",
+          "recruiterName": "李*",
+          "recruiterTitle": "人事HRBP",
+          "jobUrl": "https://www.zhipin.com/job_detail/a559222a8b23ad8c0nVz29S8F1dY.html"
+        },
+        {
+          "jobId": "c131060d7f0060ea03142t66FFdW",
+          "title": "阿拉伯语翻译 月薪6000+提成",
+          "salaryText": "10-15K",
+          "cityName": "石家庄",
+          "district": "新华区",
+          "degree": "本科",
+          "experience": "经验不限",
+          "recruiterName": "刘*",
+          "recruiterTitle": "人事",
+          "jobUrl": "https://www.zhipin.com/job_detail/c131060d7f0060ea03142t66FFdW.html"
+        },
+        {
+          "jobId": "58001b1cafe5a6ac0nx_2tu7FVRS",
+          "title": "阿拉伯语翻译 月薪6k+提成/双休",
+          "salaryText": "8-12K",
+          "cityName": "石家庄",
+          "district": "新华区",
+          "degree": "大专",
+          "experience": "1-3年",
+          "recruiterName": "李*",
+          "recruiterTitle": "人事HRBP",
+          "jobUrl": "https://www.zhipin.com/job_detail/58001b1cafe5a6ac0nx_2tu7FVRS.html"
+        },
+        {
+          "jobId": "73453bc04c7926b10nN92Nu_F1VW",
+          "title": "外贸小白 老带新 双休 五险",
+          "salaryText": "6-11K",
+          "cityName": "石家庄",
+          "district": "新华区",
+          "degree": "大专",
+          "experience": "经验不限",
+          "recruiterName": "李*",
+          "recruiterTitle": "人事HRBP",
+          "jobUrl": "https://www.zhipin.com/job_detail/73453bc04c7926b10nN92Nu_F1VW.html"
+        },
+        {
+          "jobId": "f21d25587275f4c60nd50965FVJQ",
+          "title": "英语文员，双休五险，月综合5-8k非销售岗",
+          "salaryText": "6-10K",
+          "cityName": "石家庄",
+          "district": "新华区",
+          "degree": "大专",
+          "experience": "经验不限",
+          "recruiterName": "刘*",
+          "recruiterTitle": "人事",
+          "jobUrl": "https://www.zhipin.com/job_detail/f21d25587275f4c60nd50965FVJQ.html"
+        },
+        {
+          "jobId": "f0242de3ee3951470nJ_3Ni1EFBX",
+          "title": "阿语/法语/西语翻译 6k+底薪/双休/提成",
+          "salaryText": "7-12K",
+          "cityName": "石家庄",
+          "district": "新华区",
+          "degree": "大专",
+          "experience": "经验不限",
+          "recruiterName": "李*",
+          "recruiterTitle": "人事HRBP",
+          "jobUrl": "https://www.zhipin.com/job_detail/f0242de3ee3951470nJ_3Ni1EFBX.html"
+        },
+        {
+          "jobId": "28d6da92e423275b0nBy2d2_EVVR",
+          "title": "外语文员/有人带/双休/五险/综薪5-8k",
+          "salaryText": "5-8K",
+          "cityName": "石家庄",
+          "district": "新华区",
+          "degree": "大专",
+          "experience": "经验不限",
+          "recruiterName": "李*",
+          "recruiterTitle": "人事HRBP",
+          "jobUrl": "https://www.zhipin.com/job_detail/28d6da92e423275b0nBy2d2_EVVR.html"
+        },
+        {
+          "jobId": "49d4ebfdd0ea0c240nB63dS0E1pS",
+          "title": "外贸/工贸一体/双休五险年假/海外市场",
+          "salaryText": "8-13K",
+          "cityName": "石家庄",
+          "district": "新华区",
+          "degree": "大专",
+          "experience": "1-3年",
+          "recruiterName": "刘*",
+          "recruiterTitle": "人事",
+          "jobUrl": "https://www.zhipin.com/job_detail/49d4ebfdd0ea0c240nB63dS0E1pS.html"
+        },
+        {
+          "jobId": "3a51cc61a695787a1HZ93d24F1JT",
+          "title": "双休-急聘-西班牙语翻译",
+          "salaryText": "4-8K",
+          "cityName": "石家庄",
+          "district": "新华区",
+          "degree": "本科",
+          "experience": "1-3年",
+          "recruiterName": "郭*",
+          "recruiterTitle": "Hr",
+          "jobUrl": "https://www.zhipin.com/job_detail/3a51cc61a695787a1HZ93d24F1JT.html"
+        },
+        {
+          "jobId": "a609e8f22db009ff0nx_2tu6E1pU",
+          "title": "法语翻译 月薪6k+提成",
+          "salaryText": "8-12K",
+          "cityName": "石家庄",
+          "district": "新华区",
+          "degree": "大专",
+          "experience": "1-3年",
+          "recruiterName": "李*",
+          "recruiterTitle": "人事HRBP",
+          "jobUrl": "https://www.zhipin.com/job_detail/a609e8f22db009ff0nx_2tu6E1pU.html"
+        },
+        {
+          "jobId": "dd805fa49b6ca44b0nZ42tu4GFRV",
+          "title": "西班牙语翻译+五险，双休+提成",
+          "salaryText": "8-12K",
+          "cityName": "石家庄",
+          "district": "新华区",
+          "degree": "本科",
+          "experience": "1-3年",
+          "recruiterName": "刘*",
+          "recruiterTitle": "人事",
+          "jobUrl": "https://www.zhipin.com/job_detail/dd805fa49b6ca44b0nZ42tu4GFRV.html"
+        }
+      ],
+      "jobCount": 48,
+      "bossCount": 7,
+      "tags": [
+        "进出口贸易"
+      ],
+      "benefits": [
+        "生日福利",
+        "五险",
+        "生日福利",
+        "节日福利",
+        "通讯补贴",
+        "有无线网",
+        "团建聚餐",
+        "零食下午茶",
+        "员工旅游",
+        "带薪年假",
+        "工龄奖",
+        "法定节假日三薪",
+        "加班补助",
+        "保底工资",
+        "绩效奖金",
+        "年终奖",
+        "定期体检",
+        "意外险",
+        "工龄补助",
+        "双休"
+      ],
+      "business": {
+        "companyName": "河北诚亿工程材料有限公司",
+        "legalRepresentative": "李亚静",
+        "foundedAt": "2015-06-10",
+        "companyType": "有限责任公司（自然人投资或控股）",
+        "businessStatus": "存续",
+        "registeredCapital": "300万人民币",
+        "registeredAddress": "河北省邯郸市永年区临洺关镇东洺阳村村南永铁工业区05号",
+        "businessTerm": "2015-06-10至2035-06-09",
+        "region": "河北省",
+        "uscc": "9113040833629353X6",
+        "approvalDate": "2024-09-25",
+        "registrationAuthority": "永年区市场监督管理局",
+        "formerNames": "邯郸市亚腾紧固件制造有限公司",
+        "businessScope": "金属结构、紧固件、电力金具、金属制品、铁路配件、桥梁配件、不锈钢制品、索具、抗震支架、橡塑制品、交通设施配件、其他机械配件制造、销售；钢材销售；代收水电费用；货物进出口业务。（依法须经批准的项目，经相关部门批准后方可开展经营活动）",
+        "usccSource": "boss_company_page_text",
+        "textDerived": true
+      },
+      "tanji": {
+        "queryName": "河北诚亿工程材料有限公司",
+        "total": 23,
+        "matched": {
+          "id": "37622fca11453f94",
+          "name": "河北诚亿工程材料有限公司",
+          "uscc": "9113040833629353X6",
+          "legalRepresentative": "李亚静",
+          "foundTime": "2015-06-10",
+          "address": "河北省邯郸市永年区临洺关镇东洺阳村村南永铁工业区05号",
+          "province": "河北省",
+          "operStatus": "营业 > 存续(在营、开业、在册)"
+        },
+        "industry": "金属结构制造",
+        "scale": null,
+        "tags": [
+          "建材销售",
+          "五金销售",
+          "紧固件制造",
+          "钢丝绳卡头销售",
+          "紧固件销售",
+          "紧固件制造、销售",
+          "螺栓销售",
+          "螺柱销售",
+          "其他紧固连接销售",
+          "垫圈销售",
+          "铆钉销售",
+          "青岛花兰制造",
+          "螺母销售",
+          "钢丝绳卡头制造",
+          "螺栓制造",
+          "其他紧固件销售",
+          "开体花兰销售",
+          "开体花兰制造",
+          "青岛花兰销售",
+          "槽钢销售"
+        ],
+        "unlocked": false,
+        "detailUnlocked": false,
+        "contactCounts": {
+          "mobile": 0,
+          "phone": 0,
+          "email": 0,
+          "total": 0
+        },
+        "matchScore": 1024.9454,
+        "candidates": [
+          {
+            "id": "37622fca11453f94",
+            "name": "河北诚亿工程材料有限公司",
+            "uscc": "9113040833629353X6",
+            "score": 1024.9454
+          },
+          {
+            "id": "3cc62dbc82ab8ba8",
+            "name": "河北诚亿工程材料有限公司邯郸永年分公司",
+            "uscc": "91130408MA0F6WX94U",
+            "score": 474.98373
+          },
+          {
+            "id": "577dd30f77b21064",
+            "name": "河北亿诚建筑工程有限公司",
+            "uscc": "91130102MA086H8989",
+            "score": 107.02037
+          }
+        ]
+      },
+      "customs": {
+        "queryNames": [
+          "河北诚亿工程材料有限公司"
+        ],
+        "queries": [
+          {
+            "name": "河北诚亿工程材料有限公司",
+            "flag": 1,
+            "ok": true,
+            "totalNum": 7106,
+            "allCount": 7106,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          },
+          {
+            "name": "河北诚亿工程材料有限公司",
+            "flag": 2,
+            "ok": true,
+            "totalNum": 0,
+            "allCount": 0,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          }
+        ],
+        "fetched": 20,
+        "matched": 0,
+        "asExporter": 0,
+        "asImporter": 0,
+        "unmatched": 20,
+        "confidence": "none",
+        "dateRange": null,
+        "topDestinations": [],
+        "topOrigins": [],
+        "topHs4": [],
+        "topProducts": [],
+        "topBuyers": [],
+        "topSuppliers": [],
+        "totalWeight": 0,
+        "totalCount": 0,
+        "amount": 0,
+        "matchedSample": [],
+        "unmatchedSample": [
+          {
+            "rawimporter": "KOEHN MARKETING, INC.",
+            "rawexporter": "HEBEI CHENGYI ENGINEERING",
+            "importer": "KOEHN MARKETING INC",
+            "exporter": "HEBEI CHENGYI ENGINEERING MATERIALS CO LTD"
+          },
+          {
+            "rawimporter": null,
+            "rawexporter": null,
+            "importer": "ПРАТ УКПОСТАЧ УКРАЇНА ХАРКІВСЬКА ОБЛ М ДЕРГАЧІ",
+            "exporter": "HEBEI CHENGYI ENGINEERING MATERIALS CO LTD"
+          },
+          {
+            "rawimporter": null,
+            "rawexporter": null,
+            "importer": "ПРАТ УКПОСТАЧ УКРАЇНА ХАРКІВСЬКА ОБЛ М ДЕРГАЧІ",
+            "exporter": "HEBEI CHENGYI ENGINEERING MATERIALS CO LTD"
+          }
+        ],
+        "tookMs": 8
+      }
+    },
+    {
+      "source": "zhilian",
+      "sourceLabel": "智联招聘",
+      "platformCompanyId": "CZ818314420",
+      "displayName": "河北安诺自动化科技有限公司",
+      "chineseName": "河北安诺自动化科技有限公司",
+      "englishName": null,
+      "uscc": "91130101MA07N3XL9L",
+      "city": "石家庄",
+      "address": "赵县新寨店工业园区",
+      "industry": "工业自动化/机器人",
+      "scale": "100-299人",
+      "jobs": [
+        {
+          "positionNumber": "CC818314420J40900808810",
+          "title": "外贸平台运营专员（中国制造+谷歌独立站）",
+          "salaryText": "4000-8000元",
+          "salaryMin": 4000,
+          "salaryMax": 8000,
+          "cityName": "石家庄",
+          "district": "裕华",
+          "education": "大专",
+          "experience": "1-3年",
+          "publishTime": "2026-11-14T01:34:53+08:00",
+          "jobUrl": "http://jobs.zhaopin.com/CC818314420J40900808810.htm"
+        },
+        {
+          "positionNumber": "CC818314420J40870724910",
+          "title": "外贸业务员",
+          "salaryText": "5000-10000元",
+          "salaryMin": 5000,
+          "salaryMax": 10000,
+          "cityName": "石家庄",
+          "district": "裕华",
+          "education": "大专",
+          "experience": "1-3年",
+          "publishTime": "2026-11-03T09:29:39+08:00",
+          "jobUrl": "http://jobs.zhaopin.com/CC818314420J40870724910.htm"
+        },
+        {
+          "positionNumber": "CC818314420J40812324110",
+          "title": "外贸业务员",
+          "salaryText": "5000-10000元",
+          "salaryMin": 5000,
+          "salaryMax": 10000,
+          "cityName": "石家庄",
+          "district": "裕华",
+          "education": "大专",
+          "experience": "1-3年",
+          "publishTime": "2026-10-28T09:12:46+08:00",
+          "jobUrl": "http://jobs.zhaopin.com/CC818314420J40812324110.htm"
+        },
+        {
+          "positionNumber": "CC818314420J40681163010",
+          "title": "大区销售经理",
+          "salaryText": "8000-15000元",
+          "salaryMin": 8000,
+          "salaryMax": 15000,
+          "cityName": "石家庄",
+          "district": "裕华",
+          "education": "大专",
+          "experience": "1-3年",
+          "publishTime": "2026-10-28T09:11:42+08:00",
+          "jobUrl": "http://jobs.zhaopin.com/CC818314420J40681163010.htm"
+        },
+        {
+          "positionNumber": "CC818314420J40891947210",
+          "title": "非标机械设计工程师",
+          "salaryText": "9000-12000元",
+          "salaryMin": 9000,
+          "salaryMax": 12000,
+          "cityName": "石家庄",
+          "district": "裕华",
+          "education": "本科",
+          "experience": "1-3年",
+          "publishTime": "2026-09-24T14:49:58+08:00",
+          "jobUrl": "http://jobs.zhaopin.com/CC818314420J40891947210.htm"
+        },
+        {
+          "positionNumber": "CC818314420J40723971110",
+          "title": "机械设计工程师",
+          "salaryText": "6000-10000元",
+          "salaryMin": 6000,
+          "salaryMax": 10000,
+          "cityName": "石家庄",
+          "district": "赵县",
+          "education": "本科",
+          "experience": "1-3年",
+          "publishTime": "2026-06-15T08:31:08+08:00",
+          "jobUrl": "http://jobs.zhaopin.com/CC818314420J40723971110.htm"
+        }
+      ],
+      "jobCount": 6,
+      "tags": [],
+      "benefits": [],
+      "business": {
+        "registeredName": "河北安诺自动化科技有限公司",
+        "uscc": "91130101MA07N3XL9L",
+        "legalPerson": "安和平",
+        "registeredCapital": "1200万元人民币",
+        "companyType": "有限责任公司（自然人投资或控股）",
+        "businessStatus": "存续（在营、开业、在册）",
+        "createDate": "2016-02-03",
+        "registeredOrg": "赵县市场监督管理局",
+        "location": "河北省石家庄市赵县新寨店镇工业园区",
+        "registeredAddress": "河北省/石家庄市/赵县",
+        "businessScope": "工业智能化控制系统的研发、技术咨询、技术服务；计算机信息系统集成服务；环保设备、净化设备、物料搬运设备、污水处理设备、机电设备、仪器仪表、燃气设备及配件的生产（禁止类、限制类项目除外）、销售、维修；钢结构制作（金属表面处理及热处理除外）、销售；环保工程、机电安装工程设计、施工；耐火材料销售；货物或技术进出口（国家禁止或涉及行政审批的货物和技术进出口除外）。（依法须经批准的项目，经相关部门批准后方可开展经营活动）",
+        "businessPeriod": "2016-02-03 - 2046-02-02",
+        "industry": "其他未列明专业技术服务业",
+        "textDerived": true
+      },
+      "tanji": {
+        "queryName": "河北安诺自动化科技有限公司",
+        "total": 457,
+        "matched": {
+          "id": "37622fd66a053bc4",
+          "name": "河北安诺自动化科技有限公司",
+          "uscc": "91130101MA07N3XL9L",
+          "legalRepresentative": "安和平",
+          "foundTime": "2016-02-03",
+          "address": "河北省石家庄市赵县新寨店镇工业园区",
+          "province": "河北省",
+          "operStatus": "营业 > 存续(在营、开业、在册)",
+          "homepage": "www.hebeiannuo.cn"
+        },
+        "industry": "其他未列明专业技术服务业",
+        "scale": null,
+        "tags": [
+          "高新企业",
+          "酸洗房",
+          "酸洗水处理设备",
+          "燃气设备及燃气控制系统配件的销售",
+          "热浸镀锌锅",
+          "环保型热镀锌生产线安装",
+          "酸雾净化塔",
+          "镀锌锅",
+          "高低压电力设备安装",
+          "电气设备维修",
+          "布袋除尘器",
+          "热镀锌设备",
+          "环保型热镀锌生产线制造",
+          "燃气设备销售",
+          "热镀锌成套设备制造",
+          "废水处理系统",
+          "废酸处理设备",
+          "仪器仪表维修",
+          "燃气控制系统配件维修",
+          "燃气控制系统配件销售"
+        ],
+        "unlocked": false,
+        "detailUnlocked": false,
+        "contactCounts": {
+          "mobile": 0,
+          "phone": 0,
+          "email": 0,
+          "total": 0
+        },
+        "matchScore": 1111.5245,
+        "candidates": [
+          {
+            "id": "37622fd66a053bc4",
+            "name": "河北安诺自动化科技有限公司",
+            "uscc": "91130101MA07N3XL9L",
+            "score": 1111.5245
+          },
+          {
+            "id": "3762301aff3f34f2",
+            "name": "河北沃美诺自动化科技有限公司",
+            "uscc": "911305343081643941",
+            "score": 94.40468
+          },
+          {
+            "id": "395e5182472b522f",
+            "name": "深圳市安诺自动化科技有限公司",
+            "uscc": "91440300MA5F8EWF8H",
+            "score": 208.66736
+          }
+        ]
+      },
+      "customs": {
+        "queryNames": [
+          "河北安诺自动化科技有限公司"
+        ],
+        "queries": [
+          {
+            "name": "河北安诺自动化科技有限公司",
+            "flag": 1,
+            "ok": true,
+            "totalNum": 0,
+            "allCount": 0,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          },
+          {
+            "name": "河北安诺自动化科技有限公司",
+            "flag": 2,
+            "ok": true,
+            "totalNum": 0,
+            "allCount": 0,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          }
+        ],
+        "fetched": 0,
+        "matched": 0,
+        "asExporter": 0,
+        "asImporter": 0,
+        "unmatched": 0,
+        "confidence": "none",
+        "dateRange": null,
+        "topDestinations": [],
+        "topOrigins": [],
+        "topHs4": [],
+        "topProducts": [],
+        "topBuyers": [],
+        "topSuppliers": [],
+        "totalWeight": 0,
+        "totalCount": 0,
+        "amount": 0,
+        "matchedSample": [],
+        "unmatchedSample": [],
+        "tookMs": 14
+      }
+    },
+    {
+      "source": "ali",
+      "sourceLabel": "阿里巴巴国际站",
+      "platformCompanyId": "200267220",
+      "displayName": "Hebei Jinshi Industrial Metal Co., Ltd.",
+      "chineseName": null,
+      "englishName": "Hebei Jinshi Industrial Metal Co., Ltd.",
+      "uscc": null,
+      "city": "Shijiazhuang",
+      "province": "Hebei",
+      "address": "Room 608, Tianlin Building, No. 29, Taihua Street, Shijiazhuang, Hebei, China",
+      "industry": null,
+      "store": {
+        "joinedYears": 18,
+        "supplierIndex": {
+          "stars": 3,
+          "maxStars": 5,
+          "label": "Supplier Index",
+          "source": "shopSign.supplierStars"
+        },
+        "membership": {
+          "label": "Verified Supplier",
+          "plan": "verified_supplier",
+          "rank": 2,
+          "verifiedSupplier": true,
+          "verifiedPro": false,
+          "paidMember": true,
+          "onsiteAssessment": true,
+          "goldYears": 18,
+          "assessedBy": "SGS Group"
+        },
+        "rating": {
+          "score": 4.9,
+          "count": 25
+        },
+        "businessType": {
+          "raw": "Manufacturer, Trading Company",
+          "manufacturer": true,
+          "tradingCompany": true
+        },
+        "mainProducts": [
+          "Fence Post",
+          "Garden Gate",
+          "Gabions",
+          "Razor Wire",
+          "Bird Spike"
+        ],
+        "profile": {
+          "establishedYear": 2008,
+          "annualRevenue": {
+            "value": "16274846",
+            "kind": "number"
+          },
+          "employees": "51 - 100 People",
+          "mainMarkets": [
+            "Oceania",
+            "North America",
+            "Western Europe",
+            "Eastern Europe",
+            "Southern Europe"
+          ],
+          "paymentMethods": "T/T, L/C, Western Union, Cash",
+          "deliveryTerms": "FOB, CFR, CIF, EXW, Express Delivery"
+        },
+        "performance": {
+          "storeRating": {
+            "score": 4.9,
+            "count": 25
+          },
+          "onTimeDeliveryRate": "100.0%",
+          "responseRate": "96.99%",
+          "responseTime": "≤3h",
+          "totalExportRevenueUSD": 14144125,
+          "floorSpaceText": "6828m²",
+          "productionLines": null,
+          "factoryRank": {
+            "text": "#17 top-selling supplier in Pest Control",
+            "url": "https://sale.alibaba.com/p/factories/v2/rank_list.html?wx_screen_direc=portrait&wx_navbar_transparent=true&path=/p/factories/v2/rank_list.html&ncms_spm=a27aq.24735993&prefetchKey=marchexpo&cardId=1520&cardType=101003298&companyIds=200267220&topOfferIds=&rankCapabilityId=&templateBusinessCode=&trafficsource=shop"
+          }
+        }
+      },
+      "jobs": [],
+      "jobCount": null,
+      "tanji": {
+        "queryName": "Hebei Jinshi Industrial Metal Co., Ltd.",
+        "total": 1,
+        "matched": {
+          "id": "37e1f57a7cabe8ba",
+          "name": "河北金实金属制品有限公司",
+          "uscc": "91130108674678942P",
+          "legalRepresentative": "郭亚",
+          "foundTime": "2008-05-08",
+          "address": "河北省石家庄市裕华区裕华路街道槐北路98号万悦大厦3幢614室",
+          "province": "河北省",
+          "operStatus": "营业 > 存续(在营、开业、在册)"
+        },
+        "industry": "五金产品批发",
+        "scale": null,
+        "tags": [
+          "chain",
+          "Wire",
+          "welded",
+          "金属丝网",
+          "expanded",
+          "wire",
+          "pvc",
+          "护栏",
+          "石笼网",
+          "丝网",
+          "矿筛网",
+          "其他灾害防护",
+          "球场网",
+          "mesh",
+          "coated",
+          "丝",
+          "冲孔网",
+          "square",
+          "steel",
+          "公路护栏"
+        ],
+        "unlocked": true,
+        "detailUnlocked": false,
+        "contactCounts": {
+          "mobile": 7,
+          "phone": 11,
+          "email": 9,
+          "total": 27
+        },
+        "matchScore": 276.70786,
+        "candidates": [
+          {
+            "id": "37e1f57a7cabe8ba",
+            "name": "河北金实金属制品有限公司",
+            "uscc": "91130108674678942P",
+            "score": 276.70786
+          }
+        ]
+      },
+      "customs": {
+        "queryNames": [
+          "Hebei Jinshi Industrial Metal Co., Ltd.",
+          "河北金实金属制品有限公司"
+        ],
+        "queries": [
+          {
+            "name": "Hebei Jinshi Industrial Metal Co., Ltd.",
+            "flag": 1,
+            "ok": true,
+            "totalNum": 1310,
+            "allCount": 1310,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          },
+          {
+            "name": "Hebei Jinshi Industrial Metal Co., Ltd.",
+            "flag": 2,
+            "ok": true,
+            "totalNum": 754,
+            "allCount": 754,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          },
+          {
+            "name": "河北金实金属制品有限公司",
+            "flag": 1,
+            "ok": true,
+            "totalNum": 1340,
+            "allCount": 1340,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          },
+          {
+            "name": "河北金实金属制品有限公司",
+            "flag": 2,
+            "ok": true,
+            "totalNum": 0,
+            "allCount": 0,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          }
+        ],
+        "fetched": 45,
+        "matched": 45,
+        "asExporter": 45,
+        "asImporter": 1,
+        "unmatched": 0,
+        "confidence": "high",
+        "dateRange": {
+          "min": "2026-09-05",
+          "max": "2026-11-08"
+        },
+        "topDestinations": [
+          {
+            "key": "Ukraine",
+            "count": 26
+          },
+          {
+            "key": "United States",
+            "count": 10
+          },
+          {
+            "key": "Costa Rica",
+            "count": 8
+          },
+          {
+            "key": "Philippines",
+            "count": 1
+          }
+        ],
+        "topOrigins": [
+          {
+            "key": "Korea",
+            "count": 1
+          }
+        ],
+        "topHs4": [
+          {
+            "key": "7314",
+            "count": 20
+          },
+          {
+            "key": "7313",
+            "count": 12
+          },
+          {
+            "key": "8310",
+            "count": 6
+          },
+          {
+            "key": "7326",
+            "count": 2
+          },
+          {
+            "key": "4404",
+            "count": 1
+          }
+        ],
+        "topProducts": [
+          {
+            "key": "ВИРОБИ З ЧОРНИХ МЕТАЛІВ ДРІТ КОЛЮЧИЙ RAZ",
+            "count": 12
+          },
+          {
+            "key": "PANEL DE CERCADO RECUBIERTO DE PVC",
+            "count": 7
+          },
+          {
+            "key": "СІТКА ІЗ ЧОРНИХ МЕТАЛІВ ВИГОТОВЛЕНА МЕТО",
+            "count": 5
+          },
+          {
+            "key": "ПЛЕТЕНА ДРОТЯНА СІТКА З ЧОРНИХ МЕТАЛІВ М",
+            "count": 5
+          },
+          {
+            "key": "SQUARE SIGN POST",
+            "count": 3
+          }
+        ],
+        "topBuyers": [
+          {
+            "key": "ТОВ СЕЛЕКТ ОЙЛ УКРАЇНА",
+            "count": 17
+          },
+          {
+            "key": "ТОВ ЮГСТАЛЬ",
+            "count": 8
+          },
+          {
+            "key": "TECNI GYPSUM S A",
+            "count": 8
+          },
+          {
+            "key": "BARRICADES AND SIGNS LTD.",
+            "count": 2
+          },
+          {
+            "key": "CANUCKPOWER INC.",
+            "count": 1
+          }
+        ],
+        "topSuppliers": [
+          {
+            "key": "HEBEI JINSHI INDUSTRIAL METAL CO TL",
+            "count": 1
+          }
+        ],
+        "totalWeight": 1060329,
+        "totalCount": 59116,
+        "amount": 1249212.0814999999,
+        "matchedSample": [
+          {
+            "role": "exporter",
+            "tradeno": "EDE52BA5EE754C86A12B202FDEC8FEF8",
+            "inout": "import",
+            "rawimporter": "CANUCKPOWER INC.",
+            "rawexporter": "HEBEI JINSHI INDUSTRIAL METAL CO.,L",
+            "importercountryen": "United States",
+            "exportercountryen": "Korea",
+            "hscode": "831000",
+            "regdate": "2026-11-08",
+            "detail": "SQUARE SIGN POST"
+          },
+          {
+            "role": "exporter",
+            "tradeno": "61EFB01071454C3DAB80C94BFC68C9F9",
+            "inout": "import",
+            "rawimporter": "CATAWBA FENCE LLC",
+            "rawexporter": "HEBEI JINSHI INDUSTRIAL METAL CO.,L",
+            "importercountryen": "United States",
+            "exportercountryen": "China",
+            "hscode": "731581",
+            "regdate": "2026-11-05",
+            "detail": "GALVANIZED ROUND PIPE CHAIN LINK FENCEGALVANIZED ROUND PIPE "
+          },
+          {
+            "role": "exporter",
+            "tradeno": "AE0464D7D8D24D30B1B3DF396A1408F5",
+            "inout": "import",
+            "rawimporter": "TRANS PACIFIC RESOURCES CORP",
+            "rawexporter": "HEBEI JINSHI INDUSTRIAL METAL",
+            "importercountryen": "United States",
+            "exportercountryen": "China",
+            "hscode": "440410",
+            "regdate": "2026-10-24",
+            "detail": "STUDDED FENCE POSTS"
+          },
+          {
+            "role": "exporter",
+            "tradeno": "47DAE9F7F6A04D839B0B5D53D5C1BC36",
+            "inout": "import",
+            "rawimporter": "CANUCK POWER INC.",
+            "rawexporter": "HEBEI JINSHI INDUSTRIAL METAL CO.,L",
+            "importercountryen": "United States",
+            "exportercountryen": "China",
+            "hscode": "831000",
+            "regdate": "2026-10-19",
+            "detail": "SIGN POST BASESECTION WEDGE"
+          },
+          {
+            "role": "exporter",
+            "tradeno": "C7DFED2F1CAB4D1D9AA7DA894FF24F8D",
+            "inout": "import",
+            "rawimporter": "BMH METALS",
+            "rawexporter": "HEBEI JINSHI INDUSTRIAL METAL CO TL",
+            "importercountryen": "United States",
+            "exportercountryen": "Korea",
+            "hscode": "831000",
+            "regdate": "2026-10-15",
+            "detail": "SIGN POST"
+          }
+        ],
+        "unmatchedSample": [],
+        "tookMs": 15
+      }
+    },
+    {
+      "source": "ali",
+      "sourceLabel": "阿里巴巴国际站",
+      "platformCompanyId": "200338043",
+      "displayName": "Hebei Shengtian Pipe-Fitting Group Co., Ltd.",
+      "chineseName": null,
+      "englishName": "Hebei Shengtian Pipe-Fitting Group Co., Ltd.",
+      "uscc": null,
+      "city": "Cangzhou",
+      "province": "Hebei",
+      "address": "Hope New District, Mengcun Hui Autonomous County, Cangzhou, Hebei, China",
+      "industry": null,
+      "store": {
+        "joinedYears": 18,
+        "supplierIndex": {
+          "stars": 0,
+          "maxStars": 5,
+          "label": "Supplier Index",
+          "source": "shopSign.supplierStars"
+        },
+        "membership": {
+          "label": "Gold Supplier",
+          "plan": "gold_supplier",
+          "rank": 1,
+          "verifiedSupplier": false,
+          "verifiedPro": false,
+          "paidMember": true,
+          "onsiteAssessment": true,
+          "goldYears": 18,
+          "assessedBy": null
+        },
+        "rating": {
+          "score": 0,
+          "count": 0
+        },
+        "businessType": {
+          "raw": "Manufacturer, Trading Company",
+          "manufacturer": true,
+          "tradingCompany": true
+        },
+        "mainProducts": [
+          "Pipe Fittings(Elbow",
+          "Tee",
+          "Reducer",
+          "Flanges",
+          "Steel Pipe"
+        ],
+        "profile": {
+          "establishedYear": 1998,
+          "annualRevenue": {
+            "value": "US$50 Million - US$100 Million",
+            "kind": "range"
+          },
+          "employees": "301 - 500 People",
+          "mainMarkets": [
+            "Domestic Market",
+            "South Asia",
+            "Central America",
+            "North America",
+            "Southeast Asia"
+          ],
+          "paymentMethods": "T/T, L/C, D/P D/A",
+          "deliveryTerms": "FOB, CFR, CIF, EXW"
+        },
+        "performance": {
+          "storeRating": {
+            "score": null,
+            "count": 0
+          },
+          "onTimeDeliveryRate": null,
+          "responseRate": "90.48%",
+          "responseTime": null,
+          "totalExportRevenueUSD": null,
+          "floorSpaceText": null,
+          "productionLines": null,
+          "factoryRank": null
+        }
+      },
+      "jobs": [],
+      "jobCount": null,
+      "tanji": {
+        "queryName": "Hebei Shengtian Pipe-Fitting Group Co., Ltd.",
+        "total": 17,
+        "matched": {
+          "id": "37622ff84cff303e",
+          "name": "河北圣天管件集团有限公司",
+          "uscc": "91130900109751406H",
+          "legalRepresentative": "张佩华",
+          "foundTime": "1998-11-06",
+          "address": "河北省沧州市孟村回族自治县希望新区",
+          "province": "河北省",
+          "operStatus": "营业 > 存续(在营、开业、在册)",
+          "homepage": "hebstgj.com"
+        },
+        "industry": "黑色金属铸造",
+        "scale": null,
+        "tags": [
+          "高新企业"
+        ],
+        "unlocked": true,
+        "detailUnlocked": false,
+        "contactCounts": {
+          "mobile": 476,
+          "phone": 305,
+          "email": 219,
+          "total": 1000
+        },
+        "matchScore": 223.62823,
+        "candidates": [
+          {
+            "id": "37622ff84cff303e",
+            "name": "河北圣天管件集团有限公司",
+            "uscc": "91130900109751406H",
+            "score": 223.62823
+          },
+          {
+            "id": "37623027aabf3076",
+            "name": "河北圣天管件集团有限公司新疆销售分公司",
+            "uscc": "91650103731810197X",
+            "score": 198.37434
+          },
+          {
+            "id": "37622fb75f853793",
+            "name": "河北圣天管件集团有限公司贵州分公司",
+            "uscc": "915201027309593018",
+            "score": 192.14928
+          }
+        ]
+      },
+      "customs": {
+        "queryNames": [
+          "Hebei Shengtian Pipe-Fitting Group Co., Ltd.",
+          "河北圣天管件集团有限公司"
+        ],
+        "queries": [
+          {
+            "name": "Hebei Shengtian Pipe-Fitting Group Co., Ltd.",
+            "flag": 1,
+            "ok": true,
+            "totalNum": 13801,
+            "allCount": 13801,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          },
+          {
+            "name": "Hebei Shengtian Pipe-Fitting Group Co., Ltd.",
+            "flag": 2,
+            "ok": true,
+            "totalNum": 11837,
+            "allCount": 11837,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          },
+          {
+            "name": "河北圣天管件集团有限公司",
+            "flag": 1,
+            "ok": true,
+            "totalNum": 10689,
+            "allCount": 10689,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          },
+          {
+            "name": "河北圣天管件集团有限公司",
+            "flag": 2,
+            "ok": true,
+            "totalNum": 0,
+            "allCount": 0,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          }
+        ],
+        "fetched": 20,
+        "matched": 20,
+        "asExporter": 20,
+        "asImporter": 0,
+        "unmatched": 0,
+        "confidence": "high",
+        "dateRange": {
+          "min": "2026-10-12",
+          "max": "2026-10-12"
+        },
+        "topDestinations": [
+          {
+            "key": "Pakistan",
+            "count": 19
+          },
+          {
+            "key": "Philippines",
+            "count": 1
+          }
+        ],
+        "topOrigins": [],
+        "topHs4": [
+          {
+            "key": "7307",
+            "count": 16
+          },
+          {
+            "key": "7318",
+            "count": 3
+          },
+          {
+            "key": "7304",
+            "count": 1
+          }
+        ],
+        "topProducts": [
+          {
+            "key": "NIPPLE CS PIPE 3/4\" SCH80 PBE API 5L B 4",
+            "count": 1
+          },
+          {
+            "key": "TEE CS EQUAL 2\" SCH80 ASTM A-234 WPB BE ",
+            "count": 1
+          },
+          {
+            "key": "Weldolet 3\" x 1-1/2\" SCH40 ASTM A-105",
+            "count": 1
+          },
+          {
+            "key": "BOLT STUD 2 NUT 20X125MM A193/A194 B7/2H",
+            "count": 1
+          },
+          {
+            "key": "NIPPLE CS PIPE 1-1/2\" SCH40 PBE API 5L B",
+            "count": 1
+          }
+        ],
+        "topBuyers": [
+          {
+            "key": "MAS ASSOCIATES PVT LTD",
+            "count": 19
+          },
+          {
+            "key": "PORTALLOY INDUSTRIAL SUPPLY CORP",
+            "count": 1
+          }
+        ],
+        "topSuppliers": [],
+        "totalWeight": 205055,
+        "totalCount": 15963,
+        "amount": 12287.4967,
+        "matchedSample": [
+          {
+            "role": "exporter",
+            "tradeno": "FD02668B011C4565A2FD03B0FFF1FD96",
+            "inout": "import",
+            "rawimporter": null,
+            "rawexporter": null,
+            "importercountryen": "Pakistan",
+            "exportercountryen": "China",
+            "hscode": "73079300",
+            "regdate": "2026-10-12",
+            "detail": "NIPPLE CS PIPE 3/4\" SCH80 PBE API 5L B 4\"LONG"
+          },
+          {
+            "role": "exporter",
+            "tradeno": "F43BD555BA1F4040882F5A82E8F1AE70",
+            "inout": "import",
+            "rawimporter": null,
+            "rawexporter": null,
+            "importercountryen": "Pakistan",
+            "exportercountryen": "China",
+            "hscode": "73079300",
+            "regdate": "2026-10-12",
+            "detail": "TEE CS EQUAL 2\" SCH80 ASTM A-234 WPB BE ASME B16.9"
+          },
+          {
+            "role": "exporter",
+            "tradeno": "F04F502B8FF84E2990E3297C4ACD22E6",
+            "inout": "import",
+            "rawimporter": null,
+            "rawexporter": null,
+            "importercountryen": "Pakistan",
+            "exportercountryen": "China",
+            "hscode": "73079300",
+            "regdate": "2026-10-12",
+            "detail": "Weldolet 3\" x 1-1/2\" SCH40 ASTM A-105"
+          },
+          {
+            "role": "exporter",
+            "tradeno": "E7E0F963B8FF4F1E8ECA58FFEEFA3F0D",
+            "inout": "import",
+            "rawimporter": null,
+            "rawexporter": null,
+            "importercountryen": "Pakistan",
+            "exportercountryen": "China",
+            "hscode": "73181590",
+            "regdate": "2026-10-12",
+            "detail": "BOLT STUD 2 NUT 20X125MM A193/A194 B7/2H"
+          },
+          {
+            "role": "exporter",
+            "tradeno": "E62B06AB1D8948A08659A098E5C4E89F",
+            "inout": "import",
+            "rawimporter": null,
+            "rawexporter": null,
+            "importercountryen": "Pakistan",
+            "exportercountryen": "China",
+            "hscode": "73079300",
+            "regdate": "2026-10-12",
+            "detail": "NIPPLE CS PIPE 1-1/2\" SCH40 PBE API 5L B 4\"LONG"
+          }
+        ],
+        "unmatchedSample": [],
+        "tookMs": 14
+      }
+    },
+    {
+      "source": "mic",
+      "sourceLabel": "中国制造网",
+      "platformCompanyId": "htwirecable",
+      "displayName": "Hebei Huatong Wires & Cables Group Co., Ltd.",
+      "chineseName": null,
+      "englishName": "Hebei Huatong Wires & Cables Group Co., Ltd.",
+      "uscc": null,
+      "city": "Tangshan",
+      "province": "Hebei",
+      "address": "Tangshan, Hebei, China",
+      "industry": null,
+      "store": {
+        "membership": {
+          "tier": "diamond",
+          "raw_cs_level": 50,
+          "raw_member_level": "diamond",
+          "since_year": 2015,
+          "evidence": [
+            "json:csLevel=50",
+            "json:memberLevel=diamond",
+            "json:memberSince=2015"
+          ],
+          "confidence": "high"
+        },
+        "audited": true,
+        "capabilityStars": 3,
+        "certifications": [
+          "TUV",
+          "CE",
+          "reach",
+          "ISO 9001",
+          "ISO 14001",
+          "OHSAS 18001"
+        ],
+        "businessTypes": [
+          "Manufacturer/Factory & Trading Company"
+        ],
+        "mainProducts": [
+          "Power Cable",
+          "Electric Cable",
+          "Mv Cable",
+          "LV Cable",
+          "Esp Cable",
+          "Service Entrance Wire",
+          "Mining Cable",
+          "Solar/PV Cable",
+          "Instrumentation Cable",
+          "Wind Power Cable"
+        ],
+        "employees": null,
+        "turnover": null,
+        "plantArea": null,
+        "establishedAt": null,
+        "enrichment": {
+          "audit": 8,
+          "response": {
+            "avg_response_hours": 4.63,
+            "timely_reply_ratio": 0.859,
+            "top_avg_response_hours": 0.01,
+            "top_timely_reply_ratio": 1,
+            "range_display": "≤4.63h",
+            "window_days": 30,
+            "as_of": "20261114",
+            "source": "cache",
+            "fetched_at": "2026-11-16T13:54:15+08:00"
+          }
+        }
+      },
+      "jobs": [],
+      "jobCount": null,
+      "tanji": {
+        "queryName": "Hebei Huatong Wires & Cables Group Co., Ltd.",
+        "total": 1,
+        "matched": {
+          "id": "3762300d937f3769",
+          "name": "河北华通线缆集团股份有限公司",
+          "uscc": "9113020074017492XD",
+          "legalRepresentative": "张文东",
+          "foundTime": "2002-06-21",
+          "address": "丰南经济开发区华通街111号",
+          "province": "河北省",
+          "operStatus": "营业 > 存续(在营、开业、在册)",
+          "homepage": "www.huatongcables.com"
+        },
+        "industry": "电线、电缆制造",
+        "scale": null,
+        "tags": [
+          "高新企业",
+          "沪主板(605196)",
+          "新三板(837020)转板",
+          "盾构电缆制造",
+          "通讯电缆",
+          "矿用电缆制造",
+          "特种电缆制造",
+          "船用电缆制造",
+          "橡胶制品零售",
+          "塑料绝缘控制电缆",
+          "电子产品批发",
+          "低压电缆",
+          "特种电缆",
+          "电线电缆",
+          "矿用橡套软电缆",
+          "技术进出口",
+          "橡套电缆",
+          "电子产品零售",
+          "高压电缆销售",
+          "电梯电缆"
+        ],
+        "unlocked": true,
+        "detailUnlocked": false,
+        "contactCounts": {
+          "mobile": 113,
+          "phone": 86,
+          "email": 70,
+          "total": 269
+        },
+        "matchScore": 466.13403,
+        "candidates": [
+          {
+            "id": "3762300d937f3769",
+            "name": "河北华通线缆集团股份有限公司",
+            "uscc": "9113020074017492XD",
+            "score": 466.13403
+          }
+        ]
+      },
+      "customs": {
+        "queryNames": [
+          "Hebei Huatong Wires & Cables Group Co., Ltd.",
+          "河北华通线缆集团股份有限公司"
+        ],
+        "queries": [
+          {
+            "name": "Hebei Huatong Wires & Cables Group Co., Ltd.",
+            "flag": 1,
+            "ok": true,
+            "totalNum": 3953,
+            "allCount": 3953,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          },
+          {
+            "name": "Hebei Huatong Wires & Cables Group Co., Ltd.",
+            "flag": 2,
+            "ok": true,
+            "totalNum": 499,
+            "allCount": 499,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          },
+          {
+            "name": "河北华通线缆集团股份有限公司",
+            "flag": 1,
+            "ok": true,
+            "totalNum": 3085,
+            "allCount": 3085,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          },
+          {
+            "name": "河北华通线缆集团股份有限公司",
+            "flag": 2,
+            "ok": true,
+            "totalNum": 0,
+            "allCount": 0,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          }
+        ],
+        "fetched": 40,
+        "matched": 40,
+        "asExporter": 40,
+        "asImporter": 10,
+        "unmatched": 0,
+        "confidence": "high",
+        "dateRange": {
+          "min": "2026-06-05",
+          "max": "2026-10-30"
+        },
+        "topDestinations": [
+          {
+            "key": "Indonesia",
+            "count": 21
+          },
+          {
+            "key": "Ecuador",
+            "count": 9
+          },
+          {
+            "key": "China",
+            "count": 7
+          },
+          {
+            "key": "United States",
+            "count": 1
+          },
+          {
+            "key": "Pakistan",
+            "count": 1
+          }
+        ],
+        "topOrigins": [
+          {
+            "key": "Indonesia",
+            "count": 7
+          },
+          {
+            "key": "China",
+            "count": 3
+          }
+        ],
+        "topHs4": [
+          {
+            "key": "8544",
+            "count": 33
+          },
+          {
+            "key": "7304",
+            "count": 3
+          },
+          {
+            "key": "8307",
+            "count": 1
+          },
+          {
+            "key": "8546",
+            "count": 1
+          }
+        ],
+        "topProducts": [
+          {
+            "key": "1SOLBC 5KV EPDM LD (.030”) B G F HT",
+            "count": 7
+          },
+          {
+            "key": "CABLE DE POTENCIA",
+            "count": 7
+          },
+          {
+            "key": "TUBE LINE 1/4IN 316SS WALL 0.049 160FT",
+            "count": 3
+          },
+          {
+            "key": "1SOLBC 5KV EPDM LD .030 BED EPDM SS R HT",
+            "count": 2
+          },
+          {
+            "key": "4SOLBC 5KV EPDM LD.(030) B SS F HT",
+            "count": 2
+          }
+        ],
+        "topBuyers": [
+          {
+            "key": "PT BAKER HUGHES INDONESIA",
+            "count": 12
+          },
+          {
+            "key": "HALLIBURTON LATIN AMERICA S R L",
+            "count": 9
+          },
+          {
+            "key": "HEBEI HUATONG WIRES & CABLES GROUP CO LTD",
+            "count": 7
+          },
+          {
+            "key": "HUATONG SERVICES INDONESIA",
+            "count": 3
+          },
+          {
+            "key": "TRANSCON INDONESIA",
+            "count": 3
+          }
+        ],
+        "topSuppliers": [
+          {
+            "key": "HUATONG SERVICES INDONESIA",
+            "count": 4
+          },
+          {
+            "key": "PT HUATONG SERVICES INDONESIA",
+            "count": 3
+          },
+          {
+            "key": "HEBEI HUATONG WIRES AND CABLES GROUP CO LTD",
+            "count": 2
+          },
+          {
+            "key": "HEBEI HUATONG WIRES&CABLES GROUP CO LTD",
+            "count": 1
+          }
+        ],
+        "totalWeight": 410365,
+        "totalCount": 333243,
+        "amount": 5958459.031600001,
+        "matchedSample": [
+          {
+            "role": "exporter",
+            "tradeno": "A58CDFA1863C4CF1BFEC2EA200E8F94A",
+            "inout": "import",
+            "rawimporter": "PLAZA EAST",
+            "rawexporter": "HEBEI HUATONG WIRES AND CABLES",
+            "importercountryen": "United States",
+            "exportercountryen": "China",
+            "hscode": "854470",
+            "regdate": "2026-10-30",
+            "detail": "CABLESCABLESCABLESCABLESCABLES"
+          },
+          {
+            "role": "exporter",
+            "tradeno": "F06F35DF385E4EB286DB28CD415D61EB",
+            "inout": "import",
+            "rawimporter": null,
+            "rawexporter": null,
+            "importercountryen": "Indonesia",
+            "exportercountryen": "China",
+            "hscode": "85446039",
+            "regdate": "2026-10-27",
+            "detail": "1SOLBC 5KV EPDM LD .030 BED EPDM SS R HT"
+          },
+          {
+            "role": "exporter",
+            "tradeno": "D132F826B6DB447DAE48F93C8DCC48BE",
+            "inout": "import",
+            "rawimporter": null,
+            "rawexporter": null,
+            "importercountryen": "Indonesia",
+            "exportercountryen": "China",
+            "hscode": "85446039",
+            "regdate": "2026-10-27",
+            "detail": "1SOLBC 5KV EPDM LD (.030”) B G F HT"
+          },
+          {
+            "role": "exporter",
+            "tradeno": "BB04AA697F1045DF98479579B097DCD3",
+            "inout": "import",
+            "rawimporter": null,
+            "rawexporter": null,
+            "importercountryen": "Indonesia",
+            "exportercountryen": "China",
+            "hscode": "85446039",
+            "regdate": "2026-10-27",
+            "detail": "1SOL 5KV EPDM LD(.030”) B 3/8 C G F HT"
+          },
+          {
+            "role": "exporter",
+            "tradeno": "7D4417EDA96647229F1DD7FFF6BCA11C",
+            "inout": "import",
+            "rawimporter": null,
+            "rawexporter": null,
+            "importercountryen": "Indonesia",
+            "exportercountryen": "China",
+            "hscode": "85446039",
+            "regdate": "2026-10-27",
+            "detail": "1SOLBC 5KV EPDM LD (.030”) B G F HT"
+          }
+        ],
+        "unmatchedSample": [],
+        "tookMs": 15
+      }
+    }
+  ],
+  "quotaConsumed": 0,
+  "health": {
+    "boss": {
+      "ok": true,
+      "httpStatus": 200,
+      "ms": 310,
+      "error": null
+    },
+    "zhilian": {
+      "ok": true,
+      "httpStatus": 200,
+      "ms": 4480,
+      "error": null
+    },
+    "ali": {
+      "ok": true,
+      "httpStatus": 200,
+      "ms": 3,
+      "error": null
+    },
+    "mic": {
+      "ok": true,
+      "httpStatus": 200,
+      "ms": 2,
+      "error": null
+    },
+    "tanji": {
+      "ok": true,
+      "httpStatus": 200,
+      "ms": 513,
+      "error": null
+    },
+    "fuma": {
+      "ok": true,
+      "httpStatus": 200,
+      "ms": 3,
+      "error": null
+    }
+  },
+  "profiles": [
+    {
+      "company": {
+        "id": "37622fca11453f94",
+        "name": "河北诚亿工程材料有限公司",
+        "uscc": "9113040833629353X6",
+        "legalRepresentative": "李亚静",
+        "foundTime": "2015-06-10",
+        "address": "河北省邯郸市永年区临洺关镇东洺阳村村南永铁工业区05号",
+        "province": "河北省",
+        "operStatus": "营业 > 存续(在营、开业、在册)"
+      },
+      "identity": {
+        "uscc": "9113040833629353X6",
+        "englishName": null,
+        "chineseName": "河北诚亿工程材料有限公司"
+      },
+      "platformProfiles": [
+        {
+          "platform": "boss",
+          "platformCompanyId": "34239dc3981e87791nZ42tW9E1M~",
+          "displayName": "河北诚亿工程材料有限公司",
+          "jobs": [
+            {
+              "jobId": "930af401b27b6e590nB70ty7E1VY",
+              "title": "外语文员助理，有人带,双休，五险，下午茶",
+              "salaryText": "7-12K",
+              "cityName": "石家庄",
+              "district": "新华区",
+              "degree": "大专",
+              "experience": "经验不限",
+              "recruiterName": "刘*",
+              "recruiterTitle": "人事",
+              "jobUrl": "https://www.zhipin.com/job_detail/930af401b27b6e590nB70ty7E1VY.html"
+            },
+            {
+              "jobId": "c6b22108fd20917603N_2dy4E1FS",
+              "title": "外贸市场文员，双休五险，月综合薪资5-7K",
+              "salaryText": "7-10K",
+              "cityName": "石家庄",
+              "district": "新华区",
+              "degree": "本科",
+              "experience": "经验不限",
+              "recruiterName": "李*",
+              "recruiterTitle": "人事HRBP",
+              "jobUrl": "https://www.zhipin.com/job_detail/c6b22108fd20917603N_2dy4E1FS.html"
+            },
+            {
+              "jobId": "da190a8c17200eb10nN_2NW9EVFX",
+              "title": "外贸业务员（双休五险・询盘分配・可培养）",
+              "salaryText": "8-13K",
+              "cityName": "石家庄",
+              "district": "新华区",
+              "degree": "大专",
+              "experience": "1-3年",
+              "recruiterName": "刘*",
+              "recruiterTitle": "人事",
+              "jobUrl": "https://www.zhipin.com/job_detail/da190a8c17200eb10nN_2NW9EVFX.html"
+            },
+            {
+              "jobId": "6542dd5a96dacf6a0nN-2N61FVdZ",
+              "title": "招聘外贸小白，老人带，双休，五险",
+              "salaryText": "8-11K",
+              "cityName": "石家庄",
+              "district": "新华区",
+              "degree": "大专",
+              "experience": "经验不限",
+              "recruiterName": "刘*",
+              "recruiterTitle": "人事",
+              "jobUrl": "https://www.zhipin.com/job_detail/6542dd5a96dacf6a0nN-2N61FVdZ.html"
+            },
+            {
+              "jobId": "a559222a8b23ad8c0nVz29S8F1dY",
+              "title": "B2B外贸业务员 老带新 高底薪 双休 五险",
+              "salaryText": "10-15K",
+              "cityName": "石家庄",
+              "district": "新华区",
+              "degree": "本科",
+              "experience": "1年以内",
+              "recruiterName": "李*",
+              "recruiterTitle": "人事HRBP",
+              "jobUrl": "https://www.zhipin.com/job_detail/a559222a8b23ad8c0nVz29S8F1dY.html"
+            }
+          ],
+          "store": null,
+          "jobCount": 48
+        }
+      ],
+      "customs": {
+        "queryNames": [
+          "河北诚亿工程材料有限公司"
+        ],
+        "queries": [
+          {
+            "name": "河北诚亿工程材料有限公司",
+            "flag": 1,
+            "ok": true,
+            "totalNum": 7106,
+            "allCount": 7106,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          },
+          {
+            "name": "河北诚亿工程材料有限公司",
+            "flag": 2,
+            "ok": true,
+            "totalNum": 0,
+            "allCount": 0,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          }
+        ],
+        "fetched": 20,
+        "matched": 0,
+        "asExporter": 0,
+        "asImporter": 0,
+        "unmatched": 20,
+        "confidence": "none",
+        "dateRange": null,
+        "topDestinations": [],
+        "topOrigins": [],
+        "topHs4": [],
+        "topProducts": [],
+        "topBuyers": [],
+        "topSuppliers": [],
+        "totalWeight": 0,
+        "totalCount": 0,
+        "amount": 0,
+        "matchedSample": [],
+        "unmatchedSample": [
+          {
+            "rawimporter": "KOEHN MARKETING, INC.",
+            "rawexporter": "HEBEI CHENGYI ENGINEERING",
+            "importer": "KOEHN MARKETING INC",
+            "exporter": "HEBEI CHENGYI ENGINEERING MATERIALS CO LTD"
+          },
+          {
+            "rawimporter": null,
+            "rawexporter": null,
+            "importer": "ПРАТ УКПОСТАЧ УКРАЇНА ХАРКІВСЬКА ОБЛ М ДЕРГАЧІ",
+            "exporter": "HEBEI CHENGYI ENGINEERING MATERIALS CO LTD"
+          },
+          {
+            "rawimporter": null,
+            "rawexporter": null,
+            "importer": "ПРАТ УКПОСТАЧ УКРАЇНА ХАРКІВСЬКА ОБЛ М ДЕРГАЧІ",
+            "exporter": "HEBEI CHENGYI ENGINEERING MATERIALS CO LTD"
+          }
+        ],
+        "tookMs": 8
+      },
+      "contacts": {
+        "unlocked": false,
+        "counts": {
+          "mobile": 0,
+          "phone": 0,
+          "email": 0,
+          "total": 0
+        },
+        "note": "未调用 unlock，不消耗额度"
+      }
+    },
+    {
+      "company": {
+        "id": "37622fd66a053bc4",
+        "name": "河北安诺自动化科技有限公司",
+        "uscc": "91130101MA07N3XL9L",
+        "legalRepresentative": "安和平",
+        "foundTime": "2016-02-03",
+        "address": "河北省石家庄市赵县新寨店镇工业园区",
+        "province": "河北省",
+        "operStatus": "营业 > 存续(在营、开业、在册)",
+        "homepage": "www.hebeiannuo.cn"
+      },
+      "identity": {
+        "uscc": "91130101MA07N3XL9L",
+        "englishName": null,
+        "chineseName": "河北安诺自动化科技有限公司"
+      },
+      "platformProfiles": [
+        {
+          "platform": "zhilian",
+          "platformCompanyId": "CZ818314420",
+          "displayName": "河北安诺自动化科技有限公司",
+          "jobs": [
+            {
+              "positionNumber": "CC818314420J40900808810",
+              "title": "外贸平台运营专员（中国制造+谷歌独立站）",
+              "salaryText": "4000-8000元",
+              "salaryMin": 4000,
+              "salaryMax": 8000,
+              "cityName": "石家庄",
+              "district": "裕华",
+              "education": "大专",
+              "experience": "1-3年",
+              "publishTime": "2026-11-14T01:34:53+08:00",
+              "jobUrl": "http://jobs.zhaopin.com/CC818314420J40900808810.htm"
+            },
+            {
+              "positionNumber": "CC818314420J40870724910",
+              "title": "外贸业务员",
+              "salaryText": "5000-10000元",
+              "salaryMin": 5000,
+              "salaryMax": 10000,
+              "cityName": "石家庄",
+              "district": "裕华",
+              "education": "大专",
+              "experience": "1-3年",
+              "publishTime": "2026-11-03T09:29:39+08:00",
+              "jobUrl": "http://jobs.zhaopin.com/CC818314420J40870724910.htm"
+            },
+            {
+              "positionNumber": "CC818314420J40812324110",
+              "title": "外贸业务员",
+              "salaryText": "5000-10000元",
+              "salaryMin": 5000,
+              "salaryMax": 10000,
+              "cityName": "石家庄",
+              "district": "裕华",
+              "education": "大专",
+              "experience": "1-3年",
+              "publishTime": "2026-10-28T09:12:46+08:00",
+              "jobUrl": "http://jobs.zhaopin.com/CC818314420J40812324110.htm"
+            },
+            {
+              "positionNumber": "CC818314420J40681163010",
+              "title": "大区销售经理",
+              "salaryText": "8000-15000元",
+              "salaryMin": 8000,
+              "salaryMax": 15000,
+              "cityName": "石家庄",
+              "district": "裕华",
+              "education": "大专",
+              "experience": "1-3年",
+              "publishTime": "2026-10-28T09:11:42+08:00",
+              "jobUrl": "http://jobs.zhaopin.com/CC818314420J40681163010.htm"
+            },
+            {
+              "positionNumber": "CC818314420J40891947210",
+              "title": "非标机械设计工程师",
+              "salaryText": "9000-12000元",
+              "salaryMin": 9000,
+              "salaryMax": 12000,
+              "cityName": "石家庄",
+              "district": "裕华",
+              "education": "本科",
+              "experience": "1-3年",
+              "publishTime": "2026-09-24T14:49:58+08:00",
+              "jobUrl": "http://jobs.zhaopin.com/CC818314420J40891947210.htm"
+            }
+          ],
+          "store": null,
+          "jobCount": 6
+        }
+      ],
+      "customs": {
+        "queryNames": [
+          "河北安诺自动化科技有限公司"
+        ],
+        "queries": [
+          {
+            "name": "河北安诺自动化科技有限公司",
+            "flag": 1,
+            "ok": true,
+            "totalNum": 0,
+            "allCount": 0,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          },
+          {
+            "name": "河北安诺自动化科技有限公司",
+            "flag": 2,
+            "ok": true,
+            "totalNum": 0,
+            "allCount": 0,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          }
+        ],
+        "fetched": 0,
+        "matched": 0,
+        "asExporter": 0,
+        "asImporter": 0,
+        "unmatched": 0,
+        "confidence": "none",
+        "dateRange": null,
+        "topDestinations": [],
+        "topOrigins": [],
+        "topHs4": [],
+        "topProducts": [],
+        "topBuyers": [],
+        "topSuppliers": [],
+        "totalWeight": 0,
+        "totalCount": 0,
+        "amount": 0,
+        "matchedSample": [],
+        "unmatchedSample": [],
+        "tookMs": 14
+      },
+      "contacts": {
+        "unlocked": false,
+        "counts": {
+          "mobile": 0,
+          "phone": 0,
+          "email": 0,
+          "total": 0
+        },
+        "note": "未调用 unlock，不消耗额度"
+      }
+    },
+    {
+      "company": {
+        "id": "37e1f57a7cabe8ba",
+        "name": "河北金实金属制品有限公司",
+        "uscc": "91130108674678942P",
+        "legalRepresentative": "郭亚",
+        "foundTime": "2008-05-08",
+        "address": "河北省石家庄市裕华区裕华路街道槐北路98号万悦大厦3幢614室",
+        "province": "河北省",
+        "operStatus": "营业 > 存续(在营、开业、在册)"
+      },
+      "identity": {
+        "uscc": "91130108674678942P",
+        "englishName": "Hebei Jinshi Industrial Metal Co., Ltd.",
+        "chineseName": "河北金实金属制品有限公司"
+      },
+      "platformProfiles": [
+        {
+          "platform": "ali",
+          "platformCompanyId": "200267220",
+          "displayName": "Hebei Jinshi Industrial Metal Co., Ltd.",
+          "jobs": [],
+          "store": {
+            "joinedYears": 18,
+            "supplierIndex": {
+              "stars": 3,
+              "maxStars": 5,
+              "label": "Supplier Index",
+              "source": "shopSign.supplierStars"
+            },
+            "membership": {
+              "label": "Verified Supplier",
+              "plan": "verified_supplier",
+              "rank": 2,
+              "verifiedSupplier": true,
+              "verifiedPro": false,
+              "paidMember": true,
+              "onsiteAssessment": true,
+              "goldYears": 18,
+              "assessedBy": "SGS Group"
+            },
+            "rating": {
+              "score": 4.9,
+              "count": 25
+            },
+            "businessType": {
+              "raw": "Manufacturer, Trading Company",
+              "manufacturer": true,
+              "tradingCompany": true
+            },
+            "mainProducts": [
+              "Fence Post",
+              "Garden Gate",
+              "Gabions",
+              "Razor Wire",
+              "Bird Spike"
+            ],
+            "profile": {
+              "establishedYear": 2008,
+              "annualRevenue": {
+                "value": "16274846",
+                "kind": "number"
+              },
+              "employees": "51 - 100 People",
+              "mainMarkets": [
+                "Oceania",
+                "North America",
+                "Western Europe",
+                "Eastern Europe",
+                "Southern Europe"
+              ],
+              "paymentMethods": "T/T, L/C, Western Union, Cash",
+              "deliveryTerms": "FOB, CFR, CIF, EXW, Express Delivery"
+            },
+            "performance": {
+              "storeRating": {
+                "score": 4.9,
+                "count": 25
+              },
+              "onTimeDeliveryRate": "100.0%",
+              "responseRate": "96.99%",
+              "responseTime": "≤3h",
+              "totalExportRevenueUSD": 14144125,
+              "floorSpaceText": "6828m²",
+              "productionLines": null,
+              "factoryRank": {
+                "text": "#17 top-selling supplier in Pest Control",
+                "url": "https://sale.alibaba.com/p/factories/v2/rank_list.html?wx_screen_direc=portrait&wx_navbar_transparent=true&path=/p/factories/v2/rank_list.html&ncms_spm=a27aq.24735993&prefetchKey=marchexpo&cardId=1520&cardType=101003298&companyIds=200267220&topOfferIds=&rankCapabilityId=&templateBusinessCode=&trafficsource=shop"
+              }
+            }
+          },
+          "jobCount": null
+        }
+      ],
+      "customs": {
+        "queryNames": [
+          "Hebei Jinshi Industrial Metal Co., Ltd.",
+          "河北金实金属制品有限公司"
+        ],
+        "queries": [
+          {
+            "name": "Hebei Jinshi Industrial Metal Co., Ltd.",
+            "flag": 1,
+            "ok": true,
+            "totalNum": 1310,
+            "allCount": 1310,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          },
+          {
+            "name": "Hebei Jinshi Industrial Metal Co., Ltd.",
+            "flag": 2,
+            "ok": true,
+            "totalNum": 754,
+            "allCount": 754,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          },
+          {
+            "name": "河北金实金属制品有限公司",
+            "flag": 1,
+            "ok": true,
+            "totalNum": 1340,
+            "allCount": 1340,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          },
+          {
+            "name": "河北金实金属制品有限公司",
+            "flag": 2,
+            "ok": true,
+            "totalNum": 0,
+            "allCount": 0,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          }
+        ],
+        "fetched": 45,
+        "matched": 45,
+        "asExporter": 45,
+        "asImporter": 1,
+        "unmatched": 0,
+        "confidence": "high",
+        "dateRange": {
+          "min": "2026-09-05",
+          "max": "2026-11-08"
+        },
+        "topDestinations": [
+          {
+            "key": "Ukraine",
+            "count": 26
+          },
+          {
+            "key": "United States",
+            "count": 10
+          },
+          {
+            "key": "Costa Rica",
+            "count": 8
+          },
+          {
+            "key": "Philippines",
+            "count": 1
+          }
+        ],
+        "topOrigins": [
+          {
+            "key": "Korea",
+            "count": 1
+          }
+        ],
+        "topHs4": [
+          {
+            "key": "7314",
+            "count": 20
+          },
+          {
+            "key": "7313",
+            "count": 12
+          },
+          {
+            "key": "8310",
+            "count": 6
+          },
+          {
+            "key": "7326",
+            "count": 2
+          },
+          {
+            "key": "4404",
+            "count": 1
+          }
+        ],
+        "topProducts": [
+          {
+            "key": "ВИРОБИ З ЧОРНИХ МЕТАЛІВ ДРІТ КОЛЮЧИЙ RAZ",
+            "count": 12
+          },
+          {
+            "key": "PANEL DE CERCADO RECUBIERTO DE PVC",
+            "count": 7
+          },
+          {
+            "key": "СІТКА ІЗ ЧОРНИХ МЕТАЛІВ ВИГОТОВЛЕНА МЕТО",
+            "count": 5
+          },
+          {
+            "key": "ПЛЕТЕНА ДРОТЯНА СІТКА З ЧОРНИХ МЕТАЛІВ М",
+            "count": 5
+          },
+          {
+            "key": "SQUARE SIGN POST",
+            "count": 3
+          }
+        ],
+        "topBuyers": [
+          {
+            "key": "ТОВ СЕЛЕКТ ОЙЛ УКРАЇНА",
+            "count": 17
+          },
+          {
+            "key": "ТОВ ЮГСТАЛЬ",
+            "count": 8
+          },
+          {
+            "key": "TECNI GYPSUM S A",
+            "count": 8
+          },
+          {
+            "key": "BARRICADES AND SIGNS LTD.",
+            "count": 2
+          },
+          {
+            "key": "CANUCKPOWER INC.",
+            "count": 1
+          }
+        ],
+        "topSuppliers": [
+          {
+            "key": "HEBEI JINSHI INDUSTRIAL METAL CO TL",
+            "count": 1
+          }
+        ],
+        "totalWeight": 1060329,
+        "totalCount": 59116,
+        "amount": 1249212.0814999999,
+        "matchedSample": [
+          {
+            "role": "exporter",
+            "tradeno": "EDE52BA5EE754C86A12B202FDEC8FEF8",
+            "inout": "import",
+            "rawimporter": "CANUCKPOWER INC.",
+            "rawexporter": "HEBEI JINSHI INDUSTRIAL METAL CO.,L",
+            "importercountryen": "United States",
+            "exportercountryen": "Korea",
+            "hscode": "831000",
+            "regdate": "2026-11-08",
+            "detail": "SQUARE SIGN POST"
+          },
+          {
+            "role": "exporter",
+            "tradeno": "61EFB01071454C3DAB80C94BFC68C9F9",
+            "inout": "import",
+            "rawimporter": "CATAWBA FENCE LLC",
+            "rawexporter": "HEBEI JINSHI INDUSTRIAL METAL CO.,L",
+            "importercountryen": "United States",
+            "exportercountryen": "China",
+            "hscode": "731581",
+            "regdate": "2026-11-05",
+            "detail": "GALVANIZED ROUND PIPE CHAIN LINK FENCEGALVANIZED ROUND PIPE "
+          },
+          {
+            "role": "exporter",
+            "tradeno": "AE0464D7D8D24D30B1B3DF396A1408F5",
+            "inout": "import",
+            "rawimporter": "TRANS PACIFIC RESOURCES CORP",
+            "rawexporter": "HEBEI JINSHI INDUSTRIAL METAL",
+            "importercountryen": "United States",
+            "exportercountryen": "China",
+            "hscode": "440410",
+            "regdate": "2026-10-24",
+            "detail": "STUDDED FENCE POSTS"
+          },
+          {
+            "role": "exporter",
+            "tradeno": "47DAE9F7F6A04D839B0B5D53D5C1BC36",
+            "inout": "import",
+            "rawimporter": "CANUCK POWER INC.",
+            "rawexporter": "HEBEI JINSHI INDUSTRIAL METAL CO.,L",
+            "importercountryen": "United States",
+            "exportercountryen": "China",
+            "hscode": "831000",
+            "regdate": "2026-10-19",
+            "detail": "SIGN POST BASESECTION WEDGE"
+          },
+          {
+            "role": "exporter",
+            "tradeno": "C7DFED2F1CAB4D1D9AA7DA894FF24F8D",
+            "inout": "import",
+            "rawimporter": "BMH METALS",
+            "rawexporter": "HEBEI JINSHI INDUSTRIAL METAL CO TL",
+            "importercountryen": "United States",
+            "exportercountryen": "Korea",
+            "hscode": "831000",
+            "regdate": "2026-10-15",
+            "detail": "SIGN POST"
+          }
+        ],
+        "unmatchedSample": [],
+        "tookMs": 15
+      },
+      "contacts": {
+        "unlocked": true,
+        "counts": {
+          "mobile": 7,
+          "phone": 11,
+          "email": 9,
+          "total": 27
+        },
+        "note": "未调用 unlock，不消耗额度"
+      }
+    },
+    {
+      "company": {
+        "id": "37622ff84cff303e",
+        "name": "河北圣天管件集团有限公司",
+        "uscc": "91130900109751406H",
+        "legalRepresentative": "张佩华",
+        "foundTime": "1998-11-06",
+        "address": "河北省沧州市孟村回族自治县希望新区",
+        "province": "河北省",
+        "operStatus": "营业 > 存续(在营、开业、在册)",
+        "homepage": "hebstgj.com"
+      },
+      "identity": {
+        "uscc": "91130900109751406H",
+        "englishName": "Hebei Shengtian Pipe-Fitting Group Co., Ltd.",
+        "chineseName": "河北圣天管件集团有限公司"
+      },
+      "platformProfiles": [
+        {
+          "platform": "ali",
+          "platformCompanyId": "200338043",
+          "displayName": "Hebei Shengtian Pipe-Fitting Group Co., Ltd.",
+          "jobs": [],
+          "store": {
+            "joinedYears": 18,
+            "supplierIndex": {
+              "stars": 0,
+              "maxStars": 5,
+              "label": "Supplier Index",
+              "source": "shopSign.supplierStars"
+            },
+            "membership": {
+              "label": "Gold Supplier",
+              "plan": "gold_supplier",
+              "rank": 1,
+              "verifiedSupplier": false,
+              "verifiedPro": false,
+              "paidMember": true,
+              "onsiteAssessment": true,
+              "goldYears": 18,
+              "assessedBy": null
+            },
+            "rating": {
+              "score": 0,
+              "count": 0
+            },
+            "businessType": {
+              "raw": "Manufacturer, Trading Company",
+              "manufacturer": true,
+              "tradingCompany": true
+            },
+            "mainProducts": [
+              "Pipe Fittings(Elbow",
+              "Tee",
+              "Reducer",
+              "Flanges",
+              "Steel Pipe"
+            ],
+            "profile": {
+              "establishedYear": 1998,
+              "annualRevenue": {
+                "value": "US$50 Million - US$100 Million",
+                "kind": "range"
+              },
+              "employees": "301 - 500 People",
+              "mainMarkets": [
+                "Domestic Market",
+                "South Asia",
+                "Central America",
+                "North America",
+                "Southeast Asia"
+              ],
+              "paymentMethods": "T/T, L/C, D/P D/A",
+              "deliveryTerms": "FOB, CFR, CIF, EXW"
+            },
+            "performance": {
+              "storeRating": {
+                "score": null,
+                "count": 0
+              },
+              "onTimeDeliveryRate": null,
+              "responseRate": "90.48%",
+              "responseTime": null,
+              "totalExportRevenueUSD": null,
+              "floorSpaceText": null,
+              "productionLines": null,
+              "factoryRank": null
+            }
+          },
+          "jobCount": null
+        }
+      ],
+      "customs": {
+        "queryNames": [
+          "Hebei Shengtian Pipe-Fitting Group Co., Ltd.",
+          "河北圣天管件集团有限公司"
+        ],
+        "queries": [
+          {
+            "name": "Hebei Shengtian Pipe-Fitting Group Co., Ltd.",
+            "flag": 1,
+            "ok": true,
+            "totalNum": 13801,
+            "allCount": 13801,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          },
+          {
+            "name": "Hebei Shengtian Pipe-Fitting Group Co., Ltd.",
+            "flag": 2,
+            "ok": true,
+            "totalNum": 11837,
+            "allCount": 11837,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          },
+          {
+            "name": "河北圣天管件集团有限公司",
+            "flag": 1,
+            "ok": true,
+            "totalNum": 10689,
+            "allCount": 10689,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          },
+          {
+            "name": "河北圣天管件集团有限公司",
+            "flag": 2,
+            "ok": true,
+            "totalNum": 0,
+            "allCount": 0,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          }
+        ],
+        "fetched": 20,
+        "matched": 20,
+        "asExporter": 20,
+        "asImporter": 0,
+        "unmatched": 0,
+        "confidence": "high",
+        "dateRange": {
+          "min": "2026-10-12",
+          "max": "2026-10-12"
+        },
+        "topDestinations": [
+          {
+            "key": "Pakistan",
+            "count": 19
+          },
+          {
+            "key": "Philippines",
+            "count": 1
+          }
+        ],
+        "topOrigins": [],
+        "topHs4": [
+          {
+            "key": "7307",
+            "count": 16
+          },
+          {
+            "key": "7318",
+            "count": 3
+          },
+          {
+            "key": "7304",
+            "count": 1
+          }
+        ],
+        "topProducts": [
+          {
+            "key": "NIPPLE CS PIPE 3/4\" SCH80 PBE API 5L B 4",
+            "count": 1
+          },
+          {
+            "key": "TEE CS EQUAL 2\" SCH80 ASTM A-234 WPB BE ",
+            "count": 1
+          },
+          {
+            "key": "Weldolet 3\" x 1-1/2\" SCH40 ASTM A-105",
+            "count": 1
+          },
+          {
+            "key": "BOLT STUD 2 NUT 20X125MM A193/A194 B7/2H",
+            "count": 1
+          },
+          {
+            "key": "NIPPLE CS PIPE 1-1/2\" SCH40 PBE API 5L B",
+            "count": 1
+          }
+        ],
+        "topBuyers": [
+          {
+            "key": "MAS ASSOCIATES PVT LTD",
+            "count": 19
+          },
+          {
+            "key": "PORTALLOY INDUSTRIAL SUPPLY CORP",
+            "count": 1
+          }
+        ],
+        "topSuppliers": [],
+        "totalWeight": 205055,
+        "totalCount": 15963,
+        "amount": 12287.4967,
+        "matchedSample": [
+          {
+            "role": "exporter",
+            "tradeno": "FD02668B011C4565A2FD03B0FFF1FD96",
+            "inout": "import",
+            "rawimporter": null,
+            "rawexporter": null,
+            "importercountryen": "Pakistan",
+            "exportercountryen": "China",
+            "hscode": "73079300",
+            "regdate": "2026-10-12",
+            "detail": "NIPPLE CS PIPE 3/4\" SCH80 PBE API 5L B 4\"LONG"
+          },
+          {
+            "role": "exporter",
+            "tradeno": "F43BD555BA1F4040882F5A82E8F1AE70",
+            "inout": "import",
+            "rawimporter": null,
+            "rawexporter": null,
+            "importercountryen": "Pakistan",
+            "exportercountryen": "China",
+            "hscode": "73079300",
+            "regdate": "2026-10-12",
+            "detail": "TEE CS EQUAL 2\" SCH80 ASTM A-234 WPB BE ASME B16.9"
+          },
+          {
+            "role": "exporter",
+            "tradeno": "F04F502B8FF84E2990E3297C4ACD22E6",
+            "inout": "import",
+            "rawimporter": null,
+            "rawexporter": null,
+            "importercountryen": "Pakistan",
+            "exportercountryen": "China",
+            "hscode": "73079300",
+            "regdate": "2026-10-12",
+            "detail": "Weldolet 3\" x 1-1/2\" SCH40 ASTM A-105"
+          },
+          {
+            "role": "exporter",
+            "tradeno": "E7E0F963B8FF4F1E8ECA58FFEEFA3F0D",
+            "inout": "import",
+            "rawimporter": null,
+            "rawexporter": null,
+            "importercountryen": "Pakistan",
+            "exportercountryen": "China",
+            "hscode": "73181590",
+            "regdate": "2026-10-12",
+            "detail": "BOLT STUD 2 NUT 20X125MM A193/A194 B7/2H"
+          },
+          {
+            "role": "exporter",
+            "tradeno": "E62B06AB1D8948A08659A098E5C4E89F",
+            "inout": "import",
+            "rawimporter": null,
+            "rawexporter": null,
+            "importercountryen": "Pakistan",
+            "exportercountryen": "China",
+            "hscode": "73079300",
+            "regdate": "2026-10-12",
+            "detail": "NIPPLE CS PIPE 1-1/2\" SCH40 PBE API 5L B 4\"LONG"
+          }
+        ],
+        "unmatchedSample": [],
+        "tookMs": 14
+      },
+      "contacts": {
+        "unlocked": true,
+        "counts": {
+          "mobile": 476,
+          "phone": 305,
+          "email": 219,
+          "total": 1000
+        },
+        "note": "未调用 unlock，不消耗额度"
+      }
+    },
+    {
+      "company": {
+        "id": "3762300d937f3769",
+        "name": "河北华通线缆集团股份有限公司",
+        "uscc": "9113020074017492XD",
+        "legalRepresentative": "张文东",
+        "foundTime": "2002-06-21",
+        "address": "丰南经济开发区华通街111号",
+        "province": "河北省",
+        "operStatus": "营业 > 存续(在营、开业、在册)",
+        "homepage": "www.huatongcables.com"
+      },
+      "identity": {
+        "uscc": "9113020074017492XD",
+        "englishName": "Hebei Huatong Wires & Cables Group Co., Ltd.",
+        "chineseName": "河北华通线缆集团股份有限公司"
+      },
+      "platformProfiles": [
+        {
+          "platform": "mic",
+          "platformCompanyId": "htwirecable",
+          "displayName": "Hebei Huatong Wires & Cables Group Co., Ltd.",
+          "jobs": [],
+          "store": {
+            "membership": {
+              "tier": "diamond",
+              "raw_cs_level": 50,
+              "raw_member_level": "diamond",
+              "since_year": 2015,
+              "evidence": [
+                "json:csLevel=50",
+                "json:memberLevel=diamond",
+                "json:memberSince=2015"
+              ],
+              "confidence": "high"
+            },
+            "audited": true,
+            "capabilityStars": 3,
+            "certifications": [
+              "TUV",
+              "CE",
+              "reach",
+              "ISO 9001",
+              "ISO 14001",
+              "OHSAS 18001"
+            ],
+            "businessTypes": [
+              "Manufacturer/Factory & Trading Company"
+            ],
+            "mainProducts": [
+              "Power Cable",
+              "Electric Cable",
+              "Mv Cable",
+              "LV Cable",
+              "Esp Cable",
+              "Service Entrance Wire",
+              "Mining Cable",
+              "Solar/PV Cable",
+              "Instrumentation Cable",
+              "Wind Power Cable"
+            ],
+            "employees": null,
+            "turnover": null,
+            "plantArea": null,
+            "establishedAt": null,
+            "enrichment": {
+              "audit": 8,
+              "response": {
+                "avg_response_hours": 4.63,
+                "timely_reply_ratio": 0.859,
+                "top_avg_response_hours": 0.01,
+                "top_timely_reply_ratio": 1,
+                "range_display": "≤4.63h",
+                "window_days": 30,
+                "as_of": "20261114",
+                "source": "cache",
+                "fetched_at": "2026-11-16T13:54:15+08:00"
+              }
+            }
+          },
+          "jobCount": null
+        }
+      ],
+      "customs": {
+        "queryNames": [
+          "Hebei Huatong Wires & Cables Group Co., Ltd.",
+          "河北华通线缆集团股份有限公司"
+        ],
+        "queries": [
+          {
+            "name": "Hebei Huatong Wires & Cables Group Co., Ltd.",
+            "flag": 1,
+            "ok": true,
+            "totalNum": 3953,
+            "allCount": 3953,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          },
+          {
+            "name": "Hebei Huatong Wires & Cables Group Co., Ltd.",
+            "flag": 2,
+            "ok": true,
+            "totalNum": 499,
+            "allCount": 499,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          },
+          {
+            "name": "河北华通线缆集团股份有限公司",
+            "flag": 1,
+            "ok": true,
+            "totalNum": 3085,
+            "allCount": 3085,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          },
+          {
+            "name": "河北华通线缆集团股份有限公司",
+            "flag": 2,
+            "ok": true,
+            "totalNum": 0,
+            "allCount": 0,
+            "exactCount": 0,
+            "cached": true,
+            "source": "cache",
+            "error": null
+          }
+        ],
+        "fetched": 40,
+        "matched": 40,
+        "asExporter": 40,
+        "asImporter": 10,
+        "unmatched": 0,
+        "confidence": "high",
+        "dateRange": {
+          "min": "2026-06-05",
+          "max": "2026-10-30"
+        },
+        "topDestinations": [
+          {
+            "key": "Indonesia",
+            "count": 21
+          },
+          {
+            "key": "Ecuador",
+            "count": 9
+          },
+          {
+            "key": "China",
+            "count": 7
+          },
+          {
+            "key": "United States",
+            "count": 1
+          },
+          {
+            "key": "Pakistan",
+            "count": 1
+          }
+        ],
+        "topOrigins": [
+          {
+            "key": "Indonesia",
+            "count": 7
+          },
+          {
+            "key": "China",
+            "count": 3
+          }
+        ],
+        "topHs4": [
+          {
+            "key": "8544",
+            "count": 33
+          },
+          {
+            "key": "7304",
+            "count": 3
+          },
+          {
+            "key": "8307",
+            "count": 1
+          },
+          {
+            "key": "8546",
+            "count": 1
+          }
+        ],
+        "topProducts": [
+          {
+            "key": "1SOLBC 5KV EPDM LD (.030”) B G F HT",
+            "count": 7
+          },
+          {
+            "key": "CABLE DE POTENCIA",
+            "count": 7
+          },
+          {
+            "key": "TUBE LINE 1/4IN 316SS WALL 0.049 160FT",
+            "count": 3
+          },
+          {
+            "key": "1SOLBC 5KV EPDM LD .030 BED EPDM SS R HT",
+            "count": 2
+          },
+          {
+            "key": "4SOLBC 5KV EPDM LD.(030) B SS F HT",
+            "count": 2
+          }
+        ],
+        "topBuyers": [
+          {
+            "key": "PT BAKER HUGHES INDONESIA",
+            "count": 12
+          },
+          {
+            "key": "HALLIBURTON LATIN AMERICA S R L",
+            "count": 9
+          },
+          {
+            "key": "HEBEI HUATONG WIRES & CABLES GROUP CO LTD",
+            "count": 7
+          },
+          {
+            "key": "HUATONG SERVICES INDONESIA",
+            "count": 3
+          },
+          {
+            "key": "TRANSCON INDONESIA",
+            "count": 3
+          }
+        ],
+        "topSuppliers": [
+          {
+            "key": "HUATONG SERVICES INDONESIA",
+            "count": 4
+          },
+          {
+            "key": "PT HUATONG SERVICES INDONESIA",
+            "count": 3
+          },
+          {
+            "key": "HEBEI HUATONG WIRES AND CABLES GROUP CO LTD",
+            "count": 2
+          },
+          {
+            "key": "HEBEI HUATONG WIRES&CABLES GROUP CO LTD",
+            "count": 1
+          }
+        ],
+        "totalWeight": 410365,
+        "totalCount": 333243,
+        "amount": 5958459.031600001,
+        "matchedSample": [
+          {
+            "role": "exporter",
+            "tradeno": "A58CDFA1863C4CF1BFEC2EA200E8F94A",
+            "inout": "import",
+            "rawimporter": "PLAZA EAST",
+            "rawexporter": "HEBEI HUATONG WIRES AND CABLES",
+            "importercountryen": "United States",
+            "exportercountryen": "China",
+            "hscode": "854470",
+            "regdate": "2026-10-30",
+            "detail": "CABLESCABLESCABLESCABLESCABLES"
+          },
+          {
+            "role": "exporter",
+            "tradeno": "F06F35DF385E4EB286DB28CD415D61EB",
+            "inout": "import",
+            "rawimporter": null,
+            "rawexporter": null,
+            "importercountryen": "Indonesia",
+            "exportercountryen": "China",
+            "hscode": "85446039",
+            "regdate": "2026-10-27",
+            "detail": "1SOLBC 5KV EPDM LD .030 BED EPDM SS R HT"
+          },
+          {
+            "role": "exporter",
+            "tradeno": "D132F826B6DB447DAE48F93C8DCC48BE",
+            "inout": "import",
+            "rawimporter": null,
+            "rawexporter": null,
+            "importercountryen": "Indonesia",
+            "exportercountryen": "China",
+            "hscode": "85446039",
+            "regdate": "2026-10-27",
+            "detail": "1SOLBC 5KV EPDM LD (.030”) B G F HT"
+          },
+          {
+            "role": "exporter",
+            "tradeno": "BB04AA697F1045DF98479579B097DCD3",
+            "inout": "import",
+            "rawimporter": null,
+            "rawexporter": null,
+            "importercountryen": "Indonesia",
+            "exportercountryen": "China",
+            "hscode": "85446039",
+            "regdate": "2026-10-27",
+            "detail": "1SOL 5KV EPDM LD(.030”) B 3/8 C G F HT"
+          },
+          {
+            "role": "exporter",
+            "tradeno": "7D4417EDA96647229F1DD7FFF6BCA11C",
+            "inout": "import",
+            "rawimporter": null,
+            "rawexporter": null,
+            "importercountryen": "Indonesia",
+            "exportercountryen": "China",
+            "hscode": "85446039",
+            "regdate": "2026-10-27",
+            "detail": "1SOLBC 5KV EPDM LD (.030”) B G F HT"
+          }
+        ],
+        "unmatchedSample": [],
+        "tookMs": 15
+      },
+      "contacts": {
+        "unlocked": true,
+        "counts": {
+          "mobile": 113,
+          "phone": 86,
+          "email": 70,
+          "total": 269
+        },
+        "note": "未调用 unlock，不消耗额度"
+      }
+    }
+  ],
+  "endedAt": "2026-11-16T05:58:55.461Z",
+  "summary": {
+    "candidates": 5,
+    "tanjiMatched": 5,
+    "customsWithData": 3,
+    "customsTotalMatched": 105,
+    "steps": 50,
+    "failedSteps": 0
+  },
+  "rawSanitizedFields": 160
+}

@@ -1,0 +1,52 @@
+%% LeadPlatform 数据流向：Goal → Run → 采集 → 补全 → 解锁 → 画像 → 事件
+flowchart TB
+  classDef cfg fill:#f3ecfa,stroke:#7b5ea7,color:#35244f,stroke-width:1.5px
+  classDef step fill:#eef3fb,stroke:#5b7fb4,color:#16324f,stroke-width:1.5px
+  classDef store fill:#fdf3e3,stroke:#b8832f,color:#4a3513,stroke-width:1.5px
+  classDef out fill:#fbeceb,stroke:#b45b52,color:#4a1f1b,stroke-width:1.5px
+
+  subgraph S1["配置与调度"]
+    direction LR
+    GOAL["① Goal<br/>省 → 地级市枚举<br/>平台 × 关键词 × 上限 × 频率"]:::cfg
+    RUN["② Run<br/>cron 02:00 / 手动<br/>单 Goal 不重叠 · 最长 6h"]:::step
+  end
+  subgraph S2["采集"]
+    direction LR
+    SQ["③ source_queries<br/>平台 × 城市 × 关键词"]:::step
+    FETCH["④ 四源采集<br/>令牌桶限频 · 流式解析"]:::step
+    SNAP[("⑤ 原始快照<br/>raw_blobs（brotli + sha256）<br/>raw_snapshots（append-only）")]:::store
+  end
+  subgraph S3["补全"]
+    direction LR
+    CO["⑥ 公司初建 / 去重<br/>USCC → 归一化名 → tanji_id"]:::step
+    JOBS["⑦ pipeline_jobs<br/>source_detail → tanji_match<br/>→ tanji_detail"]:::step
+    TANJI["⑧ 探迹补全<br/>匹配 + 工商字段（不耗额度）"]:::step
+  end
+  subgraph S4["主档与解锁"]
+    direction LR
+    COMPANY[("⑨ companies 主档<br/>company_sources 来源证据")]:::store
+    UNLOCK["⑩ 解锁队列<br/>FIFO + 优先级 + 额度检查"]:::step
+    LEDGER[("unlock_ledger + contacts<br/>1 家 = 1 额度点")]:::store
+  end
+  subgraph S5["平台档案与海关画像"]
+    direction LR
+    REF["⑪ 平台刷新<br/>档案 / 岗位（周 / 月）"]:::step
+    CUS["⑫ 海关画像<br/>Ali/Mic 英文抬头"]:::step
+    PROF[("platform_profiles / jobs<br/>customs_profiles")]:::store
+  end
+  subgraph S6["事件与出口"]
+    direction LR
+    EVENTS[("change_events<br/>全局 seq 单调递增")]:::store
+    OUT["⑬ 对外：Webhook / SSE<br/>CLI / MCP / REST<br/>GET /v1/changes?sinceSeq="]:::out
+  end
+
+  GOAL --> RUN --> SQ --> FETCH --> SNAP
+  FETCH --> CO --> JOBS --> TANJI --> COMPANY
+  SNAP -.->|"原始载荷可回溯"| JOBS
+  COMPANY --> UNLOCK --> LEDGER
+  COMPANY --> REF --> PROF
+  COMPANY --> CUS --> PROF
+  COMPANY --> EVENTS
+  LEDGER --> EVENTS
+  PROF --> EVENTS
+  EVENTS --> OUT

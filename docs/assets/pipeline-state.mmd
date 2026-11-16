@@ -1,0 +1,51 @@
+%% LeadPlatform 流水线状态机 + 解锁任务/额度队列
+%% 上：公司处理状态（companies.enrichment_status / unlock_status）
+%% 下：解锁任务状态（pipeline_jobs / unlock_ledger）
+flowchart TB
+  classDef st fill:#eef3fb,stroke:#5b7fb4,color:#16324f,stroke-width:1.5px
+  classDef ok fill:#eaf6ef,stroke:#3f8f63,color:#153a28,stroke-width:1.5px
+  classDef warn fill:#fdf3e3,stroke:#b8832f,color:#4a3513,stroke-width:1.5px
+  classDef bad fill:#fbeceb,stroke:#b45b52,color:#4a1f1b,stroke-width:1.5px
+
+  subgraph A["公司处理状态（enrichment_status / unlock_status）"]
+    direction LR
+    D["discovered<br/>线索发现"]:::st
+    SD["source_detailed<br/>平台详情 · USCC 提示"]:::st
+    TM["tanji_matched<br/>探迹匹配成功"]:::st
+    TE["tanji_enriched<br/>工商补全"]:::ok
+    PU["unlock pending<br/>FIFO + 优先级排队"]:::st
+    WQ["waiting_quota<br/>额度耗尽挂起"]:::warn
+    UL["unlocked<br/>联系人入库"]:::ok
+    UM["unmatched<br/>无匹配 · 不耗额度"]:::warn
+
+    D --> SD
+    D -->|"Ali/Mic 无平台详情"| TM
+    SD --> TM
+    SD --> UM
+    UM -->|"下一轮 Run 重试"| TM
+    TM --> TE
+    TE --> PU
+    TE -->|"探迹显示已解锁"| UL
+    PU --> UL
+    PU --> WQ
+    WQ -->|"额度恢复自动续跑"| PU
+  end
+
+  subgraph B["解锁任务与额度队列（pipeline_jobs / unlock_ledger）"]
+    direction LR
+    P["pending<br/>FIFO · P0 招聘在招 → P1 付费/认证会员<br/>→ P2 有海关记录 → P3 其余（不自动解锁）"]:::st
+    R["running<br/>租约 60s · 单通道串行"]:::st
+    DONE["done<br/>台账 +1（alreadyUnlocked 记 0）"]:::ok
+    W["waiting_quota<br/>不计失败次数"]:::warn
+    F["failed<br/>指数退避"]:::warn
+    DEAD["dead<br/>死信可 retry"]:::bad
+
+    P --> R
+    R --> DONE
+    R -->|"QUOTA_EXHAUSTED"| W
+    W -->|"Quota Poller 检测恢复"| P
+    R -->|"alreadyUnlocked = true"| DONE
+    R -->|"其它错误"| F
+    F -->|"attempts < max（3）"| P
+    F -->|"attempts ≥ max（3）"| DEAD
+  end

@@ -1,0 +1,51 @@
+%% LeadPlatform 部署拓扑（单机 · systemd --user · 仅 loopback）
+flowchart TB
+  classDef svc fill:#eaf6ef,stroke:#3f8f63,color:#153a28,stroke-width:1.5px
+  classDef up fill:#eef3fb,stroke:#5b7fb4,color:#16324f,stroke-width:1.5px
+  classDef store fill:#fdf3e3,stroke:#b8832f,color:#4a3513,stroke-width:1.5px
+  classDef ext fill:#fbeceb,stroke:#b45b52,color:#4a1f1b,stroke-width:1.5px
+
+  subgraph HOST["本机 Linux（NixOS）· systemd --user 常驻"]
+    subgraph LP["LeadPlatform 单进程（仅监听 127.0.0.1:8793）"]
+      direction LR
+      CORE["REST / CLI / MCP<br/>Scheduler + 编排 + 5 类 Worker"]:::svc
+      DATA[("~/.lead-platform/（0700）<br/>lead.db（WAL）<br/>logs/lead.log<br/>archive/ · backups/")]:::store
+      CORE --- DATA
+    end
+    subgraph CL["上游客户端：独立进程 · 本机 REST"]
+      direction LR
+      B["boss :8790"]:::up
+      Z["zhilian :8791"]:::up
+      A["ali :8792"]:::up
+      M["mic :8899"]:::up
+      T["tanji :8787"]:::up
+      F["fuma :17890"]:::up
+    end
+  end
+
+  subgraph OUT["下游消费者（可同机 / 内网 / Agent）"]
+    direction LR
+    AG["Agent · 脚本"]:::ext
+    WH["Webhook 接收器"]:::ext
+    SSEC["SSE 客户端"]:::ext
+  end
+
+  NET(("互联网<br/>招聘 / B2B / 海关平台")):::ext
+  DISK["建议 ≥500 GB 空闲磁盘<br/>（历史数据永久保留）"]:::store
+
+  CORE -->|"Bearer REST + 令牌桶<br/>按来源串行"| B
+  CORE --> Z
+  CORE --> A
+  CORE --> M
+  CORE --> T
+  CORE --> F
+  AG -->|"REST / SSE"| CORE
+  WH -->|"Webhook 投递（HMAC-SHA256）"| CORE
+  SSEC -->|"GET /v1/events/stream"| CORE
+  B -.->|"登录 / 浏览器 / 风控由 client 管理"| NET
+  Z -.-> NET
+  A -.-> NET
+  M -.-> NET
+  T -.-> NET
+  F -.-> NET
+  DATA -.->|"备份 / 冷归档"| DISK

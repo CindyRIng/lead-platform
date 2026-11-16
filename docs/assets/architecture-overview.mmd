@@ -1,0 +1,83 @@
+%% LeadPlatform 架构总览（GitHub 可直接渲染；PNG/SVG 由 render-diagrams.sh 生成）
+%% 维护：修改本文件后重跑 docs/assets/render-diagrams.sh 更新 PNG/SVG
+flowchart TB
+  classDef up fill:#eef3fb,stroke:#5b7fb4,color:#16324f,stroke-width:1.5px
+  classDef core fill:#eaf6ef,stroke:#3f8f63,color:#153a28,stroke-width:1.5px
+  classDef store fill:#fdf3e3,stroke:#b8832f,color:#4a3513,stroke-width:1.5px
+  classDef io fill:#f3ecfa,stroke:#7b5ea7,color:#35244f,stroke-width:1.5px
+  classDef down fill:#fbeceb,stroke:#b45b52,color:#4a1f1b,stroke-width:1.5px
+
+  subgraph UP["① 上游：本机 REST（loopback，登录态由各 client 持有）"]
+    direction LR
+    BOSS["boss-client :8790<br/>Boss 直聘 · 招聘"]:::up
+    ZL["zhilian-client :8791<br/>智联招聘 · 招聘"]:::up
+    ALI["ali-client :8792<br/>阿里国际站 · 供应商"]:::up
+    MIC["mic-client :8899<br/>中国制造网 · 工厂"]:::up
+    TJ["tanji-client :8787<br/>探迹 · 匹配/工商/解锁"]:::up
+    FUMA["fuma-platform :17890<br/>海关提单 · 只读"]:::up
+  end
+
+  subgraph APP["② LeadPlatform 单进程 · 127.0.0.1:8793"]
+    direction TB
+    subgraph L1["采集编排"]
+      direction LR
+      SCH["Scheduler<br/>cron 02:00 + 手动"]:::core
+      ORC["Run Orchestrator<br/>流式采集"]:::core
+      ADAPT["Source Adapters ×4<br/>重试 · 令牌桶"]:::core
+    end
+    subgraph L2["补全与后台 Worker"]
+      direction LR
+      ENR["Enrichment Worker<br/>探迹匹配 + 工商补全"]:::core
+      UNL["Unlock Worker<br/>FIFO + 优先级 + 额度"]:::core
+      REF["Refresh Worker<br/>招聘周 / 店铺月"]:::core
+      CUS["Customs Worker<br/>Ali/Mic 海关画像"]:::core
+      QP["Quota Poller<br/>每 600s"]:::core
+    end
+    subgraph L3["存储（唯一事实源）"]
+      direction LR
+      DB[("lead.db（SQLite WAL）<br/>21 张表")]:::store
+      SNAP[("raw_blobs / raw_snapshots<br/>brotli ≈10x + sha256 去重")]:::store
+      ARC[("archive/YYYY-MM<br/>90 天后冷归档 · 不删除")]:::store
+    end
+    subgraph L4["对外入口与出口"]
+      direction LR
+      REST["REST /v1<br/>Fastify"]:::io
+      CLI["CLI：lead"]:::io
+      MCP["MCP：stdio → REST"]:::io
+      DOC["/docs · /openapi.json<br/>/mcp-tools.json"]:::io
+      EVT["Event Dispatcher<br/>Webhook / SSE"]:::io
+    end
+  end
+
+  subgraph DOWN["③ 下游"]
+    direction LR
+    WH["Webhook 订阅方"]:::down
+    SSE["SSE 客户端"]:::down
+    AG["Agent / 脚本 / CRM"]:::down
+  end
+
+  SCH --> ORC
+  ORC --> ADAPT
+  ADAPT -->|"REST + 按来源令牌桶"| BOSS & ZL & ALI & MIC
+  ORC -->|"每发现一家立即入队"| ENR
+  ORC --> REF
+  ORC --> CUS
+  ENR -->|"搜索 / 详情"| TJ
+  ENR --> UNL
+  UNL -->|"解锁 1 家 = 1 点"| TJ
+  QP -->|"额度观测"| TJ
+  CUS -->|"英文抬头 → 提单"| FUMA
+  REF -->|"档案 / 岗位刷新"| BOSS & ZL & ALI & MIC
+  ORC --> SNAP
+  ENR --> DB
+  UNL --> DB
+  REF --> DB
+  CUS --> DB
+  DB --> EVT
+  DB --> REST
+  REST --- CLI
+  REST --- MCP
+  DOC -.-> REST
+  EVT --> WH & SSE
+  AG -->|"REST / SSE"| REST
+  SNAP -.->|"归档任务"| ARC

@@ -1,0 +1,302 @@
+{
+  "generatedAt": "2026-11-16T08:26:02.028Z",
+  "inputs": {
+    "boss": "/home/songqian/lead-platform/exploration/2026-11-16-coverage-crawl/out/boss-companies.jsonl",
+    "zh": "/home/songqian/lead-platform/exploration/2026-11-16-coverage-crawl/out/zhilian-companies.jsonl",
+    "ali": "data/ali-final-union.json",
+    "mic": "data/mic-union.ndjson"
+  },
+  "counts": {
+    "boss": 1188,
+    "zhilian": 1261,
+    "ali": 2961,
+    "mic": 5008
+  },
+  "sameLanguage": {
+    "bossAndZhilian": {
+      "overlap": 74,
+      "union": 2375,
+      "samples": [
+        [
+          "河北伽曼特服装",
+          "河北伽曼特服装有限公司"
+        ],
+        [
+          "河北易斯哲贸易",
+          "河北易斯哲贸易有限公司"
+        ],
+        [
+          "奥非特进出口",
+          "石家庄奥非特进出口有限公司"
+        ],
+        [
+          "纽安美科技",
+          "河北纽安美科技有限公司"
+        ],
+        [
+          "跨越速运",
+          "跨越速运"
+        ],
+        [
+          "一诺国际",
+          "河北一诺国际货运代理有限公司"
+        ],
+        [
+          "长城果品",
+          "长城果品公司"
+        ],
+        [
+          "河北乐拓服装有限公司",
+          "河北乐拓服装有限公司"
+        ],
+        [
+          "唐山烨坤金属材料",
+          "唐山烨坤金属材料有限公司"
+        ],
+        [
+          "唐山陆凯科技有限公司",
+          "唐山陆凯科技有限公司"
+        ],
+        [
+          "唐山安宾新材料科技",
+          "唐山安宾新材料科技有限公司"
+        ],
+        [
+          "唐山市元柘熙电子商贸",
+          "唐山市元柘熙电子商贸有限公司"
+        ],
+        [
+          "森澜商贸",
+          "唐山森澜商贸有限公司"
+        ],
+        [
+          "唐山市耀谷贸易",
+          "唐山市耀谷贸易有限公司"
+        ],
+        [
+          "坤钢互联",
+          "唐山坤钢互联科技有限公司"
+        ],
+        [
+          "唐山益航商贸",
+          "唐山高新技术产业园区益航商贸有限公司"
+        ],
+        [
+          "唐山鑫朗科技",
+          "唐山市鑫朗科技有限公司"
+        ],
+        [
+          "唐山物流产业公司",
+          "唐山物流产业有限公司"
+        ],
+        [
+          "聿燊能源",
+          "河北聿燊能源有限公司"
+        ],
+        [
+          "天业通联",
+          "天业通联"
+        ]
+      ]
+    },
+    "aliAndMic": {
+      "overlap": 459,
+      "union": 7510,
+      "samples": [
+        [
+          "Hebei Jinshi Industrial Metal Co., Ltd.",
+          "Hebei Jinshi Industrial Metal Co., Ltd."
+        ],
+        [
+          "Hebei Qianye Metal Product Co., Ltd.",
+          "Hebei Qianye Metal Product Co., Ltd."
+        ],
+        [
+          "Hebei Yusen Metal Wire Mesh Co., Ltd.",
+          "Hebei Yusen Metal Wire Mesh Co., Ltd."
+        ],
+        [
+          "Hebei Skyhall Global Co., Ltd.",
+          "HEBEI SKYHALL GLOBAL CO., LTD"
+        ],
+        [
+          "Hebei Huachang Metal Products Co., Ltd.",
+          "Handan Yongnian Huachang Metal Products Co., Ltd"
+        ],
+        [
+          "Xingtai Hongmao Auto Part Co., Ltd.",
+          "Xingtai Hongmao Auto Part Co., Ltd."
+        ],
+        [
+          "Hebei Shengtian Pipe-Fitting Group Co., Ltd.",
+          "Hebei Shengtian Pipe-Fitting Group Co., Ltd."
+        ],
+        [
+          "Hebei Xiongqian Wire Mesh Manufacturing Co., Ltd.",
+          "Hebei Xiongqian Wire Mesh Manufacturing Co., Ltd."
+        ],
+        [
+          "hebei ruihao metal products co.,ltd",
+          "Hebei Ruihao Metal Products Co., Ltd."
+        ],
+        [
+          "Hebei Yongwei Metal Produce Co., Ltd.",
+          "Baoding Yongwei Changsheng Metal Produce Co., Ltd."
+        ],
+        [
+          "Shenzhou City Shengsen Metal Products Co., Ltd.",
+          "Shenzhou City Shengsen Metal Products Co., Ltd."
+        ],
+        [
+          "Anping Dongfu Wire Mesh Co., Ltd.",
+          "Anping Dongfu Wire Mesh Co., Ltd."
+        ],
+        [
+          "Hebei Baorui Rubber Products Co., Ltd.",
+          "Hebei Baorui Rubber Products Co., Ltd."
+        ],
+        [
+          "Hebei Biwei Import&export Trade Co., Ltd.",
+          "Hebei Biwei Import&Export Trade Co., Ltd."
+        ],
+        [
+          "Hebei Hengyuan Pipeline Equipment Group Co., Ltd.",
+          "Hebei Hengyuan Pipeline Equipment Group Co., Ltd."
+        ],
+        [
+          "Anping County Dengfeng Wire Mesh Products Co., Ltd.",
+          "Anping County A. S. O Metal Wire Mesh Products Co., Ltd"
+        ],
+        [
+          "Hebei Tianrunxuan Rubber Products Co., Ltd.",
+          "Hebei Tianrunxuan Rubber Products Co., Ltd."
+        ],
+        [
+          "Tangshan Zhengcheng Electric Co., Ltd.",
+          "Tangshan Zhengcheng Electric Co., Ltd."
+        ],
+        [
+          "Xingtai Lanying Bicycle Trade Co., Ltd.",
+          "Xingtai Lanying Bicycle Trade Co., Ltd"
+        ],
+        [
+          "Hebei Hanming Hoisting Machinery Manufacture Co.,Ltd",
+          "Hebei Hanming Hoisting Machinery Manufacture Co., Ltd"
+        ]
+      ]
+    }
+  },
+  "crossLanguage": {
+    "preferredMethod": "tanji-sample",
+    "matchedEnglishCompanies": 299,
+    "tanjiSample": {
+      "n": 160,
+      "rate": 0.0375,
+      "ci95": [
+        0.008061743640290105,
+        0.06693825635970989
+      ],
+      "estimatedCountCI": [
+        64,
+        533
+      ],
+      "note": "Ali/Mic 英文名随机样本经探迹匹配后是否出现在招聘名单"
+    },
+    "pinyinHeuristicCount": 2234,
+    "note": "拼音启发式会误配地名/常见音节，仅内部参考；对外采用 tanji 抽样口径",
+    "pinyinSamples": [
+      {
+        "cn": "天一卫生",
+        "en": "Shijiazhuang Weisheng Lighting Fixture Manufacturing Co., Ltd.",
+        "platform": "ali",
+        "shared": [
+          "weisheng"
+        ]
+      },
+      {
+        "cn": "铁凝贸易",
+        "en": "Hebei Tiening Trading Co., Ltd",
+        "platform": "mic",
+        "shared": [
+          "tiening"
+        ]
+      },
+      {
+        "cn": "邯郸益诚贸易有限公司",
+        "en": "Hebei Yicheng Cellulose Co., Ltd.",
+        "platform": "ali",
+        "shared": [
+          "yicheng"
+        ]
+      },
+      {
+        "cn": "奥非特进出口",
+        "en": "Shijiazhuang Aofeite Imp & Exp Co., Ltd.",
+        "platform": "ali",
+        "shared": [
+          "aofeite"
+        ]
+      },
+      {
+        "cn": "奥非特进出口",
+        "en": "Shijiazhuang Aofeite Imp & Exp Co., Ltd.",
+        "platform": "ali",
+        "shared": [
+          "aofeite"
+        ]
+      },
+      {
+        "cn": "奥非特进出口",
+        "en": "Shijiazhuang Aofeite Imp & Exp Co., Ltd.",
+        "platform": "ali",
+        "shared": [
+          "aofeite"
+        ]
+      },
+      {
+        "cn": "奥非特进出口",
+        "en": "Shijiazhuang Aofeite Medical Devices Co., Ltd.",
+        "platform": "mic",
+        "shared": [
+          "aofeite"
+        ]
+      },
+      {
+        "cn": "奥非特进出口",
+        "en": "Shijiazhuang Aofeite Medical Device Co., Ltd.",
+        "platform": "mic",
+        "shared": [
+          "aofeite"
+        ]
+      },
+      {
+        "cn": "奥非特进出口",
+        "en": "Shijiazhuang Aofeite Medical Device Co., Ltd.",
+        "platform": "mic",
+        "shared": [
+          "aofeite"
+        ]
+      },
+      {
+        "cn": "奥非特进出口",
+        "en": "Shijiazhuang Aofeite Imp&Exp Co., Ltd",
+        "platform": "mic",
+        "shared": [
+          "aofeite"
+        ]
+      }
+    ]
+  },
+  "totalUniqueEstimate": 9586,
+  "totalUniqueEstimateRange": [
+    9352,
+    9821
+  ],
+  "formula": "union(中文源) + union(英文源) - 跨语言重叠（tanji 抽样估算）",
+  "caveats": [
+    "Boss/智联为关键词扫描（非全量目录），只覆盖在招公司；数量随关键词/页数变化",
+    "Ali 为关键词/城市/县种子枚举（1559 已核验 + 矩阵增量），不是平台省级全量目录",
+    "Mic 使用 client 已完成的河北 5008 并集（2026-11-16 真实全量枚举）",
+    "跨语言匹配为启发式，可能漏配/误配；建议抽样 tanji 英文名匹配做验证"
+  ]
+}

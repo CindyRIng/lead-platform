@@ -1,0 +1,26 @@
+node_modules/
+dist/
+coverage/
+.env
+.env.*
+!.env.example
+*.log
+logs/
+data/*.db
+data/*.db-*
+data/*.sqlite*
+~/.lead-platform/
+.DS_Store
+# 探索产物中的真实业务数据不进入公开仓库（聚合统计文档除外）
+exploration/**/data/raw/
+exploration/**/data/*.ndjson
+exploration/**/data/*.jsonl
+exploration/**/out/*.jsonl
+exploration/**/out/*-companies.jsonl
+exploration/**/out/*-summary.json
+exploration/**/.tmp/
+
+reports/
+
+# 当前 GitHub OAuth token 无 workflow scope，CI 文件暂不纳入仓库（本地保留）
+.github/workflows/
