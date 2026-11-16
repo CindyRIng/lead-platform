@@ -17,6 +17,8 @@
 - **语言**：TypeScript 严格模式 · Node.js ≥ 22.5 · Fastify 5 · zod
 - **文档**：完整中文文档体系，从安装部署到技术深度解析、需求验收对照，见 [文档索引](#文档索引)
 
+> GitHub：https://github.com/CindyRIng/lead-platform · Release：https://github.com/CindyRIng/lead-platform/releases/tag/v0.1.0
+
 ---
 
 ## 目录
@@ -337,7 +339,6 @@ lead-platform/
 ├─ tests/                                 # unit / integration / mock-upstreams / fixtures
 ├─ systemd/                               # systemd user unit
 ├─ docs/                                  # 00–19 完整文档体系 + assets 图示
-└─ .github/workflows/ci.yml               # typecheck + test + gen:check
 ```
 
 目录职责、关键文件、二次开发与测试策略详见 [docs/19 项目结构与代码导读](docs/19-项目结构与代码导读.md)。
