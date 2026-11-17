@@ -40,6 +40,7 @@ interface CompanyRow {
   trade_tags: string;
   extra: string | null;
   source_count: number;
+  verified: number;
   enrichment_status: string;
   unlock_status: string;
   match_meta: string | null;
@@ -78,6 +79,7 @@ export function mapCompanyRow(row: CompanyRow): Company {
     tradeTags: fromJsonArray<string>(row.trade_tags),
     extra: fromJsonObject(row.extra),
     sourceCount: Number(row.source_count ?? 0),
+    verified: Number(row.verified ?? 0) === 1,
     enrichmentStatus: row.enrichment_status as EnrichmentStatus,
     unlockStatus: row.unlock_status as UnlockStatus,
     matchMeta: fromJsonUnknown(row.match_meta, null) as Company['matchMeta'],
@@ -119,10 +121,10 @@ export class CompaniesRepository {
         id, uscc, tanji_company_id, name, normalized_name, english_name,
         legal_representative, reg_capital, found_time, oper_status, industry, scale,
         province, city, district, address, business_scope, homepage,
-        phone_count, email_count, contact_count, trade_tags, extra, source_count,
+        phone_count, email_count, contact_count, trade_tags, extra, source_count, verified,
         enrichment_status, unlock_status, match_meta, first_run_id,
         first_seen_at, last_seen_at, merged_into, version, created_at, updated_at
-      ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
+      ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
       [
         id,
         input.uscc ?? null,
@@ -148,6 +150,7 @@ export class CompaniesRepository {
         toJsonArray(input.tradeTags ?? []),
         toJson(input.extra ?? null),
         input.sourceCount ?? 0,
+        input.verified === false ? 0 : 1,
         input.enrichmentStatus ?? 'discovered',
         input.unlockStatus ?? 'none',
         toJson(input.matchMeta ?? null),
@@ -237,6 +240,10 @@ export class CompaniesRepository {
 
   /** 局部更新：undefined = 不改；null = 置空 */
   update(id: string, patch: CompanyPatch, opts: CompanyUpdateOptions = {}): Company {
+    // 写入探迹主体 ID = 自动升级为 verified company（调用方无需额外传 verified）
+    if (patch.tanjiCompanyId && patch.verified === undefined) {
+      patch = { ...patch, verified: true };
+    }
     const sets: string[] = [];
     const params: unknown[] = [];
     const push = (column: string, value: unknown): void => {
@@ -269,6 +276,7 @@ export class CompaniesRepository {
     if (patch.tradeTags !== undefined) push('trade_tags', toJsonArray(patch.tradeTags));
     if (patch.extra !== undefined) push('extra', toJson(patch.extra));
     if (patch.sourceCount !== undefined) push('source_count', patch.sourceCount);
+    if (patch.verified !== undefined) push('verified', patch.verified ? 1 : 0);
     if (patch.enrichmentStatus !== undefined) push('enrichment_status', patch.enrichmentStatus);
     if (patch.unlockStatus !== undefined) push('unlock_status', patch.unlockStatus);
     if (patch.matchMeta !== undefined) push('match_meta', toJson(patch.matchMeta));
@@ -316,7 +324,19 @@ export class CompaniesRepository {
   }
 
   setTanjiCompanyId(id: string, tanjiCompanyId: string | null): Company {
+    // 探迹确认主体 = 升级为 verified company；清空 tanji id 不影响既有 verified
+    if (tanjiCompanyId) {
+      const row = one<{ verified: number }>(this.db, 'SELECT verified FROM companies WHERE id = ?', [id]);
+      if (row && Number(row.verified) !== 1) {
+        this.update(id, { tanjiCompanyId, verified: true });
+        return this.requireById(id);
+      }
+    }
     return this.update(id, { tanjiCompanyId });
+  }
+
+  setVerified(id: string, verified: boolean): Company {
+    return this.update(id, { verified });
   }
 
   setUscc(id: string, uscc: string | null): Company {
@@ -348,6 +368,8 @@ export class CompaniesRepository {
     const where: string[] = [];
     const params: unknown[] = [];
     if (!opts.includeMerged) where.push('merged_into IS NULL');
+    if (opts.verified === true) where.push('verified = 1');
+    else if (opts.verified === false) where.push('verified = 0');
     if (opts.province) {
       where.push('province = ?');
       params.push(opts.province);
@@ -431,7 +453,7 @@ export class CompaniesRepository {
     return all<CompanyRow>(
       this.db,
       `SELECT c.* FROM companies c
-       WHERE c.merged_into IS NULL
+       WHERE c.merged_into IS NULL AND c.verified = 1
          AND EXISTS (SELECT 1 FROM company_sources cs WHERE cs.company_id = c.id AND cs.platform IN ('ali','mic'))
          AND NOT EXISTS (SELECT 1 FROM company_customs_profiles p WHERE p.company_id = c.id)
        ORDER BY c.created_at ASC LIMIT ?`,
@@ -447,7 +469,7 @@ export class CompaniesRepository {
     return all<CompanyRow>(
       this.db,
       `SELECT c.* FROM companies c
-       WHERE c.merged_into IS NULL
+       WHERE c.merged_into IS NULL AND c.verified = 1
          AND EXISTS (SELECT 1 FROM company_sources cs WHERE cs.company_id = c.id AND cs.platform = ?)
        ORDER BY c.created_at ASC LIMIT ?`,
       [platform, limit],
@@ -458,6 +480,8 @@ export class CompaniesRepository {
     const where: string[] = [];
     const params: unknown[] = [];
     if (!filter.includeMerged) where.push('merged_into IS NULL');
+    if (filter.verified === true) where.push('verified = 1');
+    else if (filter.verified === false) where.push('verified = 0');
     if (filter.province) {
       where.push('province = ?');
       params.push(filter.province);
@@ -500,13 +524,13 @@ export class CompaniesRepository {
     const bySourcePlatform: Record<string, number> = {};
     for (const row of all<{ k: string; n: number }>(
       this.db,
-      "SELECT enrichment_status AS k, COUNT(*) AS n FROM companies WHERE merged_into IS NULL GROUP BY enrichment_status",
+      "SELECT enrichment_status AS k, COUNT(*) AS n FROM companies WHERE merged_into IS NULL AND verified = 1 GROUP BY enrichment_status",
     )) {
       byEnrichment[row.k] = Number(row.n);
     }
     for (const row of all<{ k: string; n: number }>(
       this.db,
-      "SELECT unlock_status AS k, COUNT(*) AS n FROM companies WHERE merged_into IS NULL GROUP BY unlock_status",
+      "SELECT unlock_status AS k, COUNT(*) AS n FROM companies WHERE merged_into IS NULL AND verified = 1 GROUP BY unlock_status",
     )) {
       byUnlock[row.k] = Number(row.n);
     }
@@ -517,7 +541,7 @@ export class CompaniesRepository {
       bySourcePlatform[row.k] = Number(row.n);
     }
     return {
-      total: this.count(),
+      total: this.count({ verified: true }),
       merged: countRows(this.db, 'SELECT COUNT(*) FROM companies WHERE merged_into IS NOT NULL'),
       byEnrichment,
       byUnlock,
@@ -530,7 +554,7 @@ export class CompaniesRepository {
     const rows = all<{ city: string | null; n: number }>(
       this.db,
       `SELECT COALESCE(city, '(unknown)') AS city, COUNT(*) AS n FROM companies
-       WHERE merged_into IS NULL GROUP BY COALESCE(city, '(unknown)')`,
+       WHERE merged_into IS NULL AND verified = 1 GROUP BY COALESCE(city, '(unknown)')`,
     );
     const out: Record<string, number> = {};
     for (const row of rows) out[row.city ?? '(unknown)'] = Number(row.n);
@@ -542,7 +566,9 @@ export class CompaniesRepository {
     return countRows(
       this.db,
       `SELECT COUNT(*) FROM (
-         SELECT company_id FROM company_sources GROUP BY company_id HAVING COUNT(DISTINCT platform) > 1
+         SELECT cs.company_id FROM company_sources cs JOIN companies c ON c.id = cs.company_id
+          WHERE c.verified = 1 AND c.merged_into IS NULL
+          GROUP BY cs.company_id HAVING COUNT(DISTINCT cs.platform) > 1
        )`,
     );
   }
@@ -551,7 +577,7 @@ export class CompaniesRepository {
   countDistinctBySourcePlatform(platform: Platform): number {
     return countRows(
       this.db,
-      'SELECT COUNT(DISTINCT company_id) FROM company_sources WHERE platform = ?',
+      'SELECT COUNT(DISTINCT cs.company_id) FROM company_sources cs JOIN companies c ON c.id=cs.company_id WHERE cs.platform = ? AND c.verified=1',
       [platform],
     );
   }
@@ -569,7 +595,7 @@ export class CompaniesRepository {
 
   /** 该 run 首次发现的存活公司数（Run 统计用） */
   countByFirstRun(runId: string): number {
-    return countRows(this.db, 'SELECT COUNT(*) FROM companies WHERE first_run_id = ? AND merged_into IS NULL', [runId]);
+    return countRows(this.db, 'SELECT COUNT(*) FROM companies WHERE first_run_id = ? AND merged_into IS NULL AND verified = 1', [runId]);
   }
 
   private requireById(id: string): Company {

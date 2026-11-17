@@ -211,6 +211,7 @@ export function createUnlockStore(repos: Repositories): UnlockStore {
       const companies = repos.companies.list({
         enrichmentStatus: 'tanji_enriched',
         unlockStatus: ['none', 'pending'],
+        verified: true,
         limit,
       });
       return companies

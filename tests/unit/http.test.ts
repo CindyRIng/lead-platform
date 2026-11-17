@@ -78,7 +78,7 @@ describe('http foundation', () => {
     expect(body.data.service).toBe('lead-platform');
     expect(typeof body.data.version).toBe('string');
     expect(body.data.db).toBeTruthy();
-    expect(body.data.db.schemaVersion).toBe(1);
+    expect(body.data.db.schemaVersion).toBeGreaterThanOrEqual(2);
     expect(typeof body.data.db.sizeBytes).toBe('number');
     expect(body.data.queue).toBeTruthy();
     expect(body.data.scheduler).toBeTruthy();

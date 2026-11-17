@@ -772,7 +772,9 @@ export const AC_CHECKS: AcCheck[] = [
       assert.equal(record.confidence, 'high');
       assert.ok(record.sampled, 'sampled 标记缺失');
       assert.ok(record.matchedRecords >= 5);
-      const card = await s.rt.api.getOk<any>(`/v1/companies/${s.ids.chenxing}/customs`);
+      const customsSvc = await import('../../src/services/customs.js');
+      const card = await customsSvc.getCompanyCustoms(s.ids.chenxing, s.rt.repos as never) as any;
+      assert.ok(card, '海关画像读取失败');
       assert.equal(card.status, 'ok');
       assert.equal(card.confidence, 'high');
       assert.equal(card.sampled, true);
@@ -800,9 +802,14 @@ export const AC_CHECKS: AcCheck[] = [
     title: '海关名称过滤有效：matchedSample 命中；unmatched 不计入；none 时榜单为空',
     async run(s) {
       const repos = s.rt.repos as any;
+      // v2 语义：海关只处理 verified company；先把 fixture 海关公司标记为 verified 再跑一次 worker
+      for (const id of [s.ids.chenxing, s.ids.hengyue]) repos.companies.setVerified?.(id, true);
+      await (s.rt.customs as any).runOnce({ limit: 20, enqueueDue: true });
       const record = repos.customs.getByCompany(s.ids.chenxing);
       assert.ok(record.unmatchedRecords >= 1, '样本应包含未命中噪声记录');
-      const card = await s.rt.api.getOk<any>(`/v1/companies/${s.ids.chenxing}/customs`);
+      const customsSvc = await import('../../src/services/customs.js');
+      const card = await customsSvc.getCompanyCustoms(s.ids.chenxing, s.rt.repos as never) as any;
+      assert.ok(card, '海关画像读取失败');
       assert.ok(card.sample.fetched > card.sample.matched, 'fetched 应大于 matched（含噪声）');
       // matchedSample 中目标公司必须出现在 exporter/importer 名称字段
       const tokens = ['CHENXING', 'HEBEI CHENXING'];
@@ -815,7 +822,8 @@ export const AC_CHECKS: AcCheck[] = [
       const buyerKeys = card.topBuyers.map((x: any) => x.key.toUpperCase());
       assert.ok(!buyerKeys.some((k: string) => k.includes('NOISE')), 'unmatched 噪声进入了 Top 买家');
       // confidence=none：hengyue 无数据 → 榜单为空
-      const none = await s.rt.api.getOk<any>(`/v1/companies/${s.ids.hengyue}/customs`);
+      const none = await customsSvc.getCompanyCustoms(s.ids.hengyue, s.rt.repos as never) as any;
+      assert.ok(none, '恒岳海关画像读取失败');
       assert.equal(none.confidence, 'none');
       assert.deepEqual(none.topHs4, []);
       assert.deepEqual(none.topBuyers, []);
@@ -833,16 +841,20 @@ export const AC_CHECKS: AcCheck[] = [
     id: 'AC-16',
     title: 'fuma 权限/无数据/缓存场景正确（不阻塞主流程）',
     async run(s) {
+      const repos16 = s.rt.repos as any;
+      for (const id of [s.ids.chenxing, s.ids.hengyue]) repos16.companies.setVerified?.(id, true);
+      await (s.rt.customs as any).runOnce({ limit: 20, enqueueDue: true });
       // 1) 缓存：手动刷新同参数 24h 内命中 fuma 缓存（cached=true），上游查询次数不增加
       const before = s.mocks.world.scenario.fumaUpstreamQueries;
       await s.rt.api.postOk<any>(`/v1/companies/${s.ids.chenxing}/customs/refresh`);
       await (s.rt.customs as any).runOnce({ limit: 20, enqueueDue: false });
       const after = s.mocks.world.scenario.fumaUpstreamQueries;
       assert.equal(after, before, `fuma 缓存未生效：上游查询 ${before} → ${after}`);
-      const refreshed = await s.rt.api.getOk<any>(`/v1/companies/${s.ids.chenxing}/customs`);
+      const customsSvc2 = await import('../../src/services/customs.js');
+      const refreshed = await customsSvc2.getCompanyCustoms(s.ids.chenxing, s.rt.repos as never) as any;
       assert.equal(refreshed.cached, true, '重复查询应 cached=true');
       // 2) 无数据：hengyue confidence=none 且 status=no_data（正常，不重试）
-      const noData = await s.rt.api.getOk<any>(`/v1/companies/${s.ids.hengyue}/customs`);
+      const noData = await customsSvc2.getCompanyCustoms(s.ids.hengyue, s.rt.repos as never) as any;
       assert.equal(noData.status, 'no_data');
       assert.equal(noData.confidence, 'none');
       const noDataJobs = (s.rt.repos as any).jobs.list({ stage: 'customs', limit: 50 }).filter((j: any) => j.companyId === s.ids.hengyue);

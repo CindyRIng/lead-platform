@@ -8,6 +8,7 @@ import { newRequestId } from '../shared/ids.js';
 import { logger } from '../logger.js';
 import { registerHealthRoutes } from './routes/health.js';
 import { registerStatusRoutes } from './routes/status.js';
+import { registerLeadRoutes } from './routes/leads.js';
 import { registerRoutes } from './routes/index.js';
 
 const PUBLIC_PATHS = ['/v1/health', '/health', '/docs', '/openapi.json', '/mcp-tools.json', '/favicon.ico'];
@@ -82,6 +83,7 @@ export async function buildServer(opts: BuildServerOptions = {}): Promise<Fastif
 
   // /v1/** 业务路由 + /docs /openapi.json /mcp-tools.json（api-dev 的 registerRoutes）
   await registerRoutes(app);
+  await app.register(async (scope) => { registerLeadRoutes(scope); });
 
   if (opts.register) await opts.register(app);
   return app;

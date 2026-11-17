@@ -16,6 +16,7 @@ import { MOCK_TOKENS } from '../mock-upstreams/index.js';
 import type { TestApiClient } from './http.js';
 import type { TempSandbox } from './tmp.js';
 import { createVirtualClock, type VirtualClock } from './runtime.js';
+import { setDefaultRepositories } from '../../src/services/repositoryAccess.js';
 
 export interface FullRuntimeOptions {
   mocks: MockUpstreams;
@@ -315,6 +316,7 @@ export async function createFullRuntime(opts: FullRuntimeOptions): Promise<FullR
       // 恢复进程级单例到本 runtime（多 runtime 交替创建后，供 REST 路由/服务使用）
       try {
         reposMod.initRepositories(repos);
+        setDefaultRepositories(repos as never);
       } catch {
         /* ignore */
       }

@@ -312,6 +312,7 @@ export interface NewCompany {
   tradeTags?: string[];
   extra?: Record<string, unknown> | null;
   sourceCount?: number;
+  verified?: boolean;
   enrichmentStatus?: EnrichmentStatus;
   unlockStatus?: UnlockStatus;
   matchMeta?: MatchMeta | null;
@@ -348,6 +349,7 @@ export type CompanyPatch = {
   tradeTags?: string[];
   extra?: Record<string, unknown> | null;
   sourceCount?: number;
+  verified?: boolean;
   enrichmentStatus?: EnrichmentStatus;
   unlockStatus?: UnlockStatus;
   matchMeta?: MatchMeta | null;
@@ -371,6 +373,8 @@ export interface CompanyListOptions {
   enrichmentStatus?: EnrichmentStatus | EnrichmentStatus[];
   unlockStatus?: UnlockStatus | UnlockStatus[];
   sourcePlatform?: Platform;
+  /** true=只看探迹确认公司；false=只看草稿；undefined=全部（内部用） */
+  verified?: boolean;
   /** 名称包含搜索（对 name / english_name / uscc 做 LIKE） */
   q?: string;
   includeMerged?: boolean;

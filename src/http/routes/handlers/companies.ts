@@ -57,6 +57,11 @@ export const companyHandlers: Record<string, RouteHandler> = {
     const wanted = new Set((include ?? []).map((s) => String(s).toLowerCase()));
     const detail = await ctx.services.companies.get(id, { include });
     if (!detail) throw new LeadError('NOT_FOUND', `company not found: ${id}`);
+    const includeDrafts = ['true', '1', 'yes'].includes(String(ctx.query.includeDrafts ?? '').toLowerCase());
+    const verified = (detail as { company?: { verified?: boolean } }).company?.verified;
+    if (verified === false && !includeDrafts) {
+      throw new LeadError('NOT_FOUND', `company not verified by tanji: ${id}`, { details: { hint: '该记录仅为线索/草稿，请用 /v1/leads 查询；确需草稿详情加 includeDrafts=true' } });
+    }
     const data: Record<string, unknown> =
       detail && typeof detail === 'object' ? { ...(detail as Record<string, unknown>) } : { company: detail };
 

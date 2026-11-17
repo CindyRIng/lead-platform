@@ -5,7 +5,7 @@ import type { DatabaseSync } from 'node:sqlite';
 import type { DatabaseHandle } from './index.js';
 
 const SCHEMA_PATH = fileURLToPath(new URL('./schema.sql', import.meta.url));
-export const SCHEMA_VERSION = 1;
+export const SCHEMA_VERSION = 2;
 
 type DbLike = DatabaseSync | { raw: DatabaseSync };
 
@@ -27,6 +27,12 @@ export function migrate(db: DbLike | DatabaseHandle): MigrateResult {
   raw.exec('BEGIN;');
   try {
     raw.exec(sql);
+    // v1 -> v2：已有库补齐 verified 列 + 线索/匹配表/触发器（schema.sql 中同时包含）
+    const cols = raw.prepare('PRAGMA table_info(companies)').all() as Array<{ name?: string }>;
+    if (!cols.some((c) => c.name === 'verified')) {
+      raw.exec('ALTER TABLE companies ADD COLUMN verified INTEGER NOT NULL DEFAULT 0;');
+      raw.exec('UPDATE companies SET verified = CASE WHEN tanji_company_id IS NOT NULL THEN 1 ELSE 0 END;');
+    }
     raw.exec(`PRAGMA user_version = ${SCHEMA_VERSION};`);
     raw.exec('COMMIT;');
     return { version: SCHEMA_VERSION, applied: true };

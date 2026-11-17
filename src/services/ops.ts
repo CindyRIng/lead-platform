@@ -366,7 +366,7 @@ export async function getStats(query: StatsQuery = {}): Promise<Record<string, u
   if (kind === 'coverage') {
     const runFilter = query.runId ? 'AND first_run_id = ?' : '';
     const runParams = query.runId ? [query.runId] : [];
-    const uniqueCompanies = scalar(`SELECT COUNT(*) AS n FROM companies WHERE merged_into IS NULL ${runFilter}`, ...runParams);
+    const uniqueCompanies = scalar(`SELECT COUNT(*) AS n FROM companies WHERE merged_into IS NULL AND verified = 1 ${runFilter}`, ...runParams);
     const crossSourceOverlap = scalar(
       `SELECT COUNT(*) AS n FROM (
          SELECT company_id FROM company_sources GROUP BY company_id
@@ -375,7 +375,7 @@ export async function getStats(query: StatsQuery = {}): Promise<Record<string, u
     );
     const cityRows = rows(
       `SELECT city AS city, COUNT(*) AS n FROM companies
-        WHERE merged_into IS NULL ${runFilter} GROUP BY city ORDER BY n DESC LIMIT 200`,
+        WHERE merged_into IS NULL AND verified = 1 ${runFilter} GROUP BY city ORDER BY n DESC LIMIT 200`,
       ...runParams,
     );
     const coverageByCity: Record<string, number> = {};
@@ -388,7 +388,7 @@ export async function getStats(query: StatsQuery = {}): Promise<Record<string, u
           `SELECT cs.company_id AS company_id, cs.evidence AS evidence
              FROM company_sources cs
              JOIN companies c ON c.id = cs.company_id
-            WHERE c.merged_into IS NULL ${query.runId ? 'AND c.first_run_id = ?' : ''}`,
+            WHERE c.merged_into IS NULL AND c.verified = 1 ${query.runId ? 'AND c.first_run_id = ?' : ''}`,
         )
         .all(...runParams) as Array<Record<string, unknown>>;
       const seen = new Map<string, Set<string>>();
@@ -437,20 +437,20 @@ export async function getStats(query: StatsQuery = {}): Promise<Record<string, u
     };
   }
 
-  const companyTotal = scalar('SELECT COUNT(*) AS n FROM companies WHERE merged_into IS NULL');
+  const companyTotal = scalar('SELECT COUNT(*) AS n FROM companies WHERE merged_into IS NULL AND verified = 1');
   const companyCreated = scalar(
-    'SELECT COUNT(*) AS n FROM companies WHERE merged_into IS NULL AND created_at >= ? AND created_at <= ?',
+    'SELECT COUNT(*) AS n FROM companies WHERE merged_into IS NULL AND verified = 1 AND created_at >= ? AND created_at <= ?',
     range.from,
     range.to,
   );
   const byEnrichment = Object.fromEntries(
     rows(
       `SELECT enrichment_status AS status, COUNT(*) AS n FROM companies
-        WHERE merged_into IS NULL GROUP BY enrichment_status`,
+        WHERE merged_into IS NULL AND verified = 1 GROUP BY enrichment_status`,
     ).map((r) => [String(r.status ?? ''), n(r.n)]),
   );
   const byUnlock = Object.fromEntries(
-    rows('SELECT unlock_status AS status, COUNT(*) AS n FROM companies WHERE merged_into IS NULL GROUP BY unlock_status').map(
+    rows('SELECT unlock_status AS status, COUNT(*) AS n FROM companies WHERE merged_into IS NULL AND verified = 1 GROUP BY unlock_status').map(
       (r) => [String(r.status ?? ''), n(r.n)],
     ),
   );
@@ -487,6 +487,8 @@ export async function getStats(query: StatsQuery = {}): Promise<Record<string, u
     range.from,
     range.to,
   );
+  const leadsTotal = (() => { try { return scalar('SELECT COUNT(*) AS n FROM leads'); } catch { return 0; } })();
+  const draftsTotal = (() => { try { return scalar('SELECT COUNT(*) AS n FROM companies WHERE verified = 0 AND merged_into IS NULL'); } catch { return 0; } })();
   const jobsByStatus = Object.fromEntries(
     rows('SELECT status, COUNT(*) AS n FROM pipeline_jobs GROUP BY status').map((r) => [String(r.status ?? ''), n(r.n)]),
   );
@@ -496,6 +498,8 @@ export async function getStats(query: StatsQuery = {}): Promise<Record<string, u
     from: range.from,
     to: range.to,
     companies: { total: companyTotal, created: companyCreated, byEnrichmentStatus: byEnrichment, byUnlockStatus: byUnlock },
+    leads: { total: leadsTotal },
+    drafts: { total: draftsTotal },
     sources: { byPlatform: sourcesByPlatform },
     enrichment: { byStatus: byEnrichment },
     unlock: { total: unlockTotal, quotaCost: unlockCost },

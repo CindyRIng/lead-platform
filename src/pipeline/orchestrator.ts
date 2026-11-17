@@ -682,6 +682,7 @@ export class RunOrchestrator {
           province: ctx.goal.region.province,
           city: canonicalCity,
           sourceCount: 1,
+          verified: false,
           enrichmentStatus: 'discovered',
           unlockStatus: 'none',
           tradeTags: [],

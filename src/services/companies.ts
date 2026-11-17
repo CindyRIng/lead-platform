@@ -293,6 +293,8 @@ export async function listCompanies(
   const limit = asInt(q.limit, 'limit', 20, 1, 200);
   const filter: CompanyListOptions = {
     limit,
+    // 对外公司列表只返回探迹确认公司；内部草稿需显式 includeLeads=true
+    verified: !['true', '1', 'yes'].includes(String(q.includeLeads ?? '').toLowerCase()),
     cursor: asText(q.cursor) ?? null,
     ...(asText(q.province) ? { province: asText(q.province) } : {}),
     ...(asText(q.city) ? { city: asText(q.city) } : {}),

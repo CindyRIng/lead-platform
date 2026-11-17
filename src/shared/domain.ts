@@ -96,6 +96,8 @@ export interface Company {
   tradeTags: string[];
   extra: Record<string, unknown> | null;
   sourceCount: number;
+  /** 是否已被探迹确认（true=company；false=内部草稿/线索，不对外计入公司） */
+  verified: boolean;
   enrichmentStatus: EnrichmentStatus;
   unlockStatus: UnlockStatus;
   matchMeta: MatchMeta | null;

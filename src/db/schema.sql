@@ -116,6 +116,7 @@ CREATE TABLE IF NOT EXISTS companies (
   trade_tags TEXT NOT NULL DEFAULT '[]',
   extra TEXT,
   source_count INTEGER NOT NULL DEFAULT 0,
+  verified INTEGER NOT NULL DEFAULT 1,
   enrichment_status TEXT NOT NULL DEFAULT 'discovered',
   unlock_status TEXT NOT NULL DEFAULT 'none',
   match_meta TEXT,
@@ -400,3 +401,60 @@ CREATE TABLE IF NOT EXISTS company_customs_profiles (
 );
 CREATE INDEX IF NOT EXISTS idx_customs_refresh ON company_customs_profiles(next_refresh_at);
 CREATE INDEX IF NOT EXISTS idx_customs_confidence ON company_customs_profiles(confidence);
+
+
+-- v2：线索层（原始平台记录）与线索→公司多对多匹配
+CREATE TABLE IF NOT EXISTS leads (
+  id TEXT PRIMARY KEY,
+  platform TEXT NOT NULL,
+  platform_company_id TEXT NOT NULL,
+  source_name TEXT,
+  normalized_name TEXT,
+  english_name TEXT,
+  city_name TEXT,
+  province TEXT,
+  source_url TEXT,
+  evidence TEXT NOT NULL DEFAULT '{}',
+  status TEXT NOT NULL DEFAULT 'new',
+  company_id TEXT,
+  first_seen_at TEXT NOT NULL,
+  last_seen_at TEXT NOT NULL,
+  archived INTEGER NOT NULL DEFAULT 0,
+  created_at TEXT NOT NULL,
+  updated_at TEXT NOT NULL,
+  UNIQUE(platform, platform_company_id)
+);
+CREATE INDEX IF NOT EXISTS idx_leads_platform_status ON leads(platform, status);
+CREATE INDEX IF NOT EXISTS idx_leads_company ON leads(company_id);
+
+CREATE TABLE IF NOT EXISTS lead_company_matches (
+  lead_id TEXT NOT NULL,
+  company_id TEXT NOT NULL,
+  method TEXT,
+  confidence REAL,
+  candidate_rank INTEGER,
+  is_primary INTEGER NOT NULL DEFAULT 0,
+  matched_at TEXT NOT NULL,
+  raw TEXT,
+  PRIMARY KEY(lead_id, company_id)
+);
+CREATE INDEX IF NOT EXISTS idx_matches_company ON lead_company_matches(company_id);
+
+-- 未来新写入 company_sources 时自动镜像一条 lead（保持线索层连续）
+CREATE TRIGGER IF NOT EXISTS trg_company_sources_lead_ins
+AFTER INSERT ON company_sources
+BEGIN
+  INSERT OR IGNORE INTO leads(id, platform, platform_company_id, source_name, normalized_name, city_name, source_url, evidence, company_id, first_seen_at, last_seen_at, created_at, updated_at)
+  VALUES (
+    'lead_' || lower(hex(randomblob(10))),
+    NEW.platform, NEW.platform_company_id, NEW.source_name, NEW.source_name, NEW.city_name, NEW.source_url, NEW.evidence, NEW.company_id,
+    NEW.first_seen_at, NEW.last_seen_at, datetime('now'), datetime('now')
+  );
+END;
+
+CREATE TRIGGER IF NOT EXISTS trg_company_sources_lead_upd
+AFTER UPDATE ON company_sources
+BEGIN
+  UPDATE leads SET last_seen_at = NEW.last_seen_at, updated_at = datetime('now'), evidence = NEW.evidence
+   WHERE platform = NEW.platform AND platform_company_id = NEW.platform_company_id;
+END;
