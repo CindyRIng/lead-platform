@@ -53,7 +53,11 @@ async function main(): Promise<void> {
   setPipelineRuntime(runtime);
   configureCompaniesService(companiesDepsFromRepositories(runtime.repos));
 
-  const unlockEvents: UnlockEventsRuntime = initUnlockEventsRuntime({ repos: runtime.repos, logger });
+  const unlockEvents: UnlockEventsRuntime = initUnlockEventsRuntime({
+    repos: runtime.repos,
+    logger,
+    startQuotaPoller: config.quotaPollerEnabled,
+  });
   unlockEvents.start();
 
   let loops: Loops | null = null;

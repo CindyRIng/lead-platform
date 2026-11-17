@@ -61,6 +61,7 @@ const ConfigSchema = z.object({
   jobLeaseSec: z.coerce.number().int().positive().default(60),
   jobMaxAttempts: z.coerce.number().int().positive().default(3),
   quotaPollSec: z.coerce.number().int().positive().default(600),
+  quotaPollerEnabled: BoolStr.default(true),
   unlockDailyCap: OptInt,
   webhookMaxAttempts: z.coerce.number().int().positive().default(8),
 
@@ -138,6 +139,7 @@ export function loadConfig(overrides: Partial<Record<string, unknown>> = {}): Ap
     jobLeaseSec: pick('LEAD_JOB_LEASE_SEC') ?? '60',
     jobMaxAttempts: pick('LEAD_JOB_MAX_ATTEMPTS') ?? '3',
     quotaPollSec: pick('LEAD_QUOTA_POLL_SEC') ?? '600',
+    quotaPollerEnabled: pick('LEAD_QUOTA_POLLER_ENABLED') ?? 'true',
     unlockDailyCap: pick('LEAD_UNLOCK_DAILY_CAP') ?? '',
     webhookMaxAttempts: pick('LEAD_WEBHOOK_MAX_ATTEMPTS') ?? '8',
     snapshotCompression: pick('LEAD_SNAPSHOT_COMPRESSION') ?? 'brotli',
