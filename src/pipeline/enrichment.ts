@@ -34,12 +34,14 @@ import { buildMatchMeta, normalizeUsccKey } from '../domain/dedupe.js';
 import { matchCompany, type MatchCandidateSource, type MatchOptions, type MatchResult } from '../domain/matching.js';
 import type { TanjiCompanyDetail, TanjiContactItem, TanjiContactsResult } from '../adapters/tanji.js';
 import type { NewContact, PipelineJob } from '../repositories/types.js';
+import type { LeadsRepository } from '../repositories/leads.js';
 import {
   applyCompanyFields,
   createUnlockJob,
   mergeCompanies,
   mergeCompanies as mergeCompanyRecords,
   recordMatchResult,
+  recordCompanyCreated,
   type CompaniesServiceDeps,
 } from '../services/companies.js';
 
@@ -95,6 +97,8 @@ export interface SourceDetailPort {
 
 export interface EnrichmentWorkerDeps extends CompaniesServiceDeps {
   tanji: TanjiEnrichmentPort;
+  /** v2 线索/公司多对多绑定（main/测试注入；缺省时退化为单公司匹配） */
+  leads?: LeadsRepository;
   /** Boss/智联详情适配器（source_detail 阶段；缺省时跳过平台详情直接匹配） */
   sources?: { boss?: SourceDetailPort | null; zhilian?: SourceDetailPort | null };
   /** 匹配算法选项（阈值等） */
@@ -610,6 +614,7 @@ export class EnrichmentWorker {
     }
 
     const best = result.best;
+    const wasVerified = company.verified;
     let targetCompany = company;
 
     // 目标 tanji 主体已存在 → 合并两条公司记录（docs/02 §8.2c）
@@ -622,6 +627,21 @@ export class EnrichmentWorker {
         this.deps,
       );
       targetCompany = merged.target;
+      // 合并到已存在主体后，仍要写入本次匹配的 match_meta / tanji 结果（否则目标公司会丢匹配审计）
+      const rematched = await recordMatchResult(
+        targetCompany.id,
+        {
+          tanjiCompanyId: best.id,
+          method: result.method,
+          confidence: result.confidence,
+          candidates: result.candidates,
+          source: 'tanji',
+          runId: job.runId,
+          actor: 'enrichment-worker',
+        },
+        this.deps,
+      );
+      targetCompany = rematched.company;
       this.writeSnapshot({
         kind: 'tanji_match_merge',
         payload: { sourceCompanyId: company.id, targetCompanyId: occupied.id, movedSources: merged.movedSources },
@@ -657,7 +677,17 @@ export class EnrichmentWorker {
       targetCompany = updated.company;
     }
 
-    const enqueued = this.enqueue(targetCompany.id, 'tanji_detail', job.runId);
+    // 兜底：无论是否经过 merge，都保证目标公司带上本次匹配的 match_meta
+    const metaUpdated = await applyCompanyFields(
+      targetCompany.id,
+      { matchMeta: buildMatchMeta({ method: result.method, confidence: result.confidence, candidates: result.candidates }) },
+      { source: 'tanji', runId: job.runId, actor: 'enrichment-worker' },
+      this.deps,
+    );
+    targetCompany = metaUpdated.company;
+    const newlyVerified = !wasVerified && targetCompany.id === company.id;
+    const binding = this.bindTanjiCandidates(job, targetCompany, result, newlyVerified);
+    const enqueued = [...new Set([...this.enqueue(targetCompany.id, 'tanji_detail', job.runId), ...binding.enqueued])];
     this.deps.jobs?.complete(job.id);
     return {
       ...base,
@@ -669,8 +699,90 @@ export class EnrichmentWorker {
         lowConfidence: result.lowConfidence,
         tanjiCompanyId: best.id,
         merged: targetCompany.id !== company.id,
+        extraCompanies: binding.extraCompanyIds.length,
+        leadsBound: binding.leadsBound,
       },
     };
+  }
+
+  /**
+   * 一个英文抬头/公司可能命中多个 Tanji 主体：best 仍作为当前公司；
+   * 其余候选各建/复用一家 verified company，并把当前公司的全部 lead 绑定到每家候选。
+   * 后续同主体再次命中时只会追加 lead 绑定（lead_company_matches 主键幂等）。
+   */
+  private bindTanjiCandidates(
+    job: PipelineJob,
+    primaryCompany: Company,
+    result: MatchResult,
+    newlyVerified: boolean,
+  ): { extraCompanyIds: string[]; enqueued: Stage[]; leadsBound: number } {
+    const leadsRepo = this.deps.leads;
+    if (!leadsRepo) return { extraCompanyIds: [], enqueued: [], leadsBound: 0 };
+    const leads = leadsRepo.ensureForCompany(primaryCompany.id);
+    const candidates = [...(result.candidates ?? [])]
+      .filter((c) => c && c.id && c.name)
+      .slice(0, 5);
+    if (result.best && !candidates.some((c) => c.id === result.best!.id)) candidates.unshift(result.best);
+    const extraCompanyIds: string[] = [];
+    const enqueued: Stage[] = [];
+    let leadsBound = 0;
+    for (let idx = 0; idx < candidates.length; idx++) {
+      const candidate = candidates[idx]!;
+      const isPrimary = candidate.id === result.best?.id;
+      let companyId: string;
+      if (isPrimary) {
+        companyId = primaryCompany.id;
+      } else {
+        const existing = this.deps.companies.findByTanjiId(candidate.id);
+        if (existing) {
+          companyId = existing.id;
+          if (!existing.verified) this.deps.companies.update(existing.id, { verified: true });
+        } else {
+          const created = this.deps.companies.create({
+            name: candidate.name,
+            tanjiCompanyId: candidate.id,
+            uscc: candidate.uscc ?? null,
+            verified: true,
+            enrichmentStatus: 'tanji_matched',
+            unlockStatus: 'none',
+            sourceCount: 0,
+            tradeTags: [],
+            extra: { createdFrom: 'tanji_candidate', primaryLeadCompanyId: primaryCompany.id, matchMethod: result.method },
+            firstSeenAt: nowIso(),
+            lastSeenAt: nowIso(),
+          });
+          companyId = created.id;
+          extraCompanyIds.push(created.id);
+          enqueued.push(...this.enqueue(created.id, 'tanji_detail', job.runId));
+          try {
+            recordCompanyCreated(created, { source: 'tanji', runId: job.runId, initial: { name: created.name, tanjiCompanyId: created.tanjiCompanyId } }, this.deps);
+          } catch { /* 事件失败不影响匹配 */ }
+        }
+      }
+      for (const lead of leads) {
+        try {
+          leadsRepo.addAlias?.(companyId, lead.sourceName, /[\u4e00-\u9fa5]/.test(lead.sourceName ?? '') ? 'zh' : 'en', `lead:${lead.platform}`);
+          leadsRepo.addAlias?.(companyId, lead.englishName, 'en', `lead:${lead.platform}`);
+          leadsRepo.linkMatch({
+            leadId: lead.id,
+            companyId,
+            method: result.method,
+            confidence: candidate.score ?? result.confidence ?? null,
+            candidateRank: idx,
+            isPrimary,
+            raw: { candidates: result.candidates },
+          });
+          leadsRepo.setStatus(lead.id, 'matched');
+          leadsBound += 1;
+        } catch { /* 单条绑定失败不阻断其他候选 */ }
+      }
+    }
+    if (newlyVerified) {
+      try {
+        recordCompanyCreated(primaryCompany, { source: 'tanji', runId: job.runId, initial: { name: primaryCompany.name, tanjiCompanyId: primaryCompany.tanjiCompanyId } }, this.deps);
+      } catch { /* ignore */ }
+    }
+    return { extraCompanyIds, enqueued, leadsBound };
   }
 
   // -- tanji_detail ---------------------------------------------------------

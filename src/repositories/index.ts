@@ -18,6 +18,7 @@ import { GoalsRepository } from './goals.js';
 import { GoalRunsRepository } from './runs.js';
 import { SourceQueriesRepository } from './sourceQueries.js';
 import { SnapshotsRepository } from './snapshots.js';
+import { LeadsRepository } from './leads.js';
 import { CompaniesRepository } from './companies.js';
 import { CompanySourcesRepository } from './companySources.js';
 import { CompanyContactsRepository } from './contacts.js';
@@ -86,6 +87,7 @@ export interface Repositories {
   /** snapshots 别名 */
   rawSnapshots: SnapshotsRepository;
   companies: CompaniesRepository;
+  leads: LeadsRepository;
   companySources: CompanySourcesRepository;
   contacts: CompanyContactsRepository;
   jobs: PipelineJobsRepository;
@@ -130,6 +132,7 @@ export function createRepositories(
     snapshots,
     rawSnapshots: snapshots,
     companies: new CompaniesRepository(db),
+    leads: new LeadsRepository(db),
     companySources: new CompanySourcesRepository(db),
     contacts: new CompanyContactsRepository(db),
     jobs,

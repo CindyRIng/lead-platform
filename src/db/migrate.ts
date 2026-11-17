@@ -5,7 +5,7 @@ import type { DatabaseSync } from 'node:sqlite';
 import type { DatabaseHandle } from './index.js';
 
 const SCHEMA_PATH = fileURLToPath(new URL('./schema.sql', import.meta.url));
-export const SCHEMA_VERSION = 2;
+export const SCHEMA_VERSION = 3;
 
 type DbLike = DatabaseSync | { raw: DatabaseSync };
 

@@ -1388,4 +1388,52 @@ describe('真实 DB 集成：F2 repositories + companies 服务 + Enrichment Wor
       db.close();
     }
   });
+
+  it('多抬头：一个 lead 可绑定多个 Tanji company（lead_company_matches 运行时写入）', async () => {
+    const db = openMemoryDatabase({ migrate: true });
+    try {
+      const repos = createRepositories(db);
+      const realDeps = companiesDepsFromRepositories(repos);
+      const source = await upsertSourceCompany(
+        { platform: 'ali', platformCompanyId: 'multi_a1', name: 'Hebei Multi Test Machinery Co., Ltd.', englishName: 'Hebei Multi Test Machinery Co., Ltd.', province: '河北省', evidence: { keyword: 'machinery' } },
+        realDeps,
+      );
+      const mockTanji: TanjiEnrichmentPort = {
+        async searchByName() {
+          return {
+            companies: [
+              { id: 'tj_multi_a', name: '河北多主体测试机械有限公司', uscc: '91130100MULTI000A', province: '河北省', score: 0.9 },
+              { id: 'tj_multi_b', name: '河北多主体测试设备有限公司', uscc: '91130100MULTI000B', province: '河北省', score: 0.8 },
+            ],
+            total: 2,
+          };
+        },
+        async getCompany(id: string) {
+          return makeTanjiDetail({ id, name: id === 'tj_multi_b' ? '河北多主体测试设备有限公司' : '河北多主体测试机械有限公司' });
+        },
+        async getContacts(id: string) {
+          return { companyId: id, unlocked: false, contacts: [], counts: null, raw: {} };
+        },
+      };
+      const worker = new EnrichmentWorker(
+        { ...realDeps, tanji: mockTanji, leads: (repos as any).leads, sources: {} },
+        { workerId: 'multi-test', maxJobs: 5 },
+      );
+      repos.jobs.enqueue({ companyId: source.company.id, stage: 'tanji_match' });
+      await worker.runUntilIdle(20);
+      const primary = repos.companies.findByTanjiId('tj_multi_a');
+      const secondary = repos.companies.findByTanjiId('tj_multi_b');
+      expect(primary?.verified).toBe(true);
+      expect(secondary?.verified).toBe(true);
+      const primaryLeads = (repos as any).leads.listByCompany(primary!.id);
+      expect(primaryLeads.length).toBeGreaterThan(0);
+      const matches = (repos as any).leads.listMatchesByLead(primaryLeads[0].id);
+      const ids = matches.map((m: any) => m.companyId);
+      expect(ids).toContain(primary!.id);
+      expect(ids).toContain(secondary!.id);
+      expect(matches.some((m: any) => m.isPrimary)).toBe(true);
+    } finally {
+      db.close();
+    }
+  });
 });

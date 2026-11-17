@@ -536,12 +536,9 @@ describe('RunOrchestrator.executeRun', () => {
     expect(fake.jobs).toHaveLength(5);
     expect(fake.jobs.find((j) => j.stage === 'source_detail')?.platform).toBe('boss');
     expect(fake.jobs.find((j) => j.stage === 'tanji_match')).toBeTruthy();
-    // 新公司入库产生 company.created 事件（webhook/SSE 依赖）
+    // v2：采集阶段只建 verified=0 草稿，不发 company.created；事件由 Tanji 确认后补发
     const createdEvents = fake.changeEventList.filter((e) => e.eventType === 'company.created');
-    expect(createdEvents).toHaveLength(5);
-    expect(createdEvents.every((e) => e.source.startsWith('source:'))).toBe(true);
-    expect(createdEvents[0]?.version).toBe(1);
-    expect(createdEvents[0]?.newValue).toMatchObject({ name: expect.any(String), runId: 'run_test' });
+    expect(createdEvents).toHaveLength(0);
     // 快照：每个查询至少一条检索页快照
     expect(fake.snapshots.length).toBeGreaterThanOrEqual(fake.queries.size);
     expect(fake.snapshots.every((s) => s.kind === 'source_search_page')).toBe(true);

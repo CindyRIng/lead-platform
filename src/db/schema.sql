@@ -458,3 +458,17 @@ BEGIN
   UPDATE leads SET last_seen_at = NEW.last_seen_at, updated_at = datetime('now'), evidence = NEW.evidence
    WHERE platform = NEW.platform AND platform_company_id = NEW.platform_company_id;
 END;
+
+
+-- v3：公司别名（多英文抬头/中文别名长期保留）
+CREATE TABLE IF NOT EXISTS company_aliases (
+  id TEXT PRIMARY KEY,
+  company_id TEXT NOT NULL,
+  alias TEXT NOT NULL,
+  normalized_alias TEXT NOT NULL,
+  language TEXT,
+  source TEXT,
+  first_seen_at TEXT NOT NULL,
+  UNIQUE(company_id, normalized_alias)
+);
+CREATE INDEX IF NOT EXISTS idx_company_aliases_company ON company_aliases(company_id);

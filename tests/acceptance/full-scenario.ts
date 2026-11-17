@@ -78,9 +78,12 @@ export async function waitRunTerminal(rt: FullRuntime, runId: string, opts: Wait
 
 async function findCompanyIds(rt: FullRuntime): Promise<Record<CompanyKey, string>> {
   const repos = rt.repos as any;
-  const companies = repos.companies.list({ limit: 200 });
+  const companies = repos.companies.list({ limit: 300 });
   const pick = (predicate: (c: any) => boolean, label: string): string => {
-    const found = companies.find(predicate);
+    const all = companies.filter(predicate);
+    // v2 多抬头场景：优先选“已匹配 + 有来源”的主公司，避免选到候选 secondary company
+    const score = (c: any) => (c.matchMeta ? 4 : 0) + (Number(c.sourceCount ?? 0) > 0 ? 2 : 0);
+    const found = all.sort((a: any, b: any) => score(b) - score(a))[0];
     if (!found) throw new Error(`场景缺少公司：${label}`);
     return found.id;
   };

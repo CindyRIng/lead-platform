@@ -88,7 +88,8 @@ export type CompanyMergeableField =
   | 'homepage'
   | 'phoneCount'
   | 'emailCount'
-  | 'contactCount';
+  | 'contactCount'
+  | 'matchMeta';
 
 /** 权威性来源：探迹工商 > 平台详情 > 平台搜索结果 */
 export type FieldAuthority = 'tanji' | 'source_detail' | 'source_search';
@@ -335,6 +336,7 @@ export function mergeCompanyViews(source: Company, target: Company): Partial<Com
     'phoneCount',
     'emailCount',
     'contactCount',
+    'matchMeta',
   ];
   for (const field of fields) {
     if (!isMeaningfulValue(target[field]) && isMeaningfulValue(source[field])) {

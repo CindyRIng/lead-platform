@@ -66,6 +66,7 @@ async function main(): Promise<void> {
       const tanji = createTanjiClient({ baseUrl: config.tanjiUrl, token: config.tanjiToken || null, allowUnlock: false });
       const enrichment = createEnrichmentWorker({
         ...companiesDepsFromRepositories(runtime.repos),
+        leads: runtime.repos.leads as never,
         tanji,
         sources: {
           boss: runtime.adapters.boss as unknown as never,

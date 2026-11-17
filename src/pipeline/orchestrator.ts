@@ -285,6 +285,8 @@ class CoverageTracker {
 }
 
 export class RunOrchestrator {
+  /** 公司创建串行化：多平台并行采集时避免同名的 look-up + insert 竞态产生重复草稿 */
+  private companyCreateChain: Promise<void> = Promise.resolve();
   private readonly deps: OrchestratorDeps;
   private readonly snapshots: SnapshotService;
   private readonly now: () => Date;
@@ -404,65 +406,84 @@ export class RunOrchestrator {
       );
     }
 
-    // 3) 执行查询（按计划顺序；来源内部串行）
+    // 3) 执行查询：四个来源平台并行；同一来源内部串行（尊重各 adapter 限频）
+    const plannedByPlatform = new Map<Platform, typeof planned>();
     for (const q of planned) {
       if (skippedPlatforms.has(q.platform)) continue;
-      const state = await repos.runs.getById(runId);
-      if (!state || state.status === 'cancelled') {
-        this.log('info', 'run.cancelled', { runId });
-        break;
-      }
-      if (this.now().getTime() >= deadline || opts?.signal?.aborted) {
-        timedOut = true;
-        break;
-      }
-      if (leadCap != null && totalLeads >= leadCap) break;
-      if (dailyCap != null && totalLeads >= dailyCap) break;
-      const key = `${q.platform}|${q.cityCode}|${q.platformRegionValue}|${q.keyword ?? ''}`;
-      const record = queryRecords.get(key);
-      if (!record) continue;
-      const platformStat = (platformStats[q.platform] ??= { queries: 0, pages: 0, leads: 0, companiesNew: 0 });
-      if (record.maxPages <= 0) continue;
-      try {
-        const outcome = await this.executeQuery(goal, run, record, tracker);
-        pagesFetched += outcome.pages;
-        platformStat.pages += outcome.pages;
-        totalLeads += outcome.leads;
-        platformStat.leads += outcome.leads;
-        companiesNew += outcome.companiesNew;
-        platformStat.companiesNew += outcome.companiesNew;
-        const status: 'done' | 'skipped' = outcome.skipped ? 'skipped' : 'done';
-        await repos.sourceQueries.updateProgress(record.id, {
-          pagesFetched: outcome.pages,
-          totalCount: outcome.totalCount,
-          totalPages: outcome.totalPages,
-          status,
-          startedAt: outcome.startedAt,
-          finishedAt: outcome.finishedAt,
-          upstreamQueryId: outcome.upstreamQueryId,
-          lastError: outcome.skippedReason ?? null,
-        });
-        if (outcome.skipped && outcome.errorCode) {
-          skippedPlatforms.add(q.platform);
-          skippedSources.push({ platform: q.platform, reason: outcome.skippedReason ?? 'SOURCE_SKIPPED', errorCode: outcome.errorCode });
+      const list = plannedByPlatform.get(q.platform) ?? [];
+      list.push(q);
+      plannedByPlatform.set(q.platform, list);
+    }
+
+    const runPlatformQueries = async (queries: typeof planned): Promise<void> => {
+      for (const q of queries) {
+        if (skippedPlatforms.has(q.platform)) break;
+        const state = await repos.runs.getById(runId);
+        if (!state || state.status === 'cancelled') {
+          this.log('info', 'run.cancelled', { runId });
+          return;
         }
-      } catch (err) {
-        const lead = err instanceof LeadError ? err : new LeadError('INTERNAL_ERROR', err instanceof Error ? err.message : String(err));
+        if (this.now().getTime() >= deadline || opts?.signal?.aborted) {
+          timedOut = true;
+          return;
+        }
+        if (leadCap != null && totalLeads >= leadCap) return;
+        if (dailyCap != null && totalLeads >= dailyCap) return;
+        const key = `${q.platform}|${q.cityCode}|${q.platformRegionValue}|${q.keyword ?? ''}`;
+        const record = queryRecords.get(key);
+        if (!record) continue;
+        const platformStat = (platformStats[q.platform] ??= { queries: 0, pages: 0, leads: 0, companiesNew: 0 });
+        if (record.maxPages <= 0) continue;
+        try {
+          const outcome = await this.executeQuery(goal, run, record, tracker);
+          pagesFetched += outcome.pages;
+          platformStat.pages += outcome.pages;
+          totalLeads += outcome.leads;
+          platformStat.leads += outcome.leads;
+          companiesNew += outcome.companiesNew;
+          platformStat.companiesNew += outcome.companiesNew;
+          const status: 'done' | 'skipped' = outcome.skipped ? 'skipped' : 'done';
+          await repos.sourceQueries.updateProgress(record.id, {
+            pagesFetched: outcome.pages,
+            totalCount: outcome.totalCount,
+            totalPages: outcome.totalPages,
+            status,
+            startedAt: outcome.startedAt,
+            finishedAt: outcome.finishedAt,
+            upstreamQueryId: outcome.upstreamQueryId,
+            lastError: outcome.skippedReason ?? null,
+          });
+          if (outcome.skipped && outcome.errorCode) {
+            skippedPlatforms.add(q.platform);
+            skippedSources.push({ platform: q.platform, reason: outcome.skippedReason ?? 'SOURCE_SKIPPED', errorCode: outcome.errorCode });
+          }
+        } catch (err) {
+          const lead = err instanceof LeadError ? err : new LeadError('INTERNAL_ERROR', err instanceof Error ? err.message : String(err));
+          failedQueries += 1;
+          this.log('warn', 'run.query.failed', { runId, platform: q.platform, keyword: q.keyword, code: lead.code, message: lead.message });
+          await swallow(() =>
+            repos.sourceQueries.updateProgress(record.id, { status: 'failed', lastError: `${lead.code}: ${lead.message}`, finishedAt: nowIso() }),
+          );
+          if (lead.code === 'SOURCE_SESSION_INVALID' || lead.code === 'SOURCE_VERIFICATION_PENDING') {
+            skippedPlatforms.add(q.platform);
+            skippedSources.push({ platform: q.platform, reason: `SOURCE_HEALTH_${lead.code === 'SOURCE_SESSION_INVALID' ? 'SESSION_INVALID' : 'VERIFICATION_PENDING'}`, errorCode: lead.code });
+          }
+        }
+        // 每查询刷新一次 Run.stats + heartbeat（进度可见）
+        const coverage = tracker.stats();
+        const stats = this.buildStats(platformStats, coverage, skippedSources, pagesFetched);
+        await swallow(() => repos.runs.updateStats(runId, stats));
+        await swallow(() => repos.runs.heartbeat(runId, nowIso()));
+      }
+    };
+
+    const platformGroups = [...plannedByPlatform.values()];
+    const results = await Promise.allSettled(platformGroups.map((queries) => runPlatformQueries(queries)));
+    for (const r of results) {
+      if (r.status === 'rejected') {
         failedQueries += 1;
-        this.log('warn', 'run.query.failed', { runId, platform: q.platform, keyword: q.keyword, code: lead.code, message: lead.message });
-        await swallow(() =>
-          repos.sourceQueries.updateProgress(record.id, { status: 'failed', lastError: `${lead.code}: ${lead.message}`, finishedAt: nowIso() }),
-        );
-        if (lead.code === 'SOURCE_SESSION_INVALID' || lead.code === 'SOURCE_VERIFICATION_PENDING') {
-          skippedPlatforms.add(q.platform);
-          skippedSources.push({ platform: q.platform, reason: `SOURCE_HEALTH_${lead.code === 'SOURCE_SESSION_INVALID' ? 'SESSION_INVALID' : 'VERIFICATION_PENDING'}`, errorCode: lead.code });
-        }
+        this.log('warn', 'run.platform.failed', { runId, error: r.reason instanceof Error ? r.reason.message : String(r.reason) });
       }
-      // 每查询刷新一次 Run.stats + heartbeat（进度可见）
-      const coverage = tracker.stats();
-      const stats = this.buildStats(platformStats, coverage, skippedSources, pagesFetched);
-      await swallow(() => repos.runs.updateStats(runId, stats));
-      await swallow(() => repos.runs.heartbeat(runId, nowIso()));
     }
 
     // 4) 收尾
@@ -487,6 +508,18 @@ export class RunOrchestrator {
   // -------------------------------------------------------------------------
   // 单条查询执行
   // -------------------------------------------------------------------------
+
+  private async withCompanyCreateLock<T>(fn: () => Promise<T>): Promise<T> {
+    const previous = this.companyCreateChain;
+    let release!: () => void;
+    this.companyCreateChain = previous.then(() => new Promise<void>((resolve) => { release = resolve; }));
+    await previous;
+    try {
+      return await fn();
+    } finally {
+      release();
+    }
+  }
 
   private async executeQuery(
     goal: Goal,
@@ -668,14 +701,15 @@ export class RunOrchestrator {
     } else {
       const normalizedName = normalizeCompanyName(lead.companyName);
       const canonicalCity = canonicalCityName(lead.cityName) ?? lead.cityName ?? null;
-      let company = await swallow(() =>
-        repos.companies.findByNormalizedName(normalizedName, {
-          province: ctx.goal.region.province,
-          city: canonicalCity,
-        }),
-      );
-      if (!company) {
-        company = await repos.companies.create({
+      const resolved = await this.withCompanyCreateLock(async () => {
+        const found = await swallow(() =>
+          repos.companies.findByNormalizedName(normalizedName, {
+            province: ctx.goal.region.province,
+            city: canonicalCity,
+          }),
+        );
+        if (found) return { company: found, created: false };
+        const createdCompany = await repos.companies.create({
           name: lead.companyName,
           normalizedName,
           englishName: lead.platform === 'ali' || lead.platform === 'mic' ? lead.companyName : null,
@@ -690,10 +724,11 @@ export class RunOrchestrator {
           firstSeenAt: now,
           lastSeenAt: now,
         } as Parameters<CompaniesPort['create']>[0]);
-        created = true;
-      }
-      companyId = company.id;
-      if (created) await this.emitCompanyCreated(company, lead, ctx);
+        return { company: createdCompany, created: true };
+      });
+      created = resolved.created;
+      companyId = resolved.company.id;
+      // v2：采集阶段只建草稿（verified=0），不发 company.created；待 Tanji 确认后由 enrichment 发事件
     }
 
     await repos.companySources.upsert({

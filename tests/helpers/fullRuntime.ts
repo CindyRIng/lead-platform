@@ -197,6 +197,7 @@ export async function createFullRuntime(opts: FullRuntimeOptions): Promise<FullR
   const enrichment = enrichmentMod.createEnrichmentWorker(
     {
       ...companiesMod.companiesDepsFromRepositories(repos),
+      leads: (repos as { leads?: unknown }).leads as never,
       tanji: tanji as unknown as never,
       sources: { boss: adapters.boss as unknown as never, zhilian: adapters.zhilian as unknown as never },
       logger: { info: () => undefined, warn: () => undefined, error: () => undefined, debug: () => undefined },
