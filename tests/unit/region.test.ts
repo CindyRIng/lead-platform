@@ -118,6 +118,10 @@ describe('内置区域基线', () => {
     expect(classifyHebeiCompanyName('Shijiazhuang Trading Co.')).toBe('hebei');
     expect(classifyHebeiCompanyName('Zhejiang Machinery Co., Ltd.')).toBe('other');
     expect(classifyHebeiCompanyName('Acme Industrial Co.')).toBe('unknown');
+    // 县级通用词/外地公司不应被判河北（避免 off 模式误入）
+    expect(classifyHebeiCompanyName('Anping Wire Mesh Co., Ltd.')).toBe('unknown');
+    expect(classifyHebeiCompanyName('Guangzhou XinHe Hardware Factory')).toBe('unknown');
+    expect(classifyHebeiCompanyName('Dongying Sanhe Group Corp.')).toBe('unknown');
   });
 });
 

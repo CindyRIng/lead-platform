@@ -187,10 +187,16 @@ export function isValidCityOfProvince(provinceCode: string, cityCode: string): b
   return CITIES.some((c) => c.code === cityCode && c.parentCode === provinceCode);
 }
 
-/** 河北 geo token（Ali 名称启发式：省/市/县英文名）——docs/12 §2.2 口径 */
-export const HEBEI_GEO_TOKENS: ReadonlySet<string> = (() => {
+/** 河北强 token：省名 + 11 地级市英文名（用于 off 模式归属判断，避免县级通用词误配） */
+export const HEBEI_STRONG_TOKENS: ReadonlySet<string> = (() => {
   const set = new Set<string>(['hebei']);
   for (const name of Object.values(HEBEI_CITY_EN)) set.add(name.toLowerCase());
+  return set;
+})();
+
+/** 河北 geo token（省/市/县英文名；仅用于展示/人工排查，不用于自动归属） */
+export const HEBEI_GEO_TOKENS: ReadonlySet<string> = (() => {
+  const set = new Set<string>(HEBEI_STRONG_TOKENS);
   for (const county of HEBEI_COUNTIES) if (county.englishName.length >= 4) set.add(county.englishName);
   return set;
 })();
@@ -239,10 +245,16 @@ const OTHER_KNOWN: ReadonlySet<string> = new Set([
 export function classifyHebeiCompanyName(name: string | null | undefined): 'hebei' | 'other' | 'unknown' {
   if (!name) return 'unknown';
   const n = toHalfWidth(name).toLowerCase();
-  let isOther = false;
-  for (const token of OTHER_KNOWN) if (token.length > 3 && n.includes(token)) isOther = true;
-  if (isOther) return 'other';
-  for (const token of HEBEI_GEO_TOKENS) if (token.length >= 4 && n.includes(token)) return 'hebei';
-  if (n.includes('hebei')) return 'hebei';
+  // 1) 明确其他省份 → other（按词边界，避免词内误配）
+  for (const token of OTHER_KNOWN) {
+    if (token.length <= 3) continue;
+    if (new RegExp(`(?<![a-z])${token.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?![a-z])`).test(n)) return 'other';
+  }
+  // 2) 只信强 token（hebei + 11 市，词边界）；县级通用英文词（anping/sanhe/xinhe/bazhou…）不自动判河北，
+  //    它们可能属于外地同名地区，交由 strict 矩阵/其他平台来源确认。
+  for (const token of HEBEI_STRONG_TOKENS) {
+    if (token.length < 4) continue;
+    if (new RegExp(`(?<![a-z])${token.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?![a-z])`).test(n)) return 'hebei';
+  }
   return 'unknown';
 }

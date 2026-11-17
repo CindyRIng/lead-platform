@@ -188,7 +188,7 @@ export function buildSourceQueries(
 
     if (platform === 'mic') {
       // 省检索（无关键词）
-      queries.push({ platform, cityCode: provinceKey, platformRegionValue: provinceMic, keyword: null, strategy: 'mic_province', maxPages: maxPages('mic') });
+      queries.push({ platform, cityCode: provinceKey, platformRegionValue: provinceMic, keyword: null, strategy: 'mic_province', maxPages: PLATFORM_DEFAULT_MAX_PAGES.mic });
       // 11 市关键词并集（城市为客户端过滤；keyword 用英文城市名）
       for (const city of resolved.cities) {
         if (!city.englishName) continue;
@@ -198,7 +198,8 @@ export function buildSourceQueries(
           platformRegionValue: provinceMic,
           keyword: city.englishName,
           strategy: 'mic_city_keyword',
-          maxPages: Math.min(3, maxPages('mic')),
+          // Mic 目标是 11 市关键词全量并集（client 实测 5,008 家），必须翻到全部页
+          maxPages: PLATFORM_DEFAULT_MAX_PAGES.mic,
         });
       }
     }
@@ -615,7 +616,7 @@ export class RunOrchestrator {
           keyword: query.keyword ?? undefined,
           province: 'Hebei',
           page,
-          pageSize: 20,
+          pageSize: 100,
         });
         totalCount = res.total;
         totalPages = res.totalPages;

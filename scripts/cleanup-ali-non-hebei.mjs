@@ -28,7 +28,7 @@ const dbPath = (() => {
 })();
 
 const CITY_TOKENS = ['shijiazhuang', 'tangshan', 'qinhuangdao', 'handan', 'xingtai', 'baoding', 'zhangjiakou', 'chengde', 'cangzhou', 'langfang', 'hengshui'];
-const TOKENS = new Set(['hebei', 'chinahebei', ...CITY_TOKENS.map((s) => s.toLowerCase()), ...HEBEI_COUNTIES.map((c) => c.englishName).filter(Boolean).map((s) => s.toLowerCase())]);
+const TOKENS = new Set(['hebei', ...CITY_TOKENS.map((s) => s.toLowerCase())]);
 const TOKEN_LIST = [...TOKENS].filter((t) => t.length >= 4).sort((a, b) => b.length - a.length);
 
 function nameMatchesHebei(name) {
