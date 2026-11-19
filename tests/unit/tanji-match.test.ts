@@ -610,12 +610,12 @@ describe('matching: 英文抬头（Ali/Mic，BR-18）', () => {
       client,
     );
 
-    // 第一次搜索必须是英文抬头，而非中文名
-    expect(bodies[0]?.name).toBe('Hebei Example Industrial Metal Co., Ltd.');
+    // 第一次搜索使用去法律后缀/截断后的英文核心名（避免 Tanji keywords too long）
+    expect(bodies[0]?.name).toBe('Hebei Example Industrial Metal');
     expect(bodies[0]?.field).toBe('name');
     expect(result.matched).toBe(true);
     expect(result.method).toBe('english_name');
-    expect(result.queryName).toBe('Hebei Example Industrial Metal Co., Ltd.');
+    expect(result.queryName).toBe('Hebei Example Industrial Metal');
     expect(result.candidates[0]?.uscc).toBe('91130100TEST0000D4');
     // 跨语言命中：相关度(0.3*rel)+省(+0.2)+市(+0.2)+相关度(+0.1*rel) ≈ 0.51（低置信度如实记录）
     expect(result.confidence).toBeGreaterThan(0.45);
@@ -661,7 +661,7 @@ describe('matching: 英文抬头（Ali/Mic，BR-18）', () => {
     const { fetchImpl } = makeMockFetch((call) => {
       const body = call.body as Record<string, unknown>;
       attempts.push(body);
-      if (body.name === 'Test Hebei Machinery Co., Ltd.') return okReply({ companies: [], total: 0 });
+      if (body.name === 'Test Hebei Machinery' || body.name === 'Test Hebei Machinery Co., Ltd.') return okReply({ companies: [], total: 0 });
       return okReply({
         companies: [
           companySummary({
@@ -679,17 +679,19 @@ describe('matching: 英文抬头（Ali/Mic，BR-18）', () => {
       { name: '河北测试机械有限公司', englishName: 'Test Hebei Machinery Co., Ltd.', province: '河北省', platform: 'ali' },
       makeClient(fetchImpl),
     );
-    expect(attempts[0]?.name).toBe('Test Hebei Machinery Co., Ltd.');
-    expect(attempts[1]?.name).toBe('河北测试机械有限公司');
+    expect(attempts[0]?.name).toBe('Test Hebei Machinery');
+    expect(attempts[1]?.name).toBe('Test Hebei Machinery Co., Ltd.');
+    expect(attempts[2]?.name).toBe('河北测试机械有限公司');
     expect(result.matched).toBe(true);
     expect(result.method).toBe('name_exact');
   });
 
   it('buildSearchAttempts：ali/mic 英文优先，boss/zhilian 中文优先，USCC 最前', () => {
     const ali = buildSearchAttempts({ name: '河北测试机械有限公司', englishName: 'Test Hebei Machinery Co., Ltd.', platform: 'ali' });
-    expect(ali.map((a) => a.field)).toEqual(['name', 'name']);
-    expect(ali[0]?.name).toContain('Test Hebei');
-    expect(ali[1]?.name).toContain('河北测试');
+    expect(ali.map((a) => a.field)).toEqual(['name', 'name', 'name']);
+    expect(ali[0]?.name).toBe('Test Hebei Machinery');
+    expect(ali[1]?.name).toContain('Test Hebei');
+    expect(ali[2]?.name).toContain('河北测试');
 
     const boss = buildSearchAttempts({ name: '河北测试机械有限公司', englishName: 'Test Hebei Machinery Co., Ltd.', platform: 'boss' });
     expect(boss[0]?.name).toContain('河北测试');

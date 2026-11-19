@@ -157,12 +157,37 @@ export interface AdapterOptions {
   now?: () => number;
 }
 
-/** 限频配置（docs/04 §2） */
+/** 限频配置（docs/04 §2）；全部可由 .env 覆盖，风控期使用严格档 */
+function envNum(name: string, fallback: number): number {
+  const raw = process.env[name];
+  const n = raw == null || raw === '' ? NaN : Number(raw);
+  return Number.isFinite(n) && n >= 0 ? n : fallback;
+}
 export const SOURCE_RATE_LIMITS = {
-  boss: { perMinute: 12, minIntervalMs: 2_500, jitterMs: 0 },
-  zhilian: { perMinute: 15, minIntervalMs: 2_500, jitterMs: 500 },
-  ali: { perMinute: null, minIntervalMs: 10_000 },
-  mic: { perMinute: null, minIntervalMs: 1_800, jitterMs: 400 },
+  boss: {
+    perMinute: envNum('BOSS_RATE_PER_MIN', 12),
+    minIntervalMs: envNum('BOSS_MIN_INTERVAL_MS', 2_500),
+    jitterMs: envNum('BOSS_JITTER_MS', 0),
+    burst: Math.max(1, envNum('BOSS_BURST', 4)),
+  },
+  zhilian: {
+    perMinute: envNum('ZHILIAN_RATE_PER_MIN', 15),
+    minIntervalMs: envNum('ZHILIAN_MIN_INTERVAL_MS', 2_500),
+    jitterMs: envNum('ZHILIAN_JITTER_MS', 500),
+    burst: Math.max(1, envNum('ZHILIAN_BURST', 4)),
+  },
+  ali: {
+    perMinute: envNum('ALI_RATE_PER_MIN', 0) || null,
+    minIntervalMs: envNum('ALI_MIN_INTERVAL_MS', 10_000),
+    jitterMs: envNum('ALI_JITTER_MS', 0),
+    burst: Math.max(1, envNum('ALI_BURST', 1)),
+  },
+  mic: {
+    perMinute: envNum('MIC_RATE_PER_MIN', 0) || null,
+    minIntervalMs: envNum('MIC_MIN_INTERVAL_MS', 1_800),
+    jitterMs: envNum('MIC_JITTER_MS', 400),
+    burst: Math.max(1, envNum('MIC_BURST', 1)),
+  },
 } as const;
 
 /** S2 适配器统一接口（Refresh Worker / Orchestrator 可依赖此 narrow interface） */

@@ -95,6 +95,9 @@ const ConfigSchema = z.object({
   defaultKeywordsZhilian: z.array(z.string()).default([]),
   defaultKeywordsAli: z.array(z.string()).default([]),
   maxPagesPerQuery: OptInt,
+  aliGeoSeeds: BoolStr.default(true),
+  aliCountySeeds: BoolStr.default(true),
+  aliIndustryMatrix: BoolStr.default(true),
 });
 
 export type AppConfig = z.infer<typeof ConfigSchema>;
@@ -169,6 +172,9 @@ export function loadConfig(overrides: Partial<Record<string, unknown>> = {}): Ap
     defaultKeywordsZhilian: csv(pick('LEAD_DEFAULT_KEYWORDS_ZHILIAN')),
     defaultKeywordsAli: csv(pick('LEAD_DEFAULT_KEYWORDS_ALI')),
     maxPagesPerQuery: pick('LEAD_MAX_PAGES_PER_QUERY') ?? '',
+    aliGeoSeeds: pick('LEAD_ALI_GEO_SEEDS') ?? 'true',
+    aliCountySeeds: pick('LEAD_ALI_COUNTY_SEEDS') ?? 'true',
+    aliIndustryMatrix: pick('LEAD_ALI_INDUSTRY_MATRIX') ?? 'true',
     ...overrides,
   };
   const parsed = ConfigSchema.safeParse(raw);

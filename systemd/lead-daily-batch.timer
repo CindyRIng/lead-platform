@@ -1,0 +1,10 @@
+[Unit]
+Description=每天 02:00 触发 LeadPlatform 城市批次
+
+[Timer]
+OnCalendar=*-*-* 02:00:00
+Persistent=false
+Unit=lead-daily-batch.service
+
+[Install]
+WantedBy=timers.target

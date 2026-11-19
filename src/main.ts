@@ -29,11 +29,24 @@ function every(ms: number, fn: () => Promise<void>): NodeJS.Timeout {
   return setInterval(() => void run(), ms);
 }
 
-function startWorkers(enrichment: EnrichmentWorker, refresh: PlatformRefreshWorker, customs: CustomsWorker): Loops {
+function startWorkers(
+  enrichment: EnrichmentWorker,
+  refresh: PlatformRefreshWorker,
+  customs: CustomsWorker,
+  opts: { enrichmentDailyMax?: number; meta?: { get(key: string): string | null; set(key: string, value: string): unknown } } = {},
+): Loops {
+  const dailyMax = opts.enrichmentDailyMax && opts.enrichmentDailyMax > 0 ? opts.enrichmentDailyMax : 40;
   const timers = [
-    every(8_000, () => enrichment.runOnce(20).then(() => undefined)),
-    every(60_000, () => refresh.runOnce({ limit: 20, enqueueDue: true }).then(() => undefined)),
-    every(120_000, () => customs.runOnce({ limit: 10, enqueueDue: true }).then(() => undefined)),
+    every(20_000, async () => {
+      const today = new Date().toLocaleDateString('sv-SE', { timeZone: 'Asia/Shanghai' });
+      const key = `enrichment_daily_claimed:${today}`;
+      const claimedToday = Number(opts.meta?.get(key) ?? 0) || 0;
+      if (claimedToday >= dailyMax) return;
+      const stats = await enrichment.runOnce(Math.min(5, dailyMax - claimedToday));
+      if (stats.claimed > 0) opts.meta?.set(key, String(claimedToday + stats.claimed));
+    }),
+    every(60_000, () => refresh.runOnce({ limit: 10, enqueueDue: true }).then(() => undefined)),
+    every(180_000, () => customs.runOnce({ limit: 5, enqueueDue: true }).then(() => undefined)),
   ];
   return { stop: () => timers.forEach((t) => clearInterval(t)) };
 }
@@ -48,6 +61,11 @@ async function main(): Promise<void> {
     logger: logger as unknown as never,
     // 启动时不同步区域字典，避免与首个 Run 抢上游/触发会话重启；每日 03:00 由 regionSync 负责
     regionSyncOnStart: false,
+    queryOptions: {
+      aliGeoSeeds: config.aliGeoSeeds,
+      aliCountySeeds: config.aliCountySeeds,
+      aliIndustryMatrix: config.aliIndustryMatrix,
+    },
   });
   await runtime.start();
   setPipelineRuntime(runtime);
@@ -63,7 +81,15 @@ async function main(): Promise<void> {
   let loops: Loops | null = null;
   if (config.refreshWorkerEnabled) {
     try {
-      const tanji = createTanjiClient({ baseUrl: config.tanjiUrl, token: config.tanjiToken || null, allowUnlock: false });
+      const tanjiRateRaw = Number(process.env.TANJI_RATE_PER_MIN ?? '');
+      const tanjiRate = Number.isFinite(tanjiRateRaw) && tanjiRateRaw > 0 ? tanjiRateRaw : 20;
+      const tanji = createTanjiClient({
+        baseUrl: config.tanjiUrl,
+        token: config.tanjiToken || null,
+        allowUnlock: false,
+        ratePerMin: tanjiRate,
+        burst: 1,
+      });
       const enrichment = createEnrichmentWorker({
         ...companiesDepsFromRepositories(runtime.repos),
         leads: runtime.repos.leads as never,
@@ -81,7 +107,9 @@ async function main(): Promise<void> {
         logger: logger as unknown as never,
         clock: () => new Date(),
       });
-      loops = startWorkers(enrichment, refresh, customs);
+      const dailyMaxRaw = Number(process.env.LEAD_ENRICHMENT_DAILY_MAX_JOBS ?? '');
+      const enrichmentDailyMax = Number.isFinite(dailyMaxRaw) && dailyMaxRaw > 0 ? dailyMaxRaw : 40;
+      loops = startWorkers(enrichment, refresh, customs, { enrichmentDailyMax, meta: runtime.repos.meta as never });
       logger.info('background workers started', { enrichment: true, refresh: true, customs: true });
     } catch (err) {
       logger.error('background workers failed to start', { err: String(err) });

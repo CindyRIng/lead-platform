@@ -1062,7 +1062,7 @@ describe('enrichment: 全链路（source_detail → tanji_match → tanji_detail
 
     const result = await world.worker.processJob(world.jobs.claimNext({ workerId: 'w', stages: ['tanji_match'] })!);
     expect(result.outcome).toBe('done');
-    expect(world.tanji.searches[0]?.name).toBe('Test Hebei Machinery Co., Ltd.');
+    expect(world.tanji.searches[0]?.name).toBe('Test Hebei Machinery');
     expect(world.tanji.searches[0]?.field).toBe('name');
     const matched = companyOf(world, company.id);
     expect(matched.tanjiCompanyId).toBe('tj_en');

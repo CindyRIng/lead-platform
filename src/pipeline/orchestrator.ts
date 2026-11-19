@@ -188,7 +188,7 @@ export function buildSourceQueries(
 
     if (platform === 'mic') {
       // 省检索（无关键词）
-      queries.push({ platform, cityCode: provinceKey, platformRegionValue: provinceMic, keyword: null, strategy: 'mic_province', maxPages: PLATFORM_DEFAULT_MAX_PAGES.mic });
+      queries.push({ platform, cityCode: provinceKey, platformRegionValue: provinceMic, keyword: null, strategy: 'mic_province', maxPages: maxPages('mic') });
       // 11 市关键词并集（城市为客户端过滤；keyword 用英文城市名）
       for (const city of resolved.cities) {
         if (!city.englishName) continue;
@@ -198,8 +198,8 @@ export function buildSourceQueries(
           platformRegionValue: provinceMic,
           keyword: city.englishName,
           strategy: 'mic_city_keyword',
-          // Mic 目标是 11 市关键词全量并集（client 实测 5,008 家），必须翻到全部页
-          maxPages: PLATFORM_DEFAULT_MAX_PAGES.mic,
+          // 默认翻全量；风控期由 LEAD_MAX_PAGES_PER_QUERY 压到 1 页
+          maxPages: maxPages('mic'),
         });
       }
     }
@@ -337,7 +337,10 @@ export class RunOrchestrator {
     const deadline = startedMs + runMaxHours * 3600_000;
 
     const resolved = await this.deps.registry.resolveCities(goal.region);
-    const planned = buildSourceQueries(goal, resolved, this.deps.queryOptions);
+    const planned = buildSourceQueries(goal, resolved, {
+      ...(this.deps.queryOptions ?? {}),
+      maxPagesPerQuery: this.deps.maxPagesPerQuery,
+    });
     const tracker = new CoverageTracker();
     const platformStats: Partial<Record<Platform, PlatformStats>> = {};
     const skippedSources: SkippedSource[] = [];

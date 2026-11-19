@@ -393,9 +393,36 @@ function usableUscc(uscc: string): boolean {
 }
 
 /**
+ * 英文抬头缩短：去掉法律后缀，按词截断到 Tanji 可接受的长度。
+ * Tanji 对超长 keyword 返回 `keywords is too long`（err 18008），不能把完整英文抬头直接送搜索。
+ */
+export function shortenEnglishName(name: string, maxLen = 30): string {
+  const cleaned = name
+    .replace(/\b(Co\.?|Ltd\.?|Limited|LLC|Inc\.?|Corp\.?|Corporation|Company|Group|Holdings?|Trading|Import\s*&\s*Export|Import|Export)\b/gi, ' ')
+    .replace(/[^\p{L}\p{N}\s&-]/gu, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  if (!cleaned) return '';
+  const words = cleaned.split(' ');
+  for (const count of [4, 3, 2]) {
+    const phrase = words.slice(0, count).join(' ');
+    if (phrase.length <= maxLen && phrase.length >= 2) return phrase;
+  }
+  return cleaned.slice(0, maxLen).trim();
+}
+
+function isTooLongKeywordError(err: unknown): boolean {
+  if (!err || typeof err !== 'object') return false;
+  const code = (err as { code?: string }).code;
+  if (code !== 'UPSTREAM_CHANGED' && code !== 'SOURCE_UNAVAILABLE') return false;
+  try { return /keywords?\s+is\s+too\s+long|too\s+long/i.test(JSON.stringify(err)); } catch { return false; }
+}
+
+/**
  * 构造搜索顺序：
  * - 有可用 USCC：先 USCC 精确搜索；
  * - 名称：显式 queries 优先；否则 ali/mic 英文抬头优先，其它平台中文名优先，另一个作兜底。
+ * - Ali/Mic 英文抬头会优先使用“去法律后缀 + 截断”的短名，避免 Tanji err 18008。
  */
 export function buildSearchAttempts(input: MatchInput): MatchAttempt[] {
   const attempts: MatchAttempt[] = [];
@@ -420,6 +447,8 @@ export function buildSearchAttempts(input: MatchInput): MatchAttempt[] {
     const en = (input.englishName ?? '').trim();
     const preferEnglish = input.platform === 'ali' || input.platform === 'mic';
     if (preferEnglish && en) {
+      const short = shortenEnglishName(en);
+      if (short && short !== en) push({ field: 'name', name: short });
       push({ field: 'name', name: en });
       push({ field: 'name', name: cn });
     } else {
@@ -493,7 +522,9 @@ export async function matchCompany(
 
   for (const attempt of attempts) {
     if (attempt.field === 'socialCreditCode') {
-      const response = await search.searchByName({ name: attempt.name, field: 'socialCreditCode', pageSize, maxPages: 1 });
+      let response;
+      try { response = await search.searchByName({ name: attempt.name, field: 'socialCreditCode', pageSize, maxPages: 1 }); }
+      catch (err) { if (isTooLongKeywordError(err)) { searches.push({ field: 'socialCreditCode', queryName: attempt.name, returned: 0, bestScore: null }); continue; } throw err; }
       const companies = response.companies ?? [];
       const uscc = normalizeUscc(attempt.name);
       for (const candidate of companies) {
@@ -510,7 +541,16 @@ export async function matchCompany(
     // 名称搜索：命中结果即停止后续兜底查询（控制 20 req/min 预算）
     const maxPages = options.maxPages ?? DEFAULT_MAX_PAGES;
     assertSearchOptions(options, 'name');
-    const response = await search.searchByName({ name: attempt.name, field: 'name', pageSize, maxPages });
+    let response;
+    try {
+      response = await search.searchByName({ name: attempt.name, field: 'name', pageSize, maxPages });
+    } catch (err) {
+      if (isTooLongKeywordError(err)) {
+        searches.push({ field: 'name', queryName: attempt.name, returned: 0, bestScore: null });
+        continue;
+      }
+      throw err;
+    }
     const companies = response.companies ?? [];
     let bestScore: number | null = null;
     for (const candidate of companies) {

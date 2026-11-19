@@ -1,0 +1,10 @@
+[Unit]
+Description=每 15 分钟检查 LeadPlatform/上游风控与数据
+
+[Timer]
+OnCalendar=*:0/15
+Persistent=false
+Unit=lead-watchdog.service
+
+[Install]
+WantedBy=timers.target
