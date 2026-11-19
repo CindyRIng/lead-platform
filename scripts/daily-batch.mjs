@@ -60,14 +60,19 @@ function readState() {
   try { return JSON.parse(fs.readFileSync(STATE_FILE, 'utf8')); } catch { return { nextIndex: 0, history: [] }; }
 }
 function writeState(s) { fs.writeFileSync(STATE_FILE, JSON.stringify(s, null, 2)); }
+function releaseLock() { try { fs.unlinkSync(LOCK_FILE); } catch { /* ignore */ } }
 function acquireLock() {
   try {
     const st = fs.statSync(LOCK_FILE);
-    if (Date.now() - st.mtimeMs > 6 * 3600_000) fs.unlinkSync(LOCK_FILE);
+    const pid = Number(fs.readFileSync(LOCK_FILE, 'utf8').trim());
+    let alive = false;
+    if (Number.isInteger(pid) && pid > 0) {
+      try { process.kill(pid, 0); alive = true; } catch { alive = false; }
+    }
+    if (!alive || Date.now() - st.mtimeMs > 6 * 3600_000) fs.unlinkSync(LOCK_FILE);
   } catch { /* absent */ }
-  try { fs.writeFileSync(LOCK_FILE, String(process.pid), { flag: 'wx' }); return true; } catch { return false; }
+  try { fs.writeFileSync(LOCK_FILE, String(process.pid), { flag: 'wx' }); process.on('exit', releaseLock); return true; } catch { return false; }
 }
-function releaseLock() { try { fs.unlinkSync(LOCK_FILE); } catch { /* ignore */ } }
 
 async function api(method, url, body) {
   const res = await fetch(BASE + url, {
